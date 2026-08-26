@@ -90,6 +90,7 @@ const LIAM_LESSONS=[
 ];
 const groups=[
  ['lesson-12-agosto','12 agosto · Chiara'],
+ ['liam-all','Liam · все слова'],
  ...LIAM_LESSONS.map(note=>['lesson:'+note,note]),
  ['Vocabolario','Vocabolario · всё'],
  ['Numeri 1–20','Numeri 1–20 · ripasso'],
@@ -102,6 +103,7 @@ const LESSON_12_AGOSTO=new Set(['Mesi','Giorni','Data','Compleanno','Interrogati
 function matches(c,g){
  if(g==='Tutte le carte')return true;
  if(g==='lesson-12-agosto')return LESSON_12_AGOSTO.has(c.group);
+ if(g==='liam-all')return c.group==='Vocabolario'&&LIAM_LESSONS.includes(c.note);
  if(g.startsWith('lesson:'))return c.group==='Vocabolario'&&c.note===g.slice('lesson:'.length);
  return c.group===g;
 }
