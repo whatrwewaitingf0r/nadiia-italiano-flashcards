@@ -14,6 +14,8 @@ assert.match(html, /id="confetti"/, 'completion confetti layer must exist');
 assert.match(html, /window\.render_game_to_text/, 'game must expose readable state');
 assert.match(html, /window\.advanceTime/, 'game must expose deterministic stepping');
 assert.doesNotMatch(html, /mbex|7600/i, 'published artifact must not reference copied source material');
+assert.match(html, /'Пословицы и устойчивые выражения'/, 'catalog must use the requested proverbs category label');
+assert.match(html, /'Смесь \/ классика сканворда'/, 'catalog must use the requested classic category label');
 
 const tileLetters = html.match(/const TILE_ALPHABET\s*=\s*\[([^\]]+)\]/s)?.[1] ?? '';
 assert.ok((tileLetters.match(/'/g) ?? []).length >= 40, 'tile alphabet must contain at least 20 letters');
