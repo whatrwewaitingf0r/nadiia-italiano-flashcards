@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#345b55">
-<meta name="build-version" content="v25">
+<meta name="build-version" content="v26">
 <title>Articoli · Il laboratorio di Nadiia</title>
 <style>
 :root{--laguna:#345b55;--cielo:#dceff1;--limone:#f3d45b;--carta:#fffdf8;--inchiostro:#17302d;--corallo:#e87962;--muted:#536c67;--line:#b6ccc7}
@@ -18,7 +18,7 @@ header{display:grid;grid-template-columns:1fr auto;align-items:end;gap:15px;marg
 </head>
 <body>
 <main>
-<header><div><div class="eyebrow">Italiano in tasca · Nadiia · v25</div><h1>Piccole parole.<br>Regole precise.</h1><p>Prima la regola, poi la prova: scegli l’articolo o correggi l’errore.</p><div class="legend" aria-label="Tre famiglie di articoli"><span class="article">il / lo / l’</span><span class="article">un / uno / un’</span><span class="article">dei / degli / delle</span></div></div><div class="stamp">ARTICOLI<br>80 PROVE<br>OFFLINE</div></header>
+<header><div><div class="eyebrow">Italiano in tasca · Nadiia · v26</div><h1>Piccole parole.<br>Regole precise.</h1><p>Prima la regola, poi la prova: scegli l’articolo o correggi l’errore.</p><div class="legend" aria-label="Tre famiglie di articoli"><span class="article">il / lo / l’</span><span class="article">un / uno / un’</span><span class="article">dei / degli / delle</span></div></div><div class="stamp">ARTICOLI<br>80 PROVE<br>OFFLINE</div></header>
 <div class="layout">
 <aside class="lesson" aria-label="Regole degli articoli">
 <p class="step"><span>1</span> Leggi la regola</p><h2>Genere + numero<br>+ inizio della parola.</h2>
@@ -37,7 +37,7 @@ header{display:grid;grid-template-columns:1fr auto;align-items:end;gap:15px;marg
 <div class="ticket-top"><p class="step"><span>2</span> Regola di questa prova</p><div id="rule"></div><small class="en" id="rule-en"></small></div>
 <div class="exercise">
 <div class="meta"><span id="category"></span><span id="position"></span></div>
-<div id="phrase"></div><p id="gloss"></p>
+<div id="phrase"><span class="blank">___ </span><span class="noun">studente</span></div><p id="gloss"></p>
 <div id="input-method"><label for="method">Come rispondi?</label><select id="method"><option value="choose">Scegli</option><option value="type">Scrivi</option></select></div>
 <form id="answer-form"><label class="answer-label" id="answer-label" for="answer">Scrivi solo l’articolo.</label><div class="input-row"><input id="answer" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Articolo"><button class="primary" type="submit" id="check">Verifica</button></div></form>
 <div class="choices" id="choices" role="group" aria-label="Scegli l’articolo"></div>
@@ -75,13 +75,13 @@ function wrongFor(item){if(item.form==='ind-sg'&&item.noun.sg==='amico')return '
 function start(){order=ITEMS.slice();for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}pos=0;correct=0;total=0;render();}
 function updateScore(){$('score').textContent=correct+' corrette / '+total+' risposte';$('accuracy').textContent=total?Math.round(correct/total*100)+'%':'—';$('progress').style.width=total/order.length*100+'%';}
 function render(){const item=order[pos];answered=false;const rule=ruleFor(item);$('rule').textContent=rule.it;$('rule-en').textContent=rule.en;$('category').textContent=LABELS[item.form];$('position').textContent=(pos+1)+' / '+order.length;
-$('phrase').replaceChildren();if(mode==='a'){const blank=document.createElement('span');blank.className='blank';blank.textContent='___ ';$('phrase').appendChild(blank);$('phrase').appendChild(document.createTextNode(item.word));}else $('phrase').textContent=join(wrongFor(item),item.word);
+$('phrase').textContent='';const lead=document.createElement('span');lead.className=mode==='a'?'blank':'given';const wrong=mode==='b'?wrongFor(item):'';lead.textContent=mode==='a'?'___ ':wrong+(wrong.endsWith('’')?'':' ');const noun=document.createElement('span');noun.className='noun';noun.textContent=item.word;$('phrase').appendChild(lead);$('phrase').appendChild(noun);
 $('gloss').textContent=item.noun.en+' · '+(item.noun.gender==='m'?'maschile':'femminile')+' · '+(item.form.endsWith('pl')?'plurale':'singolare');
 const choosing=mode==='a'&&$('method').value==='choose';$('input-method').hidden=mode==='b';$('answer-form').hidden=choosing;$('choices').hidden=!choosing;$('answer').value='';$('answer').disabled=false;$('check').disabled=false;$('answer-label').textContent=mode==='b'?'Riscrivi tutta la frase con l’articolo corretto.':'Scrivi solo l’articolo.';$('answer').placeholder=mode==='b'?'Articolo + nome':'Articolo';
-$('choices').replaceChildren();OPTIONS[item.form].forEach(a=>{const b=document.createElement('button');b.type='button';b.textContent=a;b.onclick=()=>submit(a);$('choices').appendChild(b);});
+$('choices').textContent='';OPTIONS[item.form].forEach(a=>{const b=document.createElement('button');b.type='button';b.textContent=a;b.onclick=()=>submit(a);$('choices').appendChild(b);});
 $('feedback').className='feedback';$('feedback').textContent=mode==='b'?'Correggi l’articolo: il nome è già giusto.':'Scegli o scrivi l’articolo richiesto.';$('next').disabled=true;$('next').textContent=pos===order.length-1?'Vedi il risultato →':'Prossima →';updateScore();}
 function submit(value){if(answered)return;if(!norm(value)){$('feedback').textContent='Scrivi una risposta prima di verificare.';return;}const item=order[pos],expected=mode==='b'?join(item.answer,item.word):item.answer;const good=norm(value)===norm(expected);answered=true;total++;if(good)correct++;
-$('feedback').replaceChildren();const strong=document.createElement('strong');strong.textContent=good?'Esatto! '+join(item.answer,item.word):'Non ancora. La forma corretta è '+join(item.answer,item.word)+'.';$('feedback').appendChild(strong);const explain=document.createElement('span');explain.textContent=ruleFor(item).it;$('feedback').appendChild(explain);$('feedback').className='feedback '+(good?'good':'bad');$('answer').disabled=true;$('check').disabled=true;Array.from($('choices').children).forEach(b=>b.disabled=true);$('next').disabled=false;updateScore();}
+$('feedback').textContent='';const strong=document.createElement('strong');strong.textContent=good?'Esatto! '+join(item.answer,item.word):'Non ancora. La forma corretta è '+join(item.answer,item.word)+'.';$('feedback').appendChild(strong);const explain=document.createElement('span');explain.textContent=ruleFor(item).it;$('feedback').appendChild(explain);$('feedback').className='feedback '+(good?'good':'bad');$('answer').disabled=true;$('check').disabled=true;Array.from($('choices').children).forEach(b=>b.disabled=true);$('next').disabled=false;updateScore();}
 function finish(){$('phrase').textContent='Sessione finita.';$('gloss').textContent=correct+' / '+order.length+' corrette · '+Math.round(correct/order.length*100)+'%';$('answer-form').hidden=true;$('choices').hidden=true;$('input-method').hidden=true;$('feedback').className='feedback';$('feedback').textContent='Rileggi le regole e premi “Mescola” per ricominciare. Puoi anche cambiare modalità.';$('next').disabled=true;$('next').textContent='Completato';}
 function setMode(m){mode=m;$('mode-a').setAttribute('aria-pressed',String(m==='a'));$('mode-b').setAttribute('aria-pressed',String(m==='b'));start();}
 $('mode-a').onclick=()=>setMode('a');$('mode-b').onclick=()=>setMode('b');$('shuffle').onclick=start;
