@@ -29,7 +29,7 @@ class Chiara23SettTests(unittest.TestCase):
         html = (ROOT / "index.html").read_text()
         cards, _ = json.JSONDecoder().raw_decode(html.split("const ALL=", 1)[1])
         target = [card for card in cards if card["group"] == GROUP]
-        self.assertEqual(len(cards), 945)
+        self.assertEqual(len(cards), 985)
         self.assertEqual([card["it"] for card in target], EXPECTED_FRONTS)
         self.assertTrue(all(card["lang"] == "EN" for card in target))
         self.assertTrue(all("Chiara" in card["note"] and "Liam" not in card["note"] and "Lisa" not in card["note"] for card in target))
@@ -41,7 +41,7 @@ class Chiara23SettTests(unittest.TestCase):
 
     def test_version_and_copies(self):
         html = (ROOT / "index.html").read_bytes()
-        self.assertIn(b'<meta name="build-version" content="v26">', html)
+        self.assertIn(b'<meta name="build-version" content="v27">', html)
         self.assertNotIn(b"v24", html)
         self.assertEqual(html, (ROOT / "www/index.html").read_bytes())
         self.assertEqual(html, (ROOT / "anki-html/italiano-flashcards.html").read_bytes())

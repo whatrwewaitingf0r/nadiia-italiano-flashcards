@@ -12,7 +12,7 @@ class ArticoliTests(unittest.TestCase):
         all_cards = cards(html)
         target = [c for c in all_cards if c['group'] == GROUP]
         self.assertEqual(len(target), 26)
-        self.assertEqual(len(all_cards), 945)
+        self.assertEqual(len(all_cards), 985)
         self.assertEqual(len({c['it'] for c in target}), 26)
         for c in target:
             self.assertEqual(c['lang'], 'EN')
@@ -22,7 +22,7 @@ class ArticoliTests(unittest.TestCase):
         self.assertIn("'grammar-articoli':'Grammatica · articoli'", html)
         self.assertLess(html.index("['chiara-23-sett'"), html.index("['lisa-irregolari'"))
         self.assertIn('isGrammar', html)
-        self.assertIn('v26', html)
+        self.assertIn('v27', html)
         self.assertIn('articoli-esercizi.html?v=26', html)
     def test_drill(self):
         html = (ROOT/'articoli-esercizi.html').read_text()
