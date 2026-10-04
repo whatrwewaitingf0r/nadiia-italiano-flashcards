@@ -41,7 +41,7 @@ class Chiara23SettTests(unittest.TestCase):
 
     def test_version_and_copies(self):
         html = (ROOT / "index.html").read_bytes()
-        self.assertIn(b'<meta name="build-version" content="v25">', html)
+        self.assertIn(b'<meta name="build-version" content="v26">', html)
         self.assertNotIn(b"v24", html)
         self.assertEqual(html, (ROOT / "www/index.html").read_bytes())
         self.assertEqual(html, (ROOT / "anki-html/italiano-flashcards.html").read_bytes())
