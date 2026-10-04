@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#345b55">
+<meta name="build-version" content="v25">
+<title>Articoli · Il laboratorio di Nadiia</title>
+<style>
+:root{--laguna:#345b55;--cielo:#dceff1;--limone:#f3d45b;--carta:#fffdf8;--inchiostro:#17302d;--corallo:#e87962;--muted:#536c67;--line:#b6ccc7}
+*{box-sizing:border-box}body{margin:0;background:var(--cielo);color:var(--inchiostro);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+main{max-width:1040px;margin:auto;padding:28px clamp(16px,4vw,42px) 40px}button,input,select{font:inherit}button{cursor:pointer;touch-action:manipulation;min-height:46px;border:1px solid var(--line);border-radius:10px;background:var(--carta);color:var(--inchiostro);padding:10px 15px;font-weight:750}button:disabled{cursor:default;opacity:.55}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--corallo);outline-offset:3px}
+header{display:grid;grid-template-columns:1fr auto;align-items:end;gap:15px;margin-bottom:26px}.eyebrow{font-size:.7rem;letter-spacing:.17em;text-transform:uppercase;font-weight:800;color:var(--laguna)}h1{font-size:clamp(2.3rem,7.5vw,4rem);line-height:1;letter-spacing:-.06em;margin:10px 0}header p{margin:0;max-width:49ch;line-height:1.45}.stamp{border:2px solid var(--laguna);padding:12px;border-radius:50%;width:90px;height:90px;display:grid;place-content:center;text-align:center;transform:rotate(-9deg);font-size:.7rem;line-height:1.4;font-weight:800;color:var(--laguna)}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.article{background:var(--laguna);color:var(--carta);padding:8px 12px;border-radius:7px;font-size:1.05rem;font-weight:800}.article:nth-child(2){background:var(--limone);color:var(--inchiostro)}.article:nth-child(3){background:var(--corallo);color:var(--inchiostro)}
+.layout{display:grid;grid-template-columns:minmax(240px,.85fr) minmax(0,1.3fr);gap:20px;align-items:start}.lesson{background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:16px;padding:22px}.step{display:flex;align-items:center;gap:10px;font-size:.75rem;text-transform:uppercase;font-weight:850;letter-spacing:.08em;margin:0 0 14px}.step span{width:26px;height:26px;border-radius:50%;background:var(--laguna);color:var(--carta);display:grid;place-content:center;font-size:.8rem}.lesson h2{font-size:1.25rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 14px}.rules{margin:0;padding-left:19px;line-height:1.5;font-size:.91rem}.rules li{margin:0 0 13px}.en{display:block;font-size:.75rem;color:var(--muted);margin-top:4px;line-height:1.5}.special{border-left:4px solid var(--corallo);padding:10px 12px;background:var(--carta);margin:17px 0 0;font-size:.84rem;line-height:1.5}details{margin-top:18px}summary{cursor:pointer;font-weight:750;font-size:.82rem;padding:5px 0}.table-wrap{overflow-x:auto;margin-top:8px}table{border-collapse:collapse;width:100%;font-size:.76rem}th,td{padding:7px 5px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}caption{text-align:left;font-size:.7rem;color:var(--muted);margin-bottom:8px}
+.practice{min-width:0}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.toolbar button[aria-pressed=true]{background:var(--laguna);color:var(--carta);border-color:var(--laguna)}.toolbar #shuffle{margin-left:auto;background:transparent}.ticket{background:var(--carta);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 14px 30px #17302d12}.ticket-top{padding:20px 23px;background:var(--laguna);color:var(--carta)}.ticket-top .step{margin-bottom:12px}.ticket-top .step span{background:var(--limone);color:var(--inchiostro)}#rule{font-weight:750;line-height:1.45;font-size:.95rem}#rule-en{color:#dceff1;margin-top:6px}.exercise{padding:22px 23px 24px;border-top:2px dashed var(--line)}.meta{display:flex;justify-content:space-between;gap:10px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--laguna)}#phrase{font-size:clamp(2.05rem,7vw,3.35rem);line-height:1.1;font-weight:850;letter-spacing:-.05em;margin:24px 0 8px;overflow-wrap:anywhere}#phrase .blank{color:var(--corallo)}#gloss{font-size:.8rem;color:var(--muted);margin:0 0 21px}.answer-label{font-size:.8rem;font-weight:750;display:block;margin-bottom:8px}.input-row{display:flex;gap:8px;min-width:0}input{min-width:0;width:100%;border:1px solid var(--line);border-radius:10px;min-height:48px;padding:11px;background:white;color:var(--inchiostro);font-size:16px}.primary{background:var(--limone);border-color:var(--limone)}.choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.choices button{font-size:1.15rem;padding:10px 5px}select{padding:5px;border:1px solid var(--line);border-radius:6px;background:var(--carta);color:var(--inchiostro);font-size:16px}#input-method{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px;font-size:.78rem;color:var(--muted)}.feedback{margin-top:18px;padding:14px;border-radius:10px;line-height:1.5;background:var(--cielo);min-height:58px;font-size:.86rem}.feedback.good{background:#d6eadf}.feedback.bad{background:#f9e0d7}.feedback strong{display:block}#next{width:100%;margin-top:13px;background:var(--laguna);color:var(--carta);border-color:var(--laguna)}.score{display:flex;justify-content:space-between;gap:12px;font-size:.77rem;margin:14px 3px;color:var(--laguna);font-variant-numeric:tabular-nums}.track{height:6px;border-radius:8px;background:#b6ccc7;overflow:hidden}.track i{display:block;height:100%;background:var(--corallo);width:0}footer{font-size:.73rem;color:var(--muted);line-height:1.5;margin-top:25px}.hidden,[hidden]{display:none!important}@media(max-width:720px){.layout{grid-template-columns:1fr}.lesson{padding:18px}.rules{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}header{align-items:center}.stamp{width:70px;height:70px;font-size:.6rem}main{padding-top:20px}.toolbar #shuffle{margin-left:0;flex-grow:1}.ticket-top,.exercise{padding:18px}}@media(max-width:420px){.rules{display:block}.stamp{display:none}.choices{grid-template-columns:repeat(4,minmax(0,1fr))}.toolbar button{padding:9px 10px;font-size:.85rem}.input-row{flex-wrap:wrap}.input-row .primary{width:100%}}
+</style>
+</head>
+<body>
+<main>
+<header><div><div class="eyebrow">Italiano in tasca · Nadiia · v25</div><h1>Piccole parole.<br>Regole precise.</h1><p>Prima la regola, poi la prova: scegli l’articolo o correggi l’errore.</p><div class="legend" aria-label="Tre famiglie di articoli"><span class="article">il / lo / l’</span><span class="article">un / uno / un’</span><span class="article">dei / degli / delle</span></div></div><div class="stamp">ARTICOLI<br>80 PROVE<br>OFFLINE</div></header>
+<div class="layout">
+<aside class="lesson" aria-label="Regole degli articoli">
+<p class="step"><span>1</span> Leggi la regola</p><h2>Genere + numero<br>+ inizio della parola.</h2>
+<ul class="rules">
+<li><b>Determinativi = “the”.</b><br>Maschile: <b>il → i</b>, <b>lo / l’ → gli</b>.<br>Femminile: <b>la / l’ → le</b>.</li>
+<li><b>Lo / uno</b> davanti a <b>s + consonante, z, gn, pn, ps, x, y</b> consonantica.<br><span class="en">lo studente, uno yogurt; but il signore.</span></li>
+<li><b>Una</b> + consonante; <b>un’</b> + vocale (femminile).<br><b>Un</b> + consonante normale o vocale (maschile).<span class="en">un’amica, but un amico: no apostrophe for masculine un.</span></li>
+<li><b>Some</b>, al plurale: <b>dei</b> dove usi i; <b>degli</b> dove usi gli; <b>delle</b> dove usi le.<span class="en">Here these are partitive articles = some, not “of the”.</span></li>
+</ul>
+<div class="special"><b>Tre trappole.</b><br>lo yogurt → gli yogurt (invariabile)<br>la paga → le paghe<br>il chirurgo → i chirurghi<span class="en">Use the standard lo / uno forms for pneumatico.</span></div>
+<details><summary>Apri la tabella · 20 parole</summary><div class="table-wrap"><table><caption>Nomi delle tabelle PDF · forme standard</caption><thead><tr><th>Singolare</th><th>Plurale</th><th>Some</th></tr></thead><tbody id="noun-table"></tbody></table></div></details>
+</aside>
+<section class="practice" aria-label="Esercizi">
+<div class="toolbar" role="group" aria-label="Modalità"><button id="mode-a" aria-pressed="true">A · Completa</button><button id="mode-b" aria-pressed="false">B · Correggi</button><button id="shuffle">Mescola ↺</button></div>
+<div class="ticket">
+<div class="ticket-top"><p class="step"><span>2</span> Regola di questa prova</p><div id="rule"></div><small class="en" id="rule-en"></small></div>
+<div class="exercise">
+<div class="meta"><span id="category"></span><span id="position"></span></div>
+<div id="phrase"></div><p id="gloss"></p>
+<div id="input-method"><label for="method">Come rispondi?</label><select id="method"><option value="choose">Scegli</option><option value="type">Scrivi</option></select></div>
+<form id="answer-form"><label class="answer-label" id="answer-label" for="answer">Scrivi solo l’articolo.</label><div class="input-row"><input id="answer" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Articolo"><button class="primary" type="submit" id="check">Verifica</button></div></form>
+<div class="choices" id="choices" role="group" aria-label="Scegli l’articolo"></div>
+<div class="feedback" id="feedback" aria-live="polite" aria-atomic="true">Una risposta per prova. La soluzione arriva subito.</div>
+<button id="next" disabled>Prossima →</button>
+</div></div>
+<div class="score"><span id="score">0 corrette / 0 risposte</span><span id="accuracy">—</span></div><div class="track" aria-label="Avanzamento"><i id="progress"></i></div>
+</section>
+</div>
+<footer>80 prove in ogni modalità · 20 nomi × 4 forme. “Mescola” e il cambio modalità iniziano una nuova sessione. Nessuna connessione, nessun account, nessun dato inviato.</footer>
+</main>
+<script>
+'use strict';
+const NOUNS=[{"sg":"bambino","pl":"bambini","gender":"m","kind":"normal","en":"child"},{"sg":"signore","pl":"signori","gender":"m","kind":"normal","en":"gentleman"},{"sg":"amico","pl":"amici","gender":"m","kind":"vowel","en":"friend (male)"},{"sg":"studente","pl":"studenti","gender":"m","kind":"special","en":"student"},{"sg":"gnocco","pl":"gnocchi","gender":"m","kind":"special","en":"gnocchi dumpling"},{"sg":"pneumatico","pl":"pneumatici","gender":"m","kind":"special","en":"tyre"},{"sg":"psicologo","pl":"psicologi","gender":"m","kind":"special","en":"psychologist"},{"sg":"xilofono","pl":"xilofoni","gender":"m","kind":"special","en":"xylophone"},{"sg":"yogurt","pl":"yogurt","gender":"m","kind":"special","en":"yogurt"},{"sg":"zaino","pl":"zaini","gender":"m","kind":"special","en":"backpack"},{"sg":"bambina","pl":"bambine","gender":"f","kind":"normal","en":"girl"},{"sg":"moglie","pl":"mogli","gender":"f","kind":"normal","en":"wife"},{"sg":"amica","pl":"amiche","gender":"f","kind":"vowel","en":"friend (female)"},{"sg":"paga","pl":"paghe","gender":"f","kind":"normal","en":"wage"},{"sg":"chirurgo","pl":"chirurghi","gender":"m","kind":"normal","en":"surgeon"},{"sg":"bottiglia","pl":"bottiglie","gender":"f","kind":"normal","en":"bottle"},{"sg":"portafoglio","pl":"portafogli","gender":"m","kind":"normal","en":"wallet"},{"sg":"borsa","pl":"borse","gender":"f","kind":"normal","en":"bag"},{"sg":"chiave","pl":"chiavi","gender":"f","kind":"normal","en":"key"},{"sg":"bicchiere","pl":"bicchieri","gender":"m","kind":"normal","en":"drinking glass"}];
+const FORMS=['def-sg','def-pl','ind-sg','some-pl'];
+const OPTIONS={'def-sg':['il','lo','la','l’'],'def-pl':['i','gli','le'],'ind-sg':['un','uno','una','un’'],'some-pl':['dei','degli','delle']};
+const LABELS={'def-sg':'Determinativo · singolare','def-pl':'Determinativo · plurale','ind-sg':'Indeterminativo · singolare','some-pl':'Partitivo · plurale (some)'};
+function article(n,f){if(f==='def-sg')return n.kind==='vowel'?'l’':n.gender==='f'?'la':n.kind==='special'?'lo':'il';if(f==='def-pl')return n.gender==='f'?'le':n.kind==='normal'?'i':'gli';if(f==='ind-sg')return n.gender==='f'?(n.kind==='vowel'?'un’':'una'):(n.kind==='special'?'uno':'un');return n.gender==='f'?'delle':n.kind==='normal'?'dei':'degli';}
+function join(a,w){return a.endsWith('’')?a+w:a+' '+w;}
+const ITEMS=NOUNS.flatMap(n=>FORMS.map(form=>({noun:n,form,word:form.endsWith('pl')?n.pl:n.sg,answer:article(n,form)})));
+const $=id=>document.getElementById(id);
+let mode='a',order=[],pos=0,answered=false,correct=0,total=0;
+function norm(s){return s.trim().toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s*'\s*/g,"'").replace(/\s+/g,' ').replace(/[.!?]+$/,'');}
+function ruleFor(item){const n=item.noun,f=item.form;let it,en;
+if(f==='some-pl'){it=n.gender==='f'?'Tutti i plurali femminili: delle, anche davanti a vocale.':n.kind==='normal'?'Maschile plurale con i → dei.':'Maschile plurale con gli → degli.';en='Plural partitive = some, not “of the”.';}
+else if(f==='def-pl'){it=n.gender==='f'?'Femminile plurale: le, anche davanti a vocale.':n.kind==='normal'?'Maschile plurale: il diventa i.':'Maschile plurale: lo e l’ diventano gli.';en='Definite plural = the. No apostrophe in le or gli.';}
+else if(f==='ind-sg'){it=n.gender==='f'?(n.kind==='vowel'?'Femminile + vocale: una diventa un’, con apostrofo.':'Femminile + consonante: una.'):(n.kind==='special'?'Maschile con inizio speciale: uno.':'Maschile: un, anche davanti a vocale; mai l’apostrofo.');en='Indefinite singular = a / an.';}
+else{it=n.kind==='vowel'?'Davanti a vocale, al singolare: l’ (maschile o femminile).':n.gender==='f'?'Femminile singolare + consonante: la.':n.kind==='special'?'Maschile + s/consonante, z, gn, pn, ps, x, y consonantica: lo.':'Maschile singolare + consonante normale: il.';en='Definite singular = the.';}
+if(n.sg==='signore')it+=' Signore: s + vocale, non s + consonante.';
+if(n.sg==='yogurt')it+=' Yogurt: y consonantica; il plurale non cambia.';
+if(n.sg==='paga'&&f.endsWith('pl'))it+=' Paga → paghe.';
+if(n.sg==='chirurgo'&&f.endsWith('pl'))it+=' Chirurgo → chirurghi.';
+return {it,en};}
+function wrongFor(item){if(item.form==='ind-sg'&&item.noun.sg==='amico')return 'un’';if(item.form==='ind-sg'&&item.noun.sg==='amica')return 'un';return OPTIONS[item.form].find(a=>a!==item.answer);}
+function start(){order=ITEMS.slice();for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}pos=0;correct=0;total=0;render();}
+function updateScore(){$('score').textContent=correct+' corrette / '+total+' risposte';$('accuracy').textContent=total?Math.round(correct/total*100)+'%':'—';$('progress').style.width=total/order.length*100+'%';}
+function render(){const item=order[pos];answered=false;const rule=ruleFor(item);$('rule').textContent=rule.it;$('rule-en').textContent=rule.en;$('category').textContent=LABELS[item.form];$('position').textContent=(pos+1)+' / '+order.length;
+$('phrase').replaceChildren();if(mode==='a'){const blank=document.createElement('span');blank.className='blank';blank.textContent='___ ';$('phrase').appendChild(blank);$('phrase').appendChild(document.createTextNode(item.word));}else $('phrase').textContent=join(wrongFor(item),item.word);
+$('gloss').textContent=item.noun.en+' · '+(item.noun.gender==='m'?'maschile':'femminile')+' · '+(item.form.endsWith('pl')?'plurale':'singolare');
+const choosing=mode==='a'&&$('method').value==='choose';$('input-method').hidden=mode==='b';$('answer-form').hidden=choosing;$('choices').hidden=!choosing;$('answer').value='';$('answer').disabled=false;$('check').disabled=false;$('answer-label').textContent=mode==='b'?'Riscrivi tutta la frase con l’articolo corretto.':'Scrivi solo l’articolo.';$('answer').placeholder=mode==='b'?'Articolo + nome':'Articolo';
+$('choices').replaceChildren();OPTIONS[item.form].forEach(a=>{const b=document.createElement('button');b.type='button';b.textContent=a;b.onclick=()=>submit(a);$('choices').appendChild(b);});
+$('feedback').className='feedback';$('feedback').textContent=mode==='b'?'Correggi l’articolo: il nome è già giusto.':'Scegli o scrivi l’articolo richiesto.';$('next').disabled=true;$('next').textContent=pos===order.length-1?'Vedi il risultato →':'Prossima →';updateScore();}
+function submit(value){if(answered)return;if(!norm(value)){$('feedback').textContent='Scrivi una risposta prima di verificare.';return;}const item=order[pos],expected=mode==='b'?join(item.answer,item.word):item.answer;const good=norm(value)===norm(expected);answered=true;total++;if(good)correct++;
+$('feedback').replaceChildren();const strong=document.createElement('strong');strong.textContent=good?'Esatto! '+join(item.answer,item.word):'Non ancora. La forma corretta è '+join(item.answer,item.word)+'.';$('feedback').appendChild(strong);const explain=document.createElement('span');explain.textContent=ruleFor(item).it;$('feedback').appendChild(explain);$('feedback').className='feedback '+(good?'good':'bad');$('answer').disabled=true;$('check').disabled=true;Array.from($('choices').children).forEach(b=>b.disabled=true);$('next').disabled=false;updateScore();}
+function finish(){$('phrase').textContent='Sessione finita.';$('gloss').textContent=correct+' / '+order.length+' corrette · '+Math.round(correct/order.length*100)+'%';$('answer-form').hidden=true;$('choices').hidden=true;$('input-method').hidden=true;$('feedback').className='feedback';$('feedback').textContent='Rileggi le regole e premi “Mescola” per ricominciare. Puoi anche cambiare modalità.';$('next').disabled=true;$('next').textContent='Completato';}
+function setMode(m){mode=m;$('mode-a').setAttribute('aria-pressed',String(m==='a'));$('mode-b').setAttribute('aria-pressed',String(m==='b'));start();}
+$('mode-a').onclick=()=>setMode('a');$('mode-b').onclick=()=>setMode('b');$('shuffle').onclick=start;
+$('method').onchange=()=>{if(!answered)render();};
+$('answer-form').onsubmit=e=>{e.preventDefault();submit($('answer').value);};
+$('next').onclick=()=>{if(!answered)return;if(pos===order.length-1)finish();else{pos++;render();}};
+NOUNS.forEach(n=>{const tr=document.createElement('tr');[join(article(n,'def-sg'),n.sg),join(article(n,'def-pl'),n.pl),join(article(n,'some-pl'),n.pl)].forEach(t=>{const td=document.createElement('td');td.textContent=t;tr.appendChild(td);});$('noun-table').appendChild(tr);});
+start();
+</script>
+</body>
+</html>
