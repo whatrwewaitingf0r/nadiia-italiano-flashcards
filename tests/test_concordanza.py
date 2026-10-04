@@ -20,5 +20,6 @@ class ConcordanzaTests(unittest.TestCase):
   for c in new:self.assertEqual(c['tags'],['grammar','concordanza']);self.assertEqual(c['lang'],'EN')
   self.assertFalse(re.search('[\u0400-\u04ff]',h))
   for p in [ROOT/'www/index.html',ROOT/'anki-html/italiano-flashcards.html',CANON/'italiano-flashcards.html',CANON/'www/index.html']:self.assertEqual(h,p.read_text())
+  self.assertIn('.scene.rule-card{min-height:560px}',h);self.assertIn('.scene.rule-card{min-height:640px}',h)
   self.assertIn('articoli-aggettivi.html?v=27',h);self.assertIn('articoli-esercizi.html?v=26',h)
 if __name__=='__main__':unittest.main()
