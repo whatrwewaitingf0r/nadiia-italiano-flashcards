@@ -22,7 +22,8 @@ class ArticoliTests(unittest.TestCase):
         self.assertIn("'grammar-articoli':'Grammatica · articoli'", html)
         self.assertLess(html.index("['chiara-23-sett'"), html.index("['lisa-irregolari'"))
         self.assertIn('isGrammar', html)
-        self.assertIn('v25', html)
+        self.assertIn('v26', html)
+        self.assertIn('articoli-esercizi.html?v=26', html)
     def test_drill(self):
         html = (ROOT/'articoli-esercizi.html').read_text()
         self.assertFalse(re.search('[А-Яа-яЁё]', html))
@@ -40,4 +41,11 @@ class ArticoliTests(unittest.TestCase):
         self.assertIn('some', html)
         self.assertIn('aria-live="polite"', html)
         self.assertIn('const ITEMS=', html)
+        self.assertIn('<span class="blank">___ </span><span class="noun">studente</span>', html)
+        self.assertNotIn('replaceChildren', html)
+        self.assertIn('<meta name="build-version" content="v26">', html)
+        for path in (ROOT/'www/articoli-esercizi.html', ROOT/'anki-html/articoli-esercizi.html',
+                     Path('/Users/it/.jaine/workspace/memory/health/nadiia/italian/anki-html/articoli-esercizi.html'),
+                     Path('/Users/it/.jaine/workspace/memory/health/nadiia/italian/anki-html/www/articoli-esercizi.html')):
+            self.assertEqual(html, path.read_text())
 if __name__=='__main__': unittest.main()
