@@ -40,10 +40,10 @@ for(const mode of ['a','b'])for(const method of ['choose','type']){
 }
 legacy.nodes.shuffle.onclick();assert.ok(legacy.nodes.phrase.textContent.includes(legacy.run('order[pos].word')));
 const pack=load(dir+'/index.html');
-assert.equal(pack.run('ALL.length'),945);assert.equal(pack.run('groups[0][0]'),'aug-26-interrogativi');
+assert.equal(pack.run('ALL.length'),985);assert.equal(pack.run('groups[0][0]'),'aug-26-interrogativi');
 assert.equal(pack.run('ALL.filter(c=>matches(c,"grammar-articoli")).length'),26);
 assert.equal(pack.run('ALL.filter(c=>matches(c,"lisa-irregolari")).some(c=>c.group.includes("Chiara"))'),false);
 assert.equal(pack.run('ALL.filter(c=>matches(c,"chiara-23-sett")).some(c=>c.group.includes("Lisa"))'),false);
 pack.nodes.filter.value='grammar-articoli';pack.nodes.filter.onchange();assert.equal(pack.nodes.direction.disabled,true);assert.equal(pack.nodes.dirText.textContent,'IT→EN');
 pack.nodes.direction.onclick();assert.equal(pack.nodes.dirText.textContent,'IT→EN');
-console.log('PASS: 80 expected forms; all A/B prompts include nouns, including without replaceChildren; choices, typing, corrections, feedback, score, shuffle, finish, apostrophes; 945-card pack ownership/direction.');
+console.log('PASS: 80 expected forms; all A/B prompts include nouns, including without replaceChildren; choices, typing, corrections, feedback, score, shuffle, finish, apostrophes; 985-card pack ownership/direction.');
