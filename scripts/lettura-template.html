@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#23423e"><title>Liam · Lettura integrale</title>
+<style>
+:root{color-scheme:light;--ink:#17302d;--green:#23423e;--paper:#fffdf8;--sun:#f3d45b;--muted:#526e68}*{box-sizing:border-box}body{margin:0;background:#dceff1;color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}.app{max-width:1040px;margin:auto;padding:20px 16px 48px}header{background:var(--green);color:var(--paper);padding:20px;border-radius:20px}h1{line-height:1.15;font-size:clamp(1.6rem,5vw,2.3rem);margin:6px 0 10px;letter-spacing:-.035em}.eyebrow{font-size:.75rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.counts{font-size:.83rem;color:#dce9e4}button,select,input,textarea{font:inherit}button,select,input{border:1px solid #bccfc8;border-radius:12px;min-height:46px;max-width:100%}select,input{background:var(--paper);color:var(--ink);padding:9px 12px;width:100%}button{background:var(--green);color:white;padding:9px 14px;font-weight:700;cursor:pointer}button:disabled{opacity:.5}button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #ba6b14;outline-offset:3px}.toolbar{margin:16px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}label{font-size:.82rem;font-weight:750;display:block;margin-bottom:4px}.search-row{display:flex;gap:8px}.search-row input{min-width:0}.navigation{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.navigation .status{font-size:.82rem;color:var(--muted);margin-left:auto}.source-note{padding:14px 18px;border-radius:14px;background:#fff7d2;font-size:.85rem;line-height:1.5}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px;align-items:start;margin-top:18px}.passage,.practice{min-width:0;background:var(--paper);border-radius:18px;padding:20px}.passage h2,.practice h2{font-size:1.2rem;line-height:1.3;margin:0 0 15px}.paragraph{white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 10px}.paragraph.empty{min-height:10px;margin:0}.paragraph.heading{font-weight:800;margin-top:22px;color:var(--green)}.paragraph.match{background:#fff0a6;border-radius:6px;scroll-margin-top:15px}.paragraph.separator{font-size:.7rem;color:#81968e}.question{border-top:1px solid #d4e0da;padding:16px 0}.question:first-of-type{border-top:0}.question p{font-weight:650;margin:0 0 8px;line-height:1.45}.question textarea{resize:vertical;min-height:85px;width:100%;border:1px solid #bdcfc7;background:#fff;border-radius:10px;padding:10px;color:var(--ink)}details{margin-top:8px;font-size:.86rem}summary{cursor:pointer;color:var(--green);font-weight:700;min-height:35px;padding:4px 0}details .answer{white-space:pre-wrap;font-weight:400;margin:8px 0;color:var(--muted)}.source-link{display:block;font-size:.78rem;color:var(--green);background:none;border:0;padding:4px 0;min-height:30px;text-decoration:underline}.save-status{font-size:.78rem;color:var(--muted)}a{color:var(--green)}[hidden]{display:none!important}@media(max-width:760px){.toolbar,.layout{grid-template-columns:1fr}.app{padding:12px 12px 35px}.passage,.practice{padding:17px}header{padding:17px}.navigation .status{width:100%;margin:0}.practice{order:2}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body><main class="app">
+<header><div class="eyebrow">Liam · italiano · lettura</div><h1>Le streghe: il testo completo.</h1><div class="counts" id="counts"></div></header>
+<div class="toolbar"><div><label for="section">Sezione del documento</label><select id="section"></select></div><div><label for="search">Cerca in tutta la lettura</label><div class="search-row"><input id="search" type="search" placeholder="Matteuccia, Strigoi, formula…"><button id="find" type="button">Trova</button></div></div></div>
+<nav class="navigation" aria-label="Navigazione lettura"><button id="previous" type="button">← Prima</button><button id="next" type="button">Dopo →</button><span class="status" id="status" aria-live="polite"></span></nav>
+<div class="source-note">Testo originale integrale del DOCX, comprese le due versioni della Parte 4, il programma, i documenti storici e gli esercizi. Le leggende e le confessioni non sono prove di eventi soprannaturali. Le risposte suggerite in inglese sono materiale di studio ricavato dal testo, non una chiave originale del documento.</div>
+<div class="layout"><article class="passage"><h2 id="title"></h2><div id="paragraphs"></div></article><aside class="practice"><h2>Hai capito? · Parliamone</h2><div class="save-status" id="save-status" aria-live="polite">Le tue risposte restano su questo dispositivo, quando lo spazio locale è disponibile.</div><div id="questions"></div></aside></div>
+<p style="font-size:.8rem"><a href="index.html#carte">Carte · tutti i mazzi →</a> · <a href="liam-passato.html">Liam ieri →</a></p>
+<script type="application/json" id="reading-data">__READING_DATA__</script>
+<script>
+'use strict';
+const READING=JSON.parse(document.getElementById('reading-data').textContent);
+const $=id=>document.getElementById(id);
+let selected=0,searchPosition=-1,lastSearch='';
+const storagePrefix='liam-reading-'+READING.source.sha256+'-';
+function element(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e}
+READING.sections.forEach((s,i)=>{const o=element('option','',s.title);o.value=i;$('section').appendChild(o)});
+const questionCount=READING.sections.reduce((n,s)=>n+s.questions.length,0);
+$('counts').textContent=READING.sections.length+' sezioni · '+READING.source.paragraphCount+' paragrafi originali · '+questionCount+' domande · '+READING.cards.length+' carte Liam';
+function render(){
+ const s=READING.sections[selected];$('section').value=selected;$('title').textContent=s.title;
+ $('paragraphs').replaceChildren();s.paragraphs.forEach(p=>{
+  const text=p.text;const cls='paragraph'+(!text.trim()?' empty':'')+(/^[\p{Extended_Pictographic}\p{Regional_Indicator}]/u.test(text)||text.startsWith('Parte ')?' heading':'')+(/^\s*\/+\s*$/.test(text)?' separator':'');
+  const e=element('p',cls,text);e.id='source-'+p.index;$('paragraphs').appendChild(e);
+ });
+ $('questions').replaceChildren();
+ if(!s.questions.length)$('questions').appendChild(element('p','','Questa sezione non contiene un blocco “Hai capito?”. Il testo, i documenti e tutti gli altri esercizi restano riportati integralmente a fianco.'));
+ s.questions.forEach(q=>{
+  const box=element('section','question');box.appendChild(element('p','',q.prompt));
+  const label=element('label','','La tua risposta in italiano');label.htmlFor='response-'+q.sourceParagraph;box.appendChild(label);
+  const field=element('textarea');field.id=label.htmlFor;field.placeholder='Scrivi qui…';
+  try{field.value=localStorage.getItem(storagePrefix+q.sourceParagraph)||''}catch(e){}
+  field.addEventListener('input',()=>{try{localStorage.setItem(storagePrefix+q.sourceParagraph,field.value);$('save-status').textContent='Risposta salvata solo su questo dispositivo.'}catch(e){$('save-status').textContent='Spazio locale non disponibile: la risposta resta visibile solo in questa sessione.'}});box.appendChild(field);
+  const details=element('details');details.appendChild(element('summary','',q.answer?'English · suggested response':'English · open question'));
+  details.appendChild(element('p','answer',q.translation+'\n\n'+(q.answer?'Suggested response based on the reading: '+q.answer:'Open response: there is no single correct answer.')));box.appendChild(details);
+  const link=element('button','source-link','Vedi la domanda nel testo originale');link.type='button';link.addEventListener('click',()=>highlight(q.sourceParagraph));box.appendChild(link);
+  $('questions').appendChild(box);
+ });
+ $('previous').disabled=selected===0;$('next').disabled=selected===READING.sections.length-1;
+ $('status').textContent=(selected+1)+' / '+READING.sections.length+' · DOCX paragrafi '+(s.startParagraph+1)+'–'+(s.endParagraph+1);
+ window.scrollTo(0,0);
+}
+function highlight(index){document.querySelectorAll('.match').forEach(p=>p.classList.remove('match'));const e=$('source-'+index);if(e){e.classList.add('match');e.scrollIntoView({block:'center'})}}
+function find(){const query=$('search').value.trim().toLocaleLowerCase();if(!query)return;
+ if(query!==lastSearch){searchPosition=-1;lastSearch=query}
+ const matches=[];READING.sections.forEach((s,i)=>s.paragraphs.forEach(p=>{if(p.text.toLocaleLowerCase().includes(query))matches.push({section:i,index:p.index})}));
+ if(!matches.length){$('status').textContent='Nessun risultato in tutte le '+READING.sections.length+' sezioni.';return}
+ searchPosition=(searchPosition+1)%matches.length;selected=matches[searchPosition].section;render();highlight(matches[searchPosition].index);$('status').textContent='Risultato '+(searchPosition+1)+' / '+matches.length+' · sezione '+(selected+1);
+}
+$('section').addEventListener('change',()=>{selected=Number($('section').value);render()});
+$('previous').addEventListener('click',()=>{if(selected>0){selected--;render();window.scrollTo(0,0)}});
+$('next').addEventListener('click',()=>{if(selected<READING.sections.length-1){selected++;render();window.scrollTo(0,0)}});
+$('find').addEventListener('click',find);$('search').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();find()}});
+render();
+</script></main></body></html>

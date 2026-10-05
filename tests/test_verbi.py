@@ -1,3 +1,4 @@
+from deck_contract import assert_v29_cards
 import json,re,unittest,hashlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -17,8 +18,8 @@ class VerbiTests(unittest.TestCase):
   for p in [ROOT/'www/verbi-tempi.html',ROOT/'anki-html/verbi-tempi.html',CANON/'verbi-tempi.html',CANON/'www/verbi-tempi.html']:self.assertEqual(h,p.read_text())
  def test_pack_and_preservation(self):
   h=(ROOT/'italiano-flashcards.html').read_text();cs=cards(h)
-  self.assertEqual(hashlib.sha256(json.dumps(cs[:985],ensure_ascii=False,sort_keys=True).encode()).hexdigest(),'c9cede215d23fbf6aa79d06c2db2072915f3c74ccb2a648dd840c20214c9d9c0');self.assertEqual(len(cs),1010)
-  new=cs[985:];self.assertEqual(len(new),25);self.assertEqual(len({c['it'] for c in new}),25)
+  self.assertEqual(hashlib.sha256(json.dumps(cs[:985],ensure_ascii=False,sort_keys=True).encode()).hexdigest(),'c9cede215d23fbf6aa79d06c2db2072915f3c74ccb2a648dd840c20214c9d9c0');assert_v29_cards(self, cs)
+  new=[c for c in cs if c.get('tags')==['grammar','verbi']];self.assertEqual(len(new),25);self.assertEqual(len({c['it'] for c in new}),25)
   for c in new:self.assertEqual(c['tags'],['grammar','verbi']);self.assertEqual(c['lang'],'EN')
   self.assertFalse(re.search('[\u0400-\u04ff]',h))
   self.assertIn("'grammar-verbi':'Grammatica · verbi'",h)

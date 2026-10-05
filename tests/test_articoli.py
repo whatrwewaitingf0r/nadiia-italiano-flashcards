@@ -1,3 +1,4 @@
+from deck_contract import assert_v29_cards
 import json
 import re
 import unittest
@@ -12,7 +13,7 @@ class ArticoliTests(unittest.TestCase):
         all_cards = cards(html)
         target = [c for c in all_cards if c['group'] == GROUP]
         self.assertEqual(len(target), 26)
-        self.assertEqual(len(all_cards), 1010)
+        assert_v29_cards(self, all_cards)
         self.assertEqual(len({c['it'] for c in target}), 26)
         for c in target:
             self.assertEqual(c['lang'], 'EN')

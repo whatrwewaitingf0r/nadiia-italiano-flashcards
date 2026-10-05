@@ -1,0 +1,674 @@
+[
+  {
+    "it": "Ieri ho mangiato la pizza.",
+    "other": "I ate pizza yesterday.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Ieri ho studiato italiano.",
+    "other": "I studied Italian yesterday.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Ieri ho guardato un film.",
+    "other": "I watched a film yesterday.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · guardare → guardato: watch deliberately.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Ieri ho visto un film.",
+    "other": "I saw a film yesterday.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · vedere → visto: see; ho visto un film is also idiomatic for watching a film.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Ieri ho parlato con mia madre.",
+    "other": "I spoke with my mother yesterday.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Ieri ho giocato al parco.",
+    "other": "I played in the park yesterday.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Ieri ho bevuto acqua.",
+    "other": "I drank water yesterday.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · bere → bevuto (irregular participle).",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Ieri ho letto un libro.",
+    "other": "I read a book yesterday.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · leggere → letto (irregular participle).",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Ieri ho incontrato un amico.",
+    "other": "I met a friend yesterday.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Ieri ho pensato a te.",
+    "other": "I thought about you yesterday.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Io ho mangiato la pasta.",
+    "other": "I ate pasta.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Tu hai mangiato la pasta.",
+    "other": "You ate pasta.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Lui ha mangiato la pizza.",
+    "other": "He ate pizza.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Lei ha studiato italiano.",
+    "other": "She studied Italian.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Tu hai studiato inglese.",
+    "other": "You studied English.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Lui ha parlato con suo padre.",
+    "other": "He spoke with his father.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Lei ha parlato con sua madre.",
+    "other": "She spoke with her mother.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Io sono stato a casa.",
+    "other": "I was at home. (male speaker)",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -o: masculine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Io sono stata a casa.",
+    "other": "I was at home. (female speaker)",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -a: feminine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Tu sei stato al parco.",
+    "other": "You were at the park. (male addressee)",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -o: masculine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Tu sei stata a casa.",
+    "other": "You were at home. (female addressee)",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -a: feminine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Lui è stato bene.",
+    "other": "He was well.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -o: masculine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Lei è stata male.",
+    "other": "She was unwell.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -a: feminine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Io sono andato al parco.",
+    "other": "I went to the park. (male speaker)",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -o: masculine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Io sono andata al parco.",
+    "other": "I went to the park. (female speaker)",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -a: feminine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Lei è andata a scuola.",
+    "other": "She went to school.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -a: feminine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Lui è andato al ristorante.",
+    "other": "He went to the restaurant.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -o: masculine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Tu sei andato al parco.",
+    "other": "You went to the park. (male addressee)",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -o: masculine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Tu sei andata al parco.",
+    "other": "You went to the park. (female addressee)",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri · ESSERE + -a: feminine singular.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Ho mangiato.",
+    "other": "I ate. / I have eaten.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Il passato: ieri",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "la casa",
+    "other": "the house / home",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "il telefono",
+    "other": "the phone",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "il computer",
+    "other": "the computer",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "il libro",
+    "other": "the book",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "la penna",
+    "other": "the pen",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "il tavolo",
+    "other": "the table",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "la sedia",
+    "other": "the chair",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "la porta",
+    "other": "the door",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "la finestra",
+    "other": "the window",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "la borsa",
+    "other": "the bag",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "la chiave",
+    "other": "the key",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "la macchina",
+    "other": "the car",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "lo zaino",
+    "other": "the backpack",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · Masculine: z or s + consonant → lo / uno.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "lo specchio",
+    "other": "the mirror",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · Masculine: z or s + consonant → lo / uno.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "l’orologio",
+    "other": "the clock / watch",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · Before a vowel: l’ (masculine or feminine).",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "l’amico",
+    "other": "the male friend",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · Before a vowel: l’ (masculine or feminine).",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "l’amica",
+    "other": "the female friend",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · Before a vowel: l’ (masculine or feminine).",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "un telefono",
+    "other": "a phone",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "uno zaino",
+    "other": "a backpack",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · Masculine: z or s + consonant → lo / uno.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "uno specchio",
+    "other": "a mirror",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · Masculine: z or s + consonant → lo / uno.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "un orologio",
+    "other": "a clock / watch",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · Masculine vowel: un WITHOUT apostrophe.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "un amico",
+    "other": "a male friend",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · Masculine vowel: un WITHOUT apostrophe.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "una casa",
+    "other": "a house",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "un’amica",
+    "other": "a female friend",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · Feminine vowel: un’ with apostrophe.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Questo è il mio telefono.",
+    "other": "This is my phone.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · questo: masculine.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  },
+  {
+    "it": "Questa è la mia borsa.",
+    "other": "This is my bag.",
+    "lang": "EN",
+    "group": "Liam · Nord/Sud · Liguria",
+    "note": "Liam · Lesson 5 · Daily objects and gender · questa: feminine.",
+    "tags": [
+      "liam",
+      "lesson5",
+      "nord-sud"
+    ]
+  }
+]

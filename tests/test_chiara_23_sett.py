@@ -1,3 +1,4 @@
+from deck_contract import assert_v29_cards
 import json
 import re
 import unittest
@@ -29,7 +30,7 @@ class Chiara23SettTests(unittest.TestCase):
         html = (ROOT / "italiano-flashcards.html").read_text()
         cards, _ = json.JSONDecoder().raw_decode(html.split("const ALL=", 1)[1])
         target = [card for card in cards if card["group"] == GROUP]
-        self.assertEqual(len(cards), 1010)
+        assert_v29_cards(self, cards)
         self.assertEqual([card["it"] for card in target], EXPECTED_FRONTS)
         self.assertTrue(all(card["lang"] == "EN" for card in target))
         self.assertTrue(all("Chiara" in card["note"] and "Liam" not in card["note"] and "Lisa" not in card["note"] for card in target))
@@ -37,7 +38,7 @@ class Chiara23SettTests(unittest.TestCase):
         self.assertIn("['chiara-23-sett','23 sett · Chiara · Nuovo Espresso 1']", html)
         self.assertIn("'chiara-23-sett':'23 sett · Chiara · Nuovo Espresso 1'", html)
         self.assertIn("const isChiara23=c.group==='23 sett · Chiara · Nuovo Espresso 1';", html)
-        self.assertIn("$('direction').disabled=isLisa||isChiara23||isGrammar;", html)
+        self.assertIn("$('direction').disabled=isLisa||isChiara23||isGrammar||isReading;", html)
 
     def test_version_and_copies(self):
         html = (ROOT / "italiano-flashcards.html").read_bytes()

@@ -1,3 +1,4 @@
+from deck_contract import assert_v29_cards
 import hashlib
 import json
 import re
@@ -24,7 +25,7 @@ class HubTests(unittest.TestCase):
     def test_cards_preserved(self):
         h = (ROOT/'italiano-flashcards.html').read_text()
         cards = json.JSONDecoder().raw_decode(h.split('const ALL=',1)[1])[0]
-        self.assertEqual(len(cards), 1010)
+        assert_v29_cards(self, cards)
         self.assertEqual(hashlib.sha256(json.dumps(cards[:985],ensure_ascii=False,sort_keys=True).encode()).hexdigest(), 'c9cede215d23fbf6aa79d06c2db2072915f3c74ccb2a648dd840c20214c9d9c0')
         for p in [ROOT/'www/italiano-flashcards.html', ROOT/'anki-html/italiano-flashcards.html', CANON/'italiano-flashcards.html', CANON/'www/italiano-flashcards.html']:
             self.assertEqual(h, p.read_text())
