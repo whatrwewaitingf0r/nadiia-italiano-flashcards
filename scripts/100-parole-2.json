@@ -1,0 +1,711 @@
+{
+  "corpus": "PAISÀ",
+  "source": "https://www.corpusitaliano.it/en/contents/description.html",
+  "frequencySource": "https://clarin.eurac.edu/repository/xmlui/bitstream/handle/20.500.12124/3/lemma-WITHOUTnumberssymbols-frequencies-paisa.txt.gz",
+  "frequencySourceSha256": "da5173ee23a9545fd80f88adc7a3d2f2bdc2e07a4fbd199eeefba2fc48748540",
+  "license": "CC BY-NC-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+  "selection": "100 common Italian lemmas after rank 100, excluding existing deck fronts/article/slash aliases, foreign entries and basic pronoun/number forms. Selected vocabulary, not a claim of exact universal ranks 101–200. Noun articles and English glosses are manually supplied.",
+  "words": [
+    {
+      "lemma": "caso",
+      "front": "il caso",
+      "english": "case; situation",
+      "rank": 101,
+      "occurrences": 145370
+    },
+    {
+      "lemma": "figlio",
+      "front": "il figlio",
+      "english": "son; child",
+      "rank": 102,
+      "occurrences": 145318
+    },
+    {
+      "lemma": "serie",
+      "front": "la serie",
+      "english": "series",
+      "rank": 103,
+      "occurrences": 144030
+    },
+    {
+      "lemma": "giorno",
+      "front": "il giorno",
+      "english": "day",
+      "rank": 104,
+      "occurrences": 143145
+    },
+    {
+      "lemma": "modo",
+      "front": "il modo",
+      "english": "way; manner",
+      "rank": 107,
+      "occurrences": 141388
+    },
+    {
+      "lemma": "fine",
+      "front": "la fine",
+      "english": "end",
+      "rank": 108,
+      "occurrences": 140232
+    },
+    {
+      "lemma": "guerra",
+      "front": "la guerra",
+      "english": "war",
+      "rank": 109,
+      "occurrences": 138929
+    },
+    {
+      "lemma": "oltre",
+      "front": "oltre",
+      "english": "beyond; over",
+      "rank": 114,
+      "occurrences": 129612
+    },
+    {
+      "lemma": "mondo",
+      "front": "il mondo",
+      "english": "world",
+      "rank": 116,
+      "occurrences": 128570
+    },
+    {
+      "lemma": "voce",
+      "front": "la voce",
+      "english": "voice",
+      "rank": 120,
+      "occurrences": 126119
+    },
+    {
+      "lemma": "sistema",
+      "front": "il sistema",
+      "english": "system",
+      "rank": 125,
+      "occurrences": 123738
+    },
+    {
+      "lemma": "uomo",
+      "front": "l’uomo",
+      "english": "man",
+      "rank": 127,
+      "occurrences": 122960
+    },
+    {
+      "lemma": "famiglia",
+      "front": "la famiglia",
+      "english": "family",
+      "rank": 128,
+      "occurrences": 122182
+    },
+    {
+      "lemma": "piccolo",
+      "front": "piccolo",
+      "english": "small; little",
+      "rank": 129,
+      "occurrences": 121086
+    },
+    {
+      "lemma": "interno",
+      "front": "interno",
+      "english": "internal; inside",
+      "rank": 133,
+      "occurrences": 119362
+    },
+    {
+      "lemma": "progetto",
+      "front": "il progetto",
+      "english": "project; plan",
+      "rank": 134,
+      "occurrences": 119223
+    },
+    {
+      "lemma": "via",
+      "front": "la via",
+      "english": "street; way",
+      "rank": 135,
+      "occurrences": 117639
+    },
+    {
+      "lemma": "circa",
+      "front": "circa",
+      "english": "about; approximately",
+      "rank": 137,
+      "occurrences": 117410
+    },
+    {
+      "lemma": "usare",
+      "front": "usare",
+      "english": "to use",
+      "rank": 139,
+      "occurrences": 116647
+    },
+    {
+      "lemma": "persona",
+      "front": "la persona",
+      "english": "person",
+      "rank": 141,
+      "occurrences": 115568
+    },
+    {
+      "lemma": "utilizzare",
+      "front": "utilizzare",
+      "english": "to use; to make use of",
+      "rank": 142,
+      "occurrences": 114857
+    },
+    {
+      "lemma": "periodo",
+      "front": "il periodo",
+      "english": "period; length of time",
+      "rank": 143,
+      "occurrences": 114819
+    },
+    {
+      "lemma": "iniziare",
+      "front": "iniziare",
+      "english": "to begin; to start",
+      "rank": 144,
+      "occurrences": 113811
+    },
+    {
+      "lemma": "pubblicare",
+      "front": "pubblicare",
+      "english": "to publish",
+      "rank": 148,
+      "occurrences": 112714
+    },
+    {
+      "lemma": "arrivare",
+      "front": "arrivare",
+      "english": "to arrive",
+      "rank": 149,
+      "occurrences": 109964
+    },
+    {
+      "lemma": "esempio",
+      "front": "l’esempio",
+      "english": "example",
+      "rank": 152,
+      "occurrences": 109222
+    },
+    {
+      "lemma": "tanto",
+      "front": "tanto",
+      "english": "so much; a lot",
+      "rank": 153,
+      "occurrences": 108461
+    },
+    {
+      "lemma": "seguito",
+      "front": "il seguito",
+      "english": "continuation; sequel",
+      "rank": 154,
+      "occurrences": 108177
+    },
+    {
+      "lemma": "forma",
+      "front": "la forma",
+      "english": "shape; form",
+      "rank": 155,
+      "occurrences": 107941
+    },
+    {
+      "lemma": "chiamare",
+      "front": "chiamare",
+      "english": "to call",
+      "rank": 157,
+      "occurrences": 106150
+    },
+    {
+      "lemma": "passare",
+      "front": "passare",
+      "english": "to pass; to spend time",
+      "rank": 158,
+      "occurrences": 105877
+    },
+    {
+      "lemma": "importante",
+      "front": "importante",
+      "english": "important",
+      "rank": 159,
+      "occurrences": 105742
+    },
+    {
+      "lemma": "numero",
+      "front": "il numero",
+      "english": "number",
+      "rank": 160,
+      "occurrences": 105252
+    },
+    {
+      "lemma": "pubblico",
+      "front": "pubblico",
+      "english": "public",
+      "rank": 162,
+      "occurrences": 104322
+    },
+    {
+      "lemma": "vero",
+      "front": "vero",
+      "english": "true; real",
+      "rank": 165,
+      "occurrences": 103327
+    },
+    {
+      "lemma": "alto",
+      "front": "alto",
+      "english": "tall; high",
+      "rank": 166,
+      "occurrences": 102940
+    },
+    {
+      "lemma": "nazionale",
+      "front": "nazionale",
+      "english": "national",
+      "rank": 167,
+      "occurrences": 102802
+    },
+    {
+      "lemma": "presentare",
+      "front": "presentare",
+      "english": "to introduce; to present",
+      "rank": 170,
+      "occurrences": 102418
+    },
+    {
+      "lemma": "politico",
+      "front": "politico",
+      "english": "political",
+      "rank": 172,
+      "occurrences": 102032
+    },
+    {
+      "lemma": "lasciare",
+      "front": "lasciare",
+      "english": "to leave; to let",
+      "rank": 173,
+      "occurrences": 100461
+    },
+    {
+      "lemma": "particolare",
+      "front": "particolare",
+      "english": "particular; special",
+      "rank": 174,
+      "occurrences": 100337
+    },
+    {
+      "lemma": "unico",
+      "front": "unico",
+      "english": "only; unique",
+      "rank": 175,
+      "occurrences": 98704
+    },
+    {
+      "lemma": "vario",
+      "front": "vario",
+      "english": "various; varied",
+      "rank": 177,
+      "occurrences": 96973
+    },
+    {
+      "lemma": "insieme",
+      "front": "insieme",
+      "english": "together",
+      "rank": 178,
+      "occurrences": 96839
+    },
+    {
+      "lemma": "principale",
+      "front": "principale",
+      "english": "main; principal",
+      "rank": 180,
+      "occurrences": 95512
+    },
+    {
+      "lemma": "certo",
+      "front": "certo",
+      "english": "certain; sure",
+      "rank": 182,
+      "occurrences": 95115
+    },
+    {
+      "lemma": "titolo",
+      "front": "il titolo",
+      "english": "title",
+      "rank": 183,
+      "occurrences": 94629
+    },
+    {
+      "lemma": "considerare",
+      "front": "considerare",
+      "english": "to consider",
+      "rank": 189,
+      "occurrences": 93458
+    },
+    {
+      "lemma": "stagione",
+      "front": "la stagione",
+      "english": "season",
+      "rank": 190,
+      "occurrences": 92849
+    },
+    {
+      "lemma": "trattare",
+      "front": "trattare",
+      "english": "to treat; to deal with",
+      "rank": 191,
+      "occurrences": 92561
+    },
+    {
+      "lemma": "entrare",
+      "front": "entrare",
+      "english": "to enter; to go in",
+      "rank": 192,
+      "occurrences": 92549
+    },
+    {
+      "lemma": "tipo",
+      "front": "il tipo",
+      "english": "type; kind",
+      "rank": 193,
+      "occurrences": 92476
+    },
+    {
+      "lemma": "posto",
+      "front": "il posto",
+      "english": "place; seat",
+      "rank": 195,
+      "occurrences": 90856
+    },
+    {
+      "lemma": "successo",
+      "front": "il successo",
+      "english": "success",
+      "rank": 199,
+      "occurrences": 89862
+    },
+    {
+      "lemma": "fatto",
+      "front": "il fatto",
+      "english": "fact",
+      "rank": 200,
+      "occurrences": 89782
+    },
+    {
+      "lemma": "causa",
+      "front": "la causa",
+      "english": "cause; reason",
+      "rank": 202,
+      "occurrences": 88982
+    },
+    {
+      "lemma": "squadra",
+      "front": "la squadra",
+      "english": "team",
+      "rank": 203,
+      "occurrences": 88580
+    },
+    {
+      "lemma": "territorio",
+      "front": "il territorio",
+      "english": "territory",
+      "rank": 204,
+      "occurrences": 88551
+    },
+    {
+      "lemma": "lavoro",
+      "front": "il lavoro",
+      "english": "work; job",
+      "rank": 205,
+      "occurrences": 88504
+    },
+    {
+      "lemma": "creare",
+      "front": "creare",
+      "english": "to create",
+      "rank": 206,
+      "occurrences": 88468
+    },
+    {
+      "lemma": "rendere",
+      "front": "rendere",
+      "english": "to make; to give back",
+      "rank": 207,
+      "occurrences": 88147
+    },
+    {
+      "lemma": "raggiungere",
+      "front": "raggiungere",
+      "english": "to reach",
+      "rank": 211,
+      "occurrences": 87525
+    },
+    {
+      "lemma": "meno",
+      "front": "meno",
+      "english": "less; fewer",
+      "rank": 212,
+      "occurrences": 87413
+    },
+    {
+      "lemma": "base",
+      "front": "la base",
+      "english": "base; foundation",
+      "rank": 213,
+      "occurrences": 87397
+    },
+    {
+      "lemma": "personaggio",
+      "front": "il personaggio",
+      "english": "character; public figure",
+      "rank": 215,
+      "occurrences": 87023
+    },
+    {
+      "lemma": "termine",
+      "front": "il termine",
+      "english": "term; deadline",
+      "rank": 216,
+      "occurrences": 86340
+    },
+    {
+      "lemma": "studio",
+      "front": "lo studio",
+      "english": "study; office",
+      "rank": 218,
+      "occurrences": 85972
+    },
+    {
+      "lemma": "decidere",
+      "front": "decidere",
+      "english": "to decide",
+      "rank": 219,
+      "occurrences": 85868
+    },
+    {
+      "lemma": "quasi",
+      "front": "quasi",
+      "english": "almost",
+      "rank": 220,
+      "occurrences": 85785
+    },
+    {
+      "lemma": "morte",
+      "front": "la morte",
+      "english": "death",
+      "rank": 223,
+      "occurrences": 85632
+    },
+    {
+      "lemma": "momento",
+      "front": "il momento",
+      "english": "moment",
+      "rank": 224,
+      "occurrences": 85623
+    },
+    {
+      "lemma": "mese",
+      "front": "il mese",
+      "english": "month",
+      "rank": 225,
+      "occurrences": 85282
+    },
+    {
+      "lemma": "versione",
+      "front": "la versione",
+      "english": "version",
+      "rank": 226,
+      "occurrences": 84799
+    },
+    {
+      "lemma": "realizzare",
+      "front": "realizzare",
+      "english": "to carry out; to achieve",
+      "rank": 227,
+      "occurrences": 84326
+    },
+    {
+      "lemma": "giovane",
+      "front": "giovane",
+      "english": "young",
+      "rank": 231,
+      "occurrences": 81706
+    },
+    {
+      "lemma": "antico",
+      "front": "antico",
+      "english": "ancient; old",
+      "rank": 233,
+      "occurrences": 81220
+    },
+    {
+      "lemma": "linea",
+      "front": "la linea",
+      "english": "line",
+      "rank": 234,
+      "occurrences": 81209
+    },
+    {
+      "lemma": "storico",
+      "front": "storico",
+      "english": "historical",
+      "rank": 235,
+      "occurrences": 81043
+    },
+    {
+      "lemma": "ciò",
+      "front": "ciò",
+      "english": "this; that",
+      "rank": 236,
+      "occurrences": 80057
+    },
+    {
+      "lemma": "rispetto",
+      "front": "il rispetto",
+      "english": "respect",
+      "rank": 237,
+      "occurrences": 79912
+    },
+    {
+      "lemma": "inizio",
+      "front": "l’inizio",
+      "english": "beginning",
+      "rank": 239,
+      "occurrences": 79372
+    },
+    {
+      "lemma": "provincia",
+      "front": "la provincia",
+      "english": "province",
+      "rank": 241,
+      "occurrences": 79166
+    },
+    {
+      "lemma": "zona",
+      "front": "la zona",
+      "english": "area; zone",
+      "rank": 242,
+      "occurrences": 79079
+    },
+    {
+      "lemma": "continuare",
+      "front": "continuare",
+      "english": "to continue",
+      "rank": 245,
+      "occurrences": 78927
+    },
+    {
+      "lemma": "problema",
+      "front": "il problema",
+      "english": "problem",
+      "rank": 246,
+      "occurrences": 78591
+    },
+    {
+      "lemma": "ragazzo",
+      "front": "il ragazzo",
+      "english": "boy; young man",
+      "rank": 247,
+      "occurrences": 78315
+    },
+    {
+      "lemma": "donna",
+      "front": "la donna",
+      "english": "woman",
+      "rank": 248,
+      "occurrences": 77748
+    },
+    {
+      "lemma": "costruire",
+      "front": "costruire",
+      "english": "to build",
+      "rank": 249,
+      "occurrences": 77691
+    },
+    {
+      "lemma": "servizio",
+      "front": "il servizio",
+      "english": "service",
+      "rank": 250,
+      "occurrences": 77638
+    },
+    {
+      "lemma": "generale",
+      "front": "generale",
+      "english": "general",
+      "rank": 252,
+      "occurrences": 77607
+    },
+    {
+      "lemma": "presso",
+      "front": "presso",
+      "english": "at; near",
+      "rank": 253,
+      "occurrences": 77465
+    },
+    {
+      "lemma": "comprendere",
+      "front": "comprendere",
+      "english": "to understand; to include",
+      "rank": 254,
+      "occurrences": 77451
+    },
+    {
+      "lemma": "forza",
+      "front": "la forza",
+      "english": "strength; force",
+      "rank": 255,
+      "occurrences": 77353
+    },
+    {
+      "lemma": "allora",
+      "front": "allora",
+      "english": "then; so",
+      "rank": 256,
+      "occurrences": 77072
+    },
+    {
+      "lemma": "qui",
+      "front": "qui",
+      "english": "here",
+      "rank": 258,
+      "occurrences": 77023
+    },
+    {
+      "lemma": "campo",
+      "front": "il campo",
+      "english": "field",
+      "rank": 259,
+      "occurrences": 76994
+    },
+    {
+      "lemma": "tema",
+      "front": "il tema",
+      "english": "theme; topic",
+      "rank": 262,
+      "occurrences": 76632
+    },
+    {
+      "lemma": "maggiore",
+      "front": "maggiore",
+      "english": "greater; older",
+      "rank": 265,
+      "occurrences": 76200
+    },
+    {
+      "lemma": "produrre",
+      "front": "produrre",
+      "english": "to produce",
+      "rank": 266,
+      "occurrences": 76167
+    },
+    {
+      "lemma": "attività",
+      "front": "l’attività",
+      "english": "activity",
+      "rank": 268,
+      "occurrences": 75734
+    }
+  ]
+}
