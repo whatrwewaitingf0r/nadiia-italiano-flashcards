@@ -58,7 +58,7 @@ class Parole2Tests(unittest.TestCase):
         self.assertLess(max(ranks), 400)
         self.assertEqual(ranks, sorted(ranks))
 
-    def test_dedicated_hub_tab_and_synchronized_v33_copies(self):
+    def test_dedicated_hub_tab_and_synchronized_v34_copies(self):
         hub = (ROOT/'index.html').read_text()
         self.assertIn('id="tab-parole-2"', hub)
         self.assertIn('data-app="parole-2">100 parole 2</button>', hub)
@@ -69,7 +69,7 @@ class Parole2Tests(unittest.TestCase):
             for name in ['index.html', 'italiano-flashcards.html']:
                 content = (base/name).read_text()
                 self.assertEqual(content, (ROOT/name).read_text())
-                self.assertIn('content="v33"', content)
+                self.assertIn('content="v34"', content)
                 self.assertNotIn('?v=32', content)
         payload = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)
         self.assertEqual(json.loads(payload[1]), self.html)
