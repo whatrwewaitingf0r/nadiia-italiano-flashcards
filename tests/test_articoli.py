@@ -8,7 +8,7 @@ def cards(html):
     return json.JSONDecoder().raw_decode(html.split('const ALL=', 1)[1])[0]
 class ArticoliTests(unittest.TestCase):
     def test_rule_cards(self):
-        html = (ROOT/'index.html').read_text()
+        html = (ROOT/'italiano-flashcards.html').read_text()
         all_cards = cards(html)
         target = [c for c in all_cards if c['group'] == GROUP]
         self.assertEqual(len(target), 26)
