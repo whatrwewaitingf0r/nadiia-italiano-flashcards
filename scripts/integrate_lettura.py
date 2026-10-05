@@ -21,16 +21,11 @@ def embed(h,key,app):
 def integrate():
     old_html=(ROOT/'italiano-flashcards.html').read_text()
     old_hub=(ROOT/'index.html').read_text()
-    passato=(ROOT/'liam-passato.html').read_bytes()
     reading=json.loads((ROOT/'liam-lettura.json').read_text())
     start=old_html.index('const ALL=')+len('const ALL=')
     cards,size=json.JSONDecoder().raw_decode(old_html[start:])
-    # Restore the exact coordinated 56 if another lesson builder used v29.
-    expected=json.loads((ROOT/'scripts/lesson5-preserved.json').read_text())
-    assert len(expected)==56
+    # Lesson 5 was explicitly removed in v32; never resurrect its archived cards.
     retained=[c for c in cards if not c.get('reading','').startswith('lettura-')]
-    for c in expected:
-        if c not in retained:retained.append(c)
     result=retained+reading['cards']
     h=old_html[:start]+json.dumps(result,ensure_ascii=False,separators=(',',':'))+old_html[start+size:]
     if "['liam-lettura','Liam · Lettura']" not in h:
@@ -75,12 +70,10 @@ def integrate():
     # Cheap race guard: a concurrent writer must not be silently overwritten.
     assert (ROOT/'italiano-flashcards.html').read_text()==old_html,'Concurrent flashcard edit; re-coordinate before integration'
     assert (ROOT/'index.html').read_text()==old_hub,'Concurrent hub edit; re-coordinate before integration'
-    assert (ROOT/'liam-passato.html').read_bytes()==passato
     outputs={'italiano-flashcards.html':h,'index.html':hub,'liam-lettura.html':(ROOT/'liam-lettura.html').read_text(),'liam-lettura.json':(ROOT/'liam-lettura.json').read_text()}
     for name,content in outputs.items():
         for base in [ROOT,ROOT/'www',ROOT/'anki-html',CANON,CANON/'www']:
             (base/name).write_text(content)
-    assert (ROOT/'liam-passato.html').read_bytes()==passato
-    print(json.dumps(dict(cards=len(result),readingCards=len(reading['cards']),lesson5=len(expected),tabs=keys,passatoSha256=hashlib.sha256(passato).hexdigest()),indent=2))
+    print(json.dumps(dict(cards=len(result),readingCards=len(reading['cards']),tabs=keys),indent=2))
 
 if __name__=='__main__':integrate()

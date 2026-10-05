@@ -1,0 +1,26 @@
+{
+  "before": 1354,
+  "removed": 122,
+  "after": 1232,
+  "sha256": "f95492ab959ca699c724620cf217575c2febab2dc922d96fcac876143b279dbd",
+  "groups": {
+    "Vocabolario": 539,
+    "26 agosto · Interrogativi": 10,
+    "26 agosto · Domande": 28,
+    "26 agosto · Ordine": 5,
+    "26 agosto · Riordina": 10,
+    "2 settembre · Presente": 38,
+    "Lisa · irregolari": 20,
+    "Lisa · irregolari tempi": 20,
+    "16 sett · Chiara · Dove": 31,
+    "16 sett · Chiara · Paesi": 32,
+    "23 sett · Chiara · Nuovo Espresso 1": 44,
+    "16 sett · Liam": 20,
+    "100 parole": 100,
+    "Liam · Nord/Sud · Liguria": 53,
+    "Grammatica · verbi": 25,
+    "Liam · Lettura": 257
+  },
+  "prefix919": "83663ff4723388fc670b8a8284bdccb42c78e11e88aac84f091354ab9bfd07e4",
+  "prefix944": "e33694defb736c5d037df00d1dfbac7d194dccc289d8ef488db778afdefeafce"
+}

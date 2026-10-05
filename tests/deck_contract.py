@@ -1,9 +1,9 @@
-"""Frozen deck preservation, independent of later additive lesson imports."""
+"""Frozen retained v29 baseline after the authorized v32 removals."""
 import hashlib
 import json
 
-V29_CARD_COUNT = 1010
-V29_CARDS_SHA256 = '071abaf2d84833c3f34183003f8e282853732c34bd67d1ba4a40e8fdf28e9941'
+V29_CARD_COUNT = 944
+V29_CARDS_SHA256 = 'e33694defb736c5d037df00d1dfbac7d194dccc289d8ef488db778afdefeafce'
 
 def assert_v29_cards(test, cards):
     test.assertGreaterEqual(len(cards), V29_CARD_COUNT)

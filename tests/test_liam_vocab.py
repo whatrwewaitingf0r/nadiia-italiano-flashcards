@@ -49,12 +49,12 @@ class LiamVocabTests(unittest.TestCase):
                      'matteuccia di todi', 'stregoneria']:
             self.assertTrue(word in fronts, f'Missing vocabulary: {word}')
 
-    def test_all_original_cards_and_lesson5_tags_are_preserved(self):
+    def test_retained_baseline_and_lesson5_removal(self):
         deck = cards((ROOT / 'italiano-flashcards.html').read_text())
-        baseline_hash = hashlib.sha256(json.dumps(deck[:1066], ensure_ascii=False, sort_keys=True).encode()).hexdigest()
-        self.assertEqual(baseline_hash, '1f7594d9ed5ecdbd34714a281a978fc183c0c61d99290ba62610fe8b2fdf50ac')
+        baseline_hash = hashlib.sha256(json.dumps(deck[:944], ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+        self.assertEqual(baseline_hash, 'e33694defb736c5d037df00d1dfbac7d194dccc289d8ef488db778afdefeafce')
         lesson5 = [c for c in deck if 'lesson5' in c.get('tags', [])]
-        self.assertEqual(len(lesson5), 56)
+        self.assertEqual(len(lesson5), 0)
         self.assertTrue(all(c['tags'] == ['liam', 'lesson5', 'nord-sud'] for c in lesson5))
 
     def test_import_is_unique_source_backed_and_english_only(self):

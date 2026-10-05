@@ -42,11 +42,10 @@ def main():
     html = primary.read_text()
     start = html.index('const ALL=') + len('const ALL=')
     cards, length = json.JSONDecoder().raw_decode(html[start:])
-    baseline_hash = hashlib.sha256(json.dumps(cards[:1066], ensure_ascii=False, sort_keys=True).encode()).hexdigest()
-    assert baseline_hash == '1f7594d9ed5ecdbd34714a281a978fc183c0c61d99290ba62610fe8b2fdf50ac', 'Original cards changed; stop instead of replacing them.'
+    baseline_hash = hashlib.sha256(json.dumps(cards[:944], ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+    assert baseline_hash == 'e33694defb736c5d037df00d1dfbac7d194dccc289d8ef488db778afdefeafce', 'Retained v32 baseline changed; stop instead of replacing it.'
     lesson5 = [c for c in cards if 'lesson5' in c.get('tags', [])]
-    assert len(lesson5) == 56
-    assert all(c['tags'] == ['liam', 'lesson5', 'nord-sud'] for c in lesson5)
+    assert not lesson5, 'Lesson 5 was removed in v32.'
     merged, skipped = append_missing(cards, manifest['candidates'])
     updated = html[:start] + json.dumps(merged, ensure_ascii=False, separators=(',', ':')) + html[start+length:]
     # Refuse a stale write if another worker changes the same file during preparation.
@@ -64,7 +63,7 @@ def main():
         (base / 'index.html').write_text(embedded)
     report = {'before': len(cards), 'after': len(merged), 'added': len(merged)-len(cards),
               'addedFronts': [c['it'] for c in merged[len(cards):]], 'skipped': skipped,
-              'original1066Preserved': True, 'lesson5Preserved': len(lesson5)}
+              'retainedV32BaselinePreserved': True, 'lesson5': len(lesson5)}
     print(json.dumps(report, ensure_ascii=False, indent=2))
 
 

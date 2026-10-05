@@ -50,10 +50,10 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
    }
   }
   index=0;render();return{count:pool.length,sourceCards,lesson5:ALL.filter(c=>(c.tags||[]).includes('lesson5')&&(c.tags||[]).includes('nord-sud')).length};
- });assert.deepEqual(checked,{count:257,sourceCards:13,lesson5:56});
+ });assert.deepEqual(checked,{count:257,sourceCards:13,lesson5:0});
  await cards.locator('#flip').click();assert.equal(await cards.locator('.back').evaluate(e=>getComputedStyle(e).visibility),'visible');
- await page.locator('#tab-liam').click();await page.locator('#loading-liam').waitFor({state:'hidden'});
- assert.equal(await page.locator('#tab-liam').innerText(),'Liam ieri');
+ assert.equal(await page.locator('#tab-liam').count(),0);
+ assert.equal(await page.locator('#tab-liam-lesson5').count(),0);
  assert.deepEqual(errors,[]);assert.deepEqual(network,[]);
  console.log(JSON.stringify({sections:13,paragraphs:totalParagraphs,questions:totalQuestions,cards:checked.count,lesson5:checked.lesson5,errors,network}));
  await browser.close();
