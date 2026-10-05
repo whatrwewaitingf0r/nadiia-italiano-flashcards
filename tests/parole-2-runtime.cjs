@@ -24,9 +24,13 @@ assert.equal(deck.nodes.get('filter').value,'chiara-23-sett');
 assert.equal(deck.nodes.get('counter').textContent,'1 / 44');
 deck.nodes.get('filter').value='100parole-2';deck.nodes.get('filter').onchange();
 assert.equal(deck.nodes.get('counter').textContent,'1 / 100');
-assert.equal(deck.nodes.get('direction').disabled,true);
+assert.equal(deck.nodes.get('direction').disabled,false);
 assert.equal(deck.nodes.get('dirText').textContent,'IT→EN');
-const first=deck.nodes.get('frontWord').textContent;deck.nodes.get('direction').onclick();assert.equal(deck.nodes.get('frontWord').textContent,first);
+const first=deck.nodes.get('frontWord').textContent,english=deck.nodes.get('backWord').textContent;
+const click={type:'click',detail:0,preventDefault(){},stopPropagation(){}};
+deck.nodes.get('direction').events.click(click);
+assert.equal(deck.nodes.get('frontWord').textContent,english);assert.equal(deck.nodes.get('backWord').textContent,first);assert.equal(deck.nodes.get('dirText').textContent,'EN→IT');
+deck.nodes.get('direction').events.click(click);assert.equal(deck.nodes.get('frontWord').textContent,first);
 for(let i=0;i<100;i++){
  deck.run(`index=${i};render()`);
  assert.equal(deck.nodes.get('frontWord').textContent,deck.run('pool[index].it'));
@@ -55,7 +59,7 @@ const carte=activate('carte');assert.equal(carte.nodes.get('filter').value,'chia
 assert(carte.nodes.get('filter').options[0].value.startsWith('chiara-'));
 carte.nodes.get('filter').value='lisa-irregolari';carte.nodes.get('filter').onchange();carte.nodes.get('flip').onclick();
 const lisaFront=carte.nodes.get('frontWord').textContent;
-const more=activate('parole-2');assert.equal(more.nodes.get('filter').value,'100parole-2');assert.equal(more.nodes.get('counter').textContent,'1 / 100');assert.equal(more.nodes.get('direction').disabled,true);
+const more=activate('parole-2');assert.equal(more.nodes.get('filter').value,'100parole-2');assert.equal(more.nodes.get('counter').textContent,'1 / 100');assert.equal(more.nodes.get('direction').disabled,false);
 assert(more.document.head.children[0].textContent.includes('backface-visibility:visible'));
 activate('carte');assert.equal(carte.nodes.get('frontWord').textContent,lisaFront);assert.equal(carte.nodes.get('filter').value,'lisa-irregolari');assert(carte.nodes.get('scene').classList.values.has('flipped'));
 hub.nodes.get('tab-carte').events.keydown({key:'ArrowRight',preventDefault(){}});assert.equal(hub.location.hash,'#parole-2');
