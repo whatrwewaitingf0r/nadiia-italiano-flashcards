@@ -10,6 +10,8 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
  assert.equal(await carte.locator('#filter').inputValue(),'chiara-23-sett');
  assert.match(await carte.locator('#filter option').first().innerText(),/Chiara/);
  assert.equal(await carte.locator('#counter').innerText(),'1 / 44');
+ assert.equal(await carte.locator('.back').evaluate(e=>getComputedStyle(e).visibility),'hidden');
+ assert.equal(await carte.locator('.front').evaluate(e=>getComputedStyle(e).visibility),'visible');
  await page.screenshot({path:path.resolve(__dirname,'../.aitemp/hub-carte-mobile-v29.png'),animations:'disabled'});
  assert.ok((await carte.locator('#frontWord').innerText()).length>0);
  const result=await page.evaluate(()=>{
@@ -18,7 +20,7 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
  });assert.equal(result.count,1010);assert.equal(result.ru,false);
  await carte.locator('#filter').selectOption('lisa-irregolari');
  assert.equal(await carte.locator('#direction').isDisabled(),true);
- await carte.locator('#flip').click();assert.match(await carte.locator('#backWord').innerText(),/io/);
+ await carte.locator('#flip').click();assert.equal(await carte.locator('.front').evaluate(e=>getComputedStyle(e).visibility),'hidden');assert.equal(await carte.locator('.back').evaluate(e=>getComputedStyle(e).visibility),'visible');assert.equal(await carte.locator('.back').evaluate(e=>getComputedStyle(e).transform),'none');assert.match(await carte.locator('#backWord').innerText(),/io/);
  const lisaState=await carte.locator('#frontWord').innerText();
  for(const key of ['articoli','aggettivi','verbi']){
   const frame=await get(key);
