@@ -1,6 +1,6 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 class Node{constructor(tag='div'){this.tagName=tag;this.children=[];this.attributes={};this.style={};this.value='';this.textContent='';this.disabled=false;this.hidden=false;this.className='';this.classList={toggle:()=>{}};}get textContent(){return this._text+this.children.map(n=>n.textContent).join('');}set textContent(value){this._text=String(value);this.children=[];}appendChild(n){this.children.push(n);if(n.tagName==='option'&&this.children.length===1)this.value=n.value;return n;}replaceChildren(...children){this.textContent='';this.children=children;}setAttribute(k,v){this.attributes[k]=v;}}
-function load(file,{legacy=false}={}){const nodes={};const create=tag=>{const node=new Node(tag);if(legacy)node.replaceChildren=undefined;return node;};const get=id=>nodes[id]||(nodes[id]=create('div'));get('method').value='choose';const ctx=vm.createContext({document:{getElementById:get,createElement:create,createTextNode:t=>({textContent:t}),addEventListener:()=>{}},console,Math});const script=fs.readFileSync(file,'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];vm.runInContext(script,ctx);return {nodes,ctx,run:s=>vm.runInContext(s,ctx)};}
+function load(file,{legacy=false}={}){const nodes={};const create=tag=>{const node=new Node(tag);if(legacy)node.replaceChildren=undefined;return node;};const get=id=>nodes[id]||(nodes[id]=create('div'));get('method').value='choose';const ctx=vm.createContext({document:{getElementById:get,createElement:create,createTextNode:t=>({textContent:t}),addEventListener:()=>{}},location:{hash:''},console,Math});const script=fs.readFileSync(file,'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];vm.runInContext(script,ctx);return {nodes,ctx,run:s=>vm.runInContext(s,ctx)};}
 const dir=require('node:path').resolve(__dirname,'..');
 const {nodes,run}=load(dir+'/articoli-esercizi.html');
 assert.equal(run('ITEMS.length'),80);assert.equal(nodes['noun-table'].children.length,20);
@@ -40,10 +40,10 @@ for(const mode of ['a','b'])for(const method of ['choose','type']){
 }
 legacy.nodes.shuffle.onclick();assert.ok(legacy.nodes.phrase.textContent.includes(legacy.run('order[pos].word')));
 const pack=load(dir+'/italiano-flashcards.html');
-assert.equal(pack.run('ALL.length'),1232);assert.equal(pack.run('groups[0][0]'),'chiara-16-dove');
+assert.equal(pack.run('ALL.length'),1332);assert.equal(pack.run('groups[0][0]'),'chiara-16-dove');
 assert.equal(pack.run('ALL.filter(c=>matches(c,"grammar-articoli")).length'),0);
 assert.equal(pack.run('ALL.filter(c=>matches(c,"lisa-irregolari")).some(c=>c.group.includes("Chiara"))'),false);
 assert.equal(pack.run('ALL.filter(c=>matches(c,"chiara-23-sett")).some(c=>c.group.includes("Lisa"))'),false);
 pack.nodes.filter.value='grammar-verbi';pack.nodes.filter.onchange();assert.equal(pack.nodes.direction.disabled,true);assert.equal(pack.nodes.dirText.textContent,'IT→EN');
 pack.nodes.direction.onclick();assert.equal(pack.nodes.dirText.textContent,'IT→EN');
-console.log('PASS: 80 expected forms; all A/B prompts include nouns, including without replaceChildren; choices, typing, corrections, feedback, score, shuffle, finish, apostrophes; 1232-card pack ownership/direction.');
+console.log('PASS: 80 expected forms; all A/B prompts include nouns, including without replaceChildren; choices, typing, corrections, feedback, score, shuffle, finish, apostrophes; 1332-card pack ownership/direction.');
