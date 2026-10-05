@@ -11,7 +11,7 @@ class ConcordanzaTests(unittest.TestCase):
   ns=json.JSONDecoder().raw_decode(h.split('const NOUNS=',1)[1])[0]
   self.assertGreaterEqual(len(ns),200)
   for w in 'casa amico studente donna uomo città problema foto mano giorno anno volta cosa vita lavoro scuola libro acqua pane caffè macchina telefono ragazzo ragazza bambino animale tempo mare sole notte musica film ristorante hotel spiaggia fiore albero cane gatto serpente'.split():self.assertIn(w,[n['sg'] for n in ns])
-  self.assertIn('v27',h)
+  self.assertIn('v30',h)
   for p in [ROOT/'www/articoli-aggettivi.html',ROOT/'anki-html/articoli-aggettivi.html',CANON/'articoli-aggettivi.html',CANON/'www/articoli-aggettivi.html']:self.assertEqual(h,p.read_text())
  def test_flashcards(self):
   h=(ROOT/'italiano-flashcards.html').read_text(); cs=cards(h)
@@ -21,5 +21,5 @@ class ConcordanzaTests(unittest.TestCase):
   self.assertFalse(re.search('[\u0400-\u04ff]',h))
   for p in [ROOT/'www/italiano-flashcards.html',ROOT/'anki-html/italiano-flashcards.html',CANON/'italiano-flashcards.html',CANON/'www/italiano-flashcards.html']:self.assertEqual(h,p.read_text())
   self.assertIn('.scene.rule-card{min-height:560px}',h);self.assertIn('.scene.rule-card{min-height:640px}',h)
-  self.assertIn('articoli-aggettivi.html?v=27',h);self.assertIn('articoli-esercizi.html?v=26',h)
+  self.assertIn('articoli-aggettivi.html?v=30',h);self.assertIn('articoli-esercizi.html?v=30',h)
 if __name__=='__main__':unittest.main()
