@@ -1,7 +1,7 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 class Element {constructor(){this.children=[];this.style={};this.value='';this.hidden=false;this.disabled=false;this.classList={toggle(){}};}set textContent(v){this.text=String(v);this.children=[];}get textContent(){return (this.text||'')+this.children.map(c=>c.textContent).join('');}appendChild(e){this.children.push(e);}setAttribute(){}focus(){}}
 const root=path.resolve(__dirname,'..');
-function load(file){const nodes={};const ctx=vm.createContext({document:{getElementById:id=>nodes[id]||(nodes[id]=new Element()),createElement:()=>new Element(),createTextNode:text=>({textContent:text}),addEventListener(){}},Math,console});vm.runInContext(fs.readFileSync(file,'utf8').match(/<script>([\s\S]*?)<\/script>/)[1],ctx);return {nodes,run:s=>vm.runInContext(s,ctx)};}
+function load(file){const nodes={};const ctx=vm.createContext({document:{getElementById:id=>nodes[id]||(nodes[id]=new Element()),createElement:()=>new Element(),createTextNode:text=>({textContent:text}),addEventListener(){}},location:{hash:''},Math,console});vm.runInContext(fs.readFileSync(file,'utf8').match(/<script>([\s\S]*?)<\/script>/)[1],ctx);return {nodes,run:s=>vm.runInContext(s,ctx)};}
 const {nodes,run}=load(root+'/articoli-aggettivi.html');
 assert.ok(run('NOUNS.length')>=200);
 assert.equal(run('new Set(NOUNS.map(n=>n.sg)).size'),run('NOUNS.length'));
@@ -37,7 +37,7 @@ for(const mode of ['a','b']){
  }
  assert.equal(nodes.phrase.textContent,'Sessione finita.');assert.equal(nodes.progress.style.width,'100%');assert.equal(nodes.next.disabled,true);
 }
-const pack=load(root+'/italiano-flashcards.html');assert.equal(pack.run('ALL.length'),1232);assert.equal(pack.run('ALL.filter(c=>matches(c,"grammar-concordanza")).length'),0);
+const pack=load(root+'/italiano-flashcards.html');assert.equal(pack.run('ALL.length'),1332);assert.equal(pack.run('ALL.filter(c=>matches(c,"grammar-concordanza")).length'),0);
 assert.ok(pack.run('groups.findIndex(g=>g[0]==="chiara-23-sett")<groups.findIndex(g=>g[0]==="lisa-irregolari")'));
 pack.nodes.filter.value='grammar-verbi';pack.nodes.filter.onchange();assert.equal(pack.nodes.direction.disabled,true);assert.equal(pack.nodes.dirText.textContent,'IT→EN');
 console.log('PASS: noun inventory, irregular agreement, all A/B exercises, hints, retry/score, apostrophes, shuffle/finish, grammar filter/direction.');
