@@ -55,6 +55,10 @@ function activate(key,focus=false){
    const doc=frame.contentDocument;
    if(!doc||!doc.querySelector('main'))return;
    if(key==='carte'){
+    // Explicit face visibility avoids mirrored backfaces in iOS/WebKit iframe compositing.
+    const style=doc.createElement('style');
+    style.textContent='.scene .card{transform:none!important;transition:none!important}.scene .face{transform:none!important;backface-visibility:visible!important;-webkit-backface-visibility:visible!important}.scene .back{visibility:hidden}.scene.flipped .front{visibility:hidden}.scene.flipped .back{visibility:visible}';
+    doc.head.appendChild(style);
     const select=doc.getElementById('filter');
     const options=Array.from(select.options);
     options.filter(o=>o.value.startsWith('chiara-')).forEach(o=>select.appendChild(o));
