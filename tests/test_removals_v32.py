@@ -19,8 +19,10 @@ def cards(html):
 
 def assert_retained(test, deck):
     expected = json.loads((ROOT/'tests/removals-v32.json').read_text())
-    test.assertEqual(len(deck), expected['after'])
-    test.assertEqual(hashlib.sha256(json.dumps(deck, ensure_ascii=False, sort_keys=True).encode()).hexdigest(), expected['sha256'])
+    # v33 is append-only; the frozen v32 removal contract remains unchanged.
+    retained = [c for c in deck if c['group'] != '100 parole 2']
+    test.assertEqual(len(retained), expected['after'])
+    test.assertEqual(hashlib.sha256(json.dumps(retained, ensure_ascii=False, sort_keys=True).encode()).hexdigest(), expected['sha256'])
 
 class RemovalTests(unittest.TestCase):
     def test_only_requested_cards_removed(self):
@@ -37,8 +39,8 @@ class RemovalTests(unittest.TestCase):
 
     def test_hub_and_all_copies(self):
         hub = (ROOT/'index.html').read_text()
-        self.assertIn('content="v32"', hub)
-        self.assertIn('content="v32"', (ROOT/'italiano-flashcards.html').read_text())
+        self.assertIn('content="v33"', hub)
+        self.assertIn('content="v33"', (ROOT/'italiano-flashcards.html').read_text())
         for term in ['liam-passato.html', 'tab-liam"', 'tab-liam-lesson5', 'app-liam"', 'app-liam-lesson5']:
             self.assertNotIn(term, hub)
         for key, name in [('carte', 'italiano-flashcards.html'), ('articoli', 'articoli-esercizi.html'), ('aggettivi', 'articoli-aggettivi.html'), ('verbi', 'verbi-tempi.html'), ('lettura', 'liam-lettura.html')]:
