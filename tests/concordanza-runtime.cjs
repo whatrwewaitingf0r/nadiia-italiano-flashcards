@@ -1,5 +1,5 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
-class Element {constructor(){this.children=[];this.style={};this.value='';this.hidden=false;this.disabled=false;this.classList={toggle(){}};}set textContent(v){this.text=String(v);this.children=[];}get textContent(){return (this.text||'')+this.children.map(c=>c.textContent).join('');}appendChild(e){this.children.push(e);}setAttribute(){}focus(){}}
+class Element {constructor(){this.children=[];this.style={};this.value='';this.hidden=false;this.disabled=false;this.classList={toggle(){}};}set textContent(v){this.text=String(v);this.children=[];}get textContent(){return (this.text||'')+this.children.map(c=>c.textContent).join('');}appendChild(e){this.children.push(e);}setAttribute(){}focus(){}addEventListener(k,fn){(this.events??={})[k]=fn;}}
 const root=path.resolve(__dirname,'..');
 function load(file){const nodes={};const ctx=vm.createContext({document:{getElementById:id=>nodes[id]||(nodes[id]=new Element()),createElement:()=>new Element(),createTextNode:text=>({textContent:text}),addEventListener(){}},location:{hash:''},Math,console});vm.runInContext(fs.readFileSync(file,'utf8').match(/<script>([\s\S]*?)<\/script>/)[1],ctx);return {nodes,run:s=>vm.runInContext(s,ctx)};}
 const {nodes,run}=load(root+'/articoli-aggettivi.html');
