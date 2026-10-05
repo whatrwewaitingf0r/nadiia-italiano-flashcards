@@ -17,7 +17,7 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
  const result=await page.evaluate(()=>{
   const frame=document.getElementById('frame-carte');
   return frame.contentWindow.eval('({count:ALL.length,ru:ALL.some(c=>/[\\u0400-\\u04ff]/.test(JSON.stringify(c))),groups:groups.length})');
- });assert.equal(result.count,1232);assert.equal(result.ru,false);
+ });assert.equal(result.count,1332);assert.equal(result.ru,false);
  await carte.locator('#filter').selectOption('lisa-irregolari');
  assert.equal(await carte.locator('#direction').isDisabled(),true);
  await carte.locator('#flip').click();assert.equal(await carte.locator('.front').evaluate(e=>getComputedStyle(e).visibility),'hidden');assert.equal(await carte.locator('.back').evaluate(e=>getComputedStyle(e).visibility),'visible');assert.equal(await carte.locator('.back').evaluate(e=>getComputedStyle(e).transform),'none');assert.match(await carte.locator('#backWord').innerText(),/io/);
