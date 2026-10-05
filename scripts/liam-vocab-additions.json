@@ -1,0 +1,1559 @@
+{
+  "sourceFile": "Copy_of_test.docx",
+  "sourceSha256": "acdc3691327eda6e7bc9495606dfd84358171d5a835b69b92b51e321ada2d24c",
+  "paragraphCount": 7298,
+  "candidates": [
+    {
+      "card": {
+        "it": "ghiro",
+        "other": "dormouse",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Animals and pronunciation · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 2771,
+      "sourceExcerpt": "🐭 = ghiro = doormouse",
+      "sourceTerm": "ghiro",
+      "section": "Animals and pronunciation"
+    },
+    {
+      "card": {
+        "it": "gnomo",
+        "other": "gnome",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Animals and pronunciation · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 2779,
+      "sourceExcerpt": "🧙 = gnomo",
+      "sourceTerm": "gnomo",
+      "section": "Animals and pronunciation"
+    },
+    {
+      "card": {
+        "it": "sciarpa",
+        "other": "scarf",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Animals and pronunciation · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 2784,
+      "sourceExcerpt": "🧣 = sciarpa",
+      "sourceTerm": "sciarpa",
+      "section": "Animals and pronunciation"
+    },
+    {
+      "card": {
+        "it": "scimmia",
+        "other": "monkey",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Animals and pronunciation · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 2783,
+      "sourceExcerpt": "🐵 = scimmia",
+      "sourceTerm": "scimmia",
+      "section": "Animals and pronunciation"
+    },
+    {
+      "card": {
+        "it": "scendere",
+        "other": "to go down",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Animals and pronunciation · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 2788,
+      "sourceExcerpt": "⬇️ = scendere (go down) salire ( go up)",
+      "sourceTerm": "scendere",
+      "section": "Animals and pronunciation"
+    },
+    {
+      "card": {
+        "it": "il forziere",
+        "other": "treasure chest",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Fantasy adventures · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 2994,
+      "sourceExcerpt": "📦 il forziere safe treasure chest",
+      "sourceTerm": "il forziere",
+      "section": "Fantasy adventures"
+    },
+    {
+      "card": {
+        "it": "il teschio",
+        "other": "skull",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Fantasy adventures · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 2995,
+      "sourceExcerpt": "💀 il teschio skull",
+      "sourceTerm": "il teschio",
+      "section": "Fantasy adventures"
+    },
+    {
+      "card": {
+        "it": "la ragnatela",
+        "other": "spiderweb",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Fantasy adventures · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 3001,
+      "sourceExcerpt": "🕸️ la ragnatela ragno (spider)",
+      "sourceTerm": "la ragnatela",
+      "section": "Fantasy adventures"
+    },
+    {
+      "card": {
+        "it": "il pipistrello",
+        "other": "bat",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Fantasy adventures · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 3002,
+      "sourceExcerpt": "🦇 il pipistrello   (bat)",
+      "sourceTerm": "il pipistrello",
+      "section": "Fantasy adventures"
+    },
+    {
+      "card": {
+        "it": "il vigneto",
+        "other": "vineyard",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 4509,
+      "sourceExcerpt": "🍇 il vigneto = vineyard",
+      "sourceTerm": "il vigneto",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "il pastore",
+        "other": "shepherd",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 4512,
+      "sourceExcerpt": "🐑 il pastore = shepherd",
+      "sourceTerm": "il pastore",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "il coro",
+        "other": "choir",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 4515,
+      "sourceExcerpt": "🎵 il coro = choir",
+      "sourceTerm": "il coro",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "il raccolto",
+        "other": "harvest",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 4518,
+      "sourceExcerpt": "🌾 il raccolto = harvest",
+      "sourceTerm": "il raccolto",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "la convivenza",
+        "other": "coexistence",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 4519,
+      "sourceExcerpt": "🤝 la convivenza = coexistence",
+      "sourceTerm": "la convivenza",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "la famiglia allargata",
+        "other": "extended family",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 4616,
+      "sourceExcerpt": "👨‍👩‍👧‍👦 la famiglia allargata = extended family",
+      "sourceTerm": "la famiglia allargata",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "la metropoli",
+        "other": "metropolis",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 4620,
+      "sourceExcerpt": "🏙️ la metropoli = metropolis",
+      "sourceTerm": "la metropoli",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "il terrazzamento",
+        "other": "terrace built into a hillside",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5009,
+      "sourceExcerpt": "🪨 il terrazzamento = terrace built into a hillside",
+      "sourceTerm": "il terrazzamento",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "il muro a secco",
+        "other": "dry-stone wall",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5010,
+      "sourceExcerpt": "🧱 il muro a secco = dry-stone wall",
+      "sourceTerm": "il muro a secco",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "l’abbazia",
+        "other": "abbey",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5122,
+      "sourceExcerpt": "⛪ l’abbazia = abbey",
+      "sourceTerm": "l’abbazia",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "la baia",
+        "other": "bay",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5125,
+      "sourceExcerpt": "🌊 la baia = bay",
+      "sourceTerm": "la baia",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "il faro",
+        "other": "lighthouse",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5126,
+      "sourceExcerpt": "⚓ il faro = lighthouse",
+      "sourceTerm": "il faro",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "il marinaio",
+        "other": "sailor",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5222,
+      "sourceExcerpt": "⚓ il marinaio = sailor",
+      "sourceTerm": "il marinaio",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "il presepe",
+        "other": "nativity scene",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Village life and culture · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5226,
+      "sourceExcerpt": "🎄 il presepe = nativity scene",
+      "sourceTerm": "il presepe",
+      "section": "Village life and culture"
+    },
+    {
+      "card": {
+        "it": "la strega",
+        "other": "witch",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5919,
+      "sourceExcerpt": "🧙 la strega = witch",
+      "sourceTerm": "la strega",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "l’erba medicinale",
+        "other": "medicinal herb",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5921,
+      "sourceExcerpt": "🌿 l’erba medicinale = medicinal herb",
+      "sourceTerm": "l’erba medicinale",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "la luna piena",
+        "other": "full moon",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5923,
+      "sourceExcerpt": "🌕 la luna piena = full moon",
+      "sourceTerm": "la luna piena",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "il rogo",
+        "other": "stake; bonfire",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5924,
+      "sourceExcerpt": "🔥 il rogo = stake, bonfire ",
+      "sourceTerm": "il rogo",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "il processo",
+        "other": "trial",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5925,
+      "sourceExcerpt": "⚖️ il processo = trial",
+      "sourceTerm": "il processo",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "la superstizione",
+        "other": "superstition",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5926,
+      "sourceExcerpt": "🙏 la superstizione = superstition",
+      "sourceTerm": "la superstizione",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "la leggenda",
+        "other": "legend",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5927,
+      "sourceExcerpt": "📖 la leggenda = legend",
+      "sourceTerm": "la leggenda",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "il noce",
+        "other": "walnut tree",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6014,
+      "sourceExcerpt": "🌰 il noce = walnut tree",
+      "sourceTerm": "il noce",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "il sabba",
+        "other": "witches' gathering (according to folklore)",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6015,
+      "sourceExcerpt": "🌙 il sabba = witches’ gathering (secondo il folclore)",
+      "sourceTerm": "il sabba",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "la fata",
+        "other": "fairy",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6016,
+      "sourceExcerpt": "🧚 la fata = fairy",
+      "sourceTerm": "la fata",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "l’incantesimo",
+        "other": "spell",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6017,
+      "sourceExcerpt": "🪄 l’incantesimo = spell",
+      "sourceTerm": "l’incantesimo",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "il gufo",
+        "other": "owl",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6019,
+      "sourceExcerpt": "🦉 il gufo = owl",
+      "sourceTerm": "il gufo",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "il tribunale",
+        "other": "court",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witch trials · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6130,
+      "sourceExcerpt": "⚖️ il tribunale = court",
+      "sourceTerm": "il tribunale",
+      "section": "Witch trials"
+    },
+    {
+      "card": {
+        "it": "il giudice",
+        "other": "judge",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witch trials · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6131,
+      "sourceExcerpt": "👨‍⚖️ il giudice = judge",
+      "sourceTerm": "il giudice",
+      "section": "Witch trials"
+    },
+    {
+      "card": {
+        "it": "l’accusa",
+        "other": "accusation",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witch trials · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6132,
+      "sourceExcerpt": "📜 l’accusa = accusation",
+      "sourceTerm": "l’accusa",
+      "section": "Witch trials"
+    },
+    {
+      "card": {
+        "it": "la difesa",
+        "other": "defense",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witch trials · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6133,
+      "sourceExcerpt": "🛡️ la difesa = defense",
+      "sourceTerm": "la difesa",
+      "section": "Witch trials"
+    },
+    {
+      "card": {
+        "it": "l’eresia",
+        "other": "heresy",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witch trials · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6135,
+      "sourceExcerpt": "🙏 l’eresia = heresy",
+      "sourceTerm": "l’eresia",
+      "section": "Witch trials"
+    },
+    {
+      "card": {
+        "it": "il carcere",
+        "other": "prison",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witch trials · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6137,
+      "sourceExcerpt": "⛓️ il carcere = prison",
+      "sourceTerm": "il carcere",
+      "section": "Witch trials"
+    },
+    {
+      "card": {
+        "it": "la confessione",
+        "other": "confession",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witch trials · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6138,
+      "sourceExcerpt": "🗣️ la confessione = confession",
+      "sourceTerm": "la confessione",
+      "section": "Witch trials"
+    },
+    {
+      "card": {
+        "it": "la testimonianza",
+        "other": "testimony",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witch trials · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6139,
+      "sourceExcerpt": "📚 la testimonianza = testimony",
+      "sourceTerm": "la testimonianza",
+      "section": "Witch trials"
+    },
+    {
+      "card": {
+        "it": "il malocchio",
+        "other": "evil eye",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Beliefs and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6251,
+      "sourceExcerpt": "🧿 il malocchio = evil eye",
+      "sourceTerm": "il malocchio",
+      "section": "Beliefs and folklore"
+    },
+    {
+      "card": {
+        "it": "il corno rosso",
+        "other": "red horn amulet",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Beliefs and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6252,
+      "sourceExcerpt": "🌶️ il corno rosso = red horn amulet",
+      "sourceTerm": "il corno rosso",
+      "section": "Beliefs and folklore"
+    },
+    {
+      "card": {
+        "it": "il portafortuna",
+        "other": "lucky charm",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Beliefs and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6256,
+      "sourceExcerpt": "🍀 il portafortuna = lucky charm",
+      "sourceTerm": "il portafortuna",
+      "section": "Beliefs and folklore"
+    },
+    {
+      "card": {
+        "it": "incrociare le dita",
+        "other": "to cross one's fingers",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Beliefs and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6257,
+      "sourceExcerpt": "🤞 incrociare le dita = to cross one’s fingers",
+      "sourceTerm": "incrociare le dita",
+      "section": "Beliefs and folklore"
+    },
+    {
+      "card": {
+        "it": "la credenza popolare",
+        "other": "popular belief",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Beliefs and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6258,
+      "sourceExcerpt": "🎭 la credenza popolare = popular belief",
+      "sourceTerm": "la credenza popolare",
+      "section": "Beliefs and folklore"
+    },
+    {
+      "card": {
+        "it": "il crepuscolo",
+        "other": "twilight",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6609,
+      "sourceExcerpt": "🌙 il crepuscolo = twilight",
+      "sourceTerm": "il crepuscolo",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "il falò",
+        "other": "bonfire",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6610,
+      "sourceExcerpt": "🔥 il falò = bonfire",
+      "sourceTerm": "il falò",
+      "section": "Witches and folklore"
+    },
+    {
+      "card": {
+        "it": "il testimone",
+        "other": "witness",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witch trials · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6612,
+      "sourceExcerpt": "👀 il testimone = witness",
+      "sourceTerm": "il testimone",
+      "section": "Witch trials"
+    },
+    {
+      "card": {
+        "it": "la cronaca",
+        "other": "chronicle",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witch trials · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6614,
+      "sourceExcerpt": "📜 la cronaca = chronicle",
+      "sourceTerm": "la cronaca",
+      "section": "Witch trials"
+    },
+    {
+      "card": {
+        "it": "l’unguento",
+        "other": "ointment",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Matteuccia reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6726,
+      "sourceExcerpt": "🧴 l’unguento = ointment",
+      "sourceTerm": "l’unguento",
+      "section": "Matteuccia reading"
+    },
+    {
+      "card": {
+        "it": "il caprone",
+        "other": "he-goat",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Matteuccia reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6727,
+      "sourceExcerpt": "🐐 il caprone = he-goat",
+      "sourceTerm": "il caprone",
+      "section": "Matteuccia reading"
+    },
+    {
+      "card": {
+        "it": "la formula magica",
+        "other": "magical formula",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Matteuccia reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6729,
+      "sourceExcerpt": "🪄 la formula magica = magical formula",
+      "sourceTerm": "la formula magica",
+      "section": "Matteuccia reading"
+    },
+    {
+      "card": {
+        "it": "l’accusato",
+        "other": "accused person",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Matteuccia reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6731,
+      "sourceExcerpt": "😨 l’accusato = accused person",
+      "sourceTerm": "l’accusato",
+      "section": "Matteuccia reading"
+    },
+    {
+      "card": {
+        "it": "il manoscritto",
+        "other": "manuscript",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Matteuccia reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6733,
+      "sourceExcerpt": "📖 il manoscritto = manuscript",
+      "sourceTerm": "il manoscritto",
+      "section": "Matteuccia reading"
+    },
+    {
+      "card": {
+        "it": "la soglia",
+        "other": "doorstep; threshold",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Janare reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6819,
+      "sourceExcerpt": "🏠 la soglia = doorstep",
+      "sourceTerm": "la soglia",
+      "section": "Janare reading"
+    },
+    {
+      "card": {
+        "it": "l’incubo",
+        "other": "nightmare",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Janare reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6824,
+      "sourceExcerpt": "🌙 l’incubo = nightmare",
+      "sourceTerm": "l’incubo",
+      "section": "Janare reading"
+    },
+    {
+      "card": {
+        "it": "la serratura",
+        "other": "lock",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Janare reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6825,
+      "sourceExcerpt": "🔑 la serratura = lock",
+      "sourceTerm": "la serratura",
+      "section": "Janare reading"
+    },
+    {
+      "card": {
+        "it": "l’impronta",
+        "other": "footprint",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Janare reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6827,
+      "sourceExcerpt": "👣 l’impronta = footprint",
+      "sourceTerm": "l’impronta",
+      "section": "Janare reading"
+    },
+    {
+      "card": {
+        "it": "il bestiame",
+        "other": "livestock",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Masche reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6935,
+      "sourceExcerpt": "🐄 il bestiame = livestock",
+      "sourceTerm": "il bestiame",
+      "section": "Masche reading"
+    },
+    {
+      "card": {
+        "it": "la maledizione",
+        "other": "curse",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Masche reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6936,
+      "sourceExcerpt": "🪄 la maledizione = curse",
+      "sourceTerm": "la maledizione",
+      "section": "Masche reading"
+    },
+    {
+      "card": {
+        "it": "la carestia",
+        "other": "famine",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Triora reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7038,
+      "sourceExcerpt": "🌾 la carestia = famine",
+      "sourceTerm": "la carestia",
+      "section": "Triora reading"
+    },
+    {
+      "card": {
+        "it": "il magistrato",
+        "other": "magistrate",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Triora reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7041,
+      "sourceExcerpt": "👩‍⚖️ il magistrato = magistrate",
+      "sourceTerm": "il magistrato",
+      "section": "Triora reading"
+    },
+    {
+      "card": {
+        "it": "la diceria",
+        "other": "rumor",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Triora reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7043,
+      "sourceExcerpt": "🗣️ la diceria = rumor",
+      "sourceTerm": "la diceria",
+      "section": "Triora reading"
+    },
+    {
+      "card": {
+        "it": "il sospetto",
+        "other": "suspicion",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Triora reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7044,
+      "sourceExcerpt": "😨 il sospetto = suspicion",
+      "sourceTerm": "il sospetto",
+      "section": "Triora reading"
+    },
+    {
+      "card": {
+        "it": "il verbale",
+        "other": "official record",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Triora reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7045,
+      "sourceExcerpt": "📜 il verbale = official record",
+      "sourceTerm": "il verbale",
+      "section": "Triora reading"
+    },
+    {
+      "card": {
+        "it": "la folla",
+        "other": "crowd",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Triora reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7046,
+      "sourceExcerpt": "👥 la folla = crowd",
+      "sourceTerm": "la folla",
+      "section": "Triora reading"
+    },
+    {
+      "card": {
+        "it": "Matteuccia di Todi",
+        "other": "a woman tried for witchcraft in Todi in 1428 (historical reading)",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Matteuccia reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6720,
+      "sourceExcerpt": "Matteuccia di Francesco, conosciuta come Matteuccia di Todi, fu una persona realmente esistita. Gran parte di ciò che sappiamo proviene dagli atti del suo processo del 1428. Le confessioni contenute nei documenti sono oggi considerate dagli storici poco affidabili, perché in quell’epoca gli interrogatori potevano essere accompagnati da forti pressioni o torture.",
+      "sourceTerm": "Matteuccia di Todi",
+      "section": "Matteuccia reading"
+    },
+    {
+      "card": {
+        "it": "guaritrice",
+        "other": "female healer",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Matteuccia reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7292,
+      "sourceExcerpt": "Per alcuni era una guaritrice.",
+      "sourceTerm": "guaritrice",
+      "section": "Matteuccia reading"
+    },
+    {
+      "card": {
+        "it": "gli inquisitori",
+        "other": "inquisitors",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Matteuccia reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6760,
+      "sourceExcerpt": "È possibile che gli inquisitori suggerissero inconsapevolmente alcune immagini durante gli interrogatori, oppure che gli accusati ripetessero racconti popolari già conosciuti.",
+      "sourceTerm": "gli inquisitori",
+      "section": "Matteuccia reading"
+    },
+    {
+      "card": {
+        "it": "il Quattrocento",
+        "other": "the fifteenth century; the 1400s",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Matteuccia reading · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6756,
+      "sourceExcerpt": "Nel Quattrocento gli interrogatori erano molto diversi da quelli di oggi.",
+      "sourceTerm": "Quattrocento",
+      "section": "Matteuccia reading"
+    },
+    {
+      "card": {
+        "it": "stregoneria",
+        "other": "witchcraft",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witch trials · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 5936,
+      "sourceExcerpt": "Tra (between) il Quattrocento e il Seicento si svolsero (conduct) numerosi processi per stregoneria(witchcraft) anche in alcune zone dell’Italia. Molte persone furono interrogate, imprigionate e, in alcuni casi, condannate a morte.",
+      "sourceTerm": "stregoneria",
+      "section": "Witch trials"
+    },
+    {
+      "card": {
+        "it": "strix",
+        "other": "Latin name of a nocturnal bird in Roman tales; source of Italian strega",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and word origins · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6001,
+      "sourceExcerpt": "La parola italiana strega deriva dal latino strix, il nome di un uccello notturno che, secondo gli antichi Romani, si nutriva del sangue dei bambini. Con il passare dei secoli, il significato della parola cambiò e finì per indicare una donna associata alla magia e al soprannaturale.",
+      "sourceTerm": "strix",
+      "section": "Witches and word origins"
+    },
+    {
+      "card": {
+        "it": "la Befana",
+        "other": "the Italian folklore figure who brings children sweets or coal in early January",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Italian folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 6024,
+      "sourceExcerpt": "Una delle figure più conosciute è la Befana. Oggi è una simpatica vecchietta che, nella notte tra il 5 e il 6 gennaio, porta dolci ai bambini buoni e carbone a quelli che si sono comportati male. 🎁",
+      "sourceTerm": "la Befana",
+      "section": "Italian folklore"
+    },
+    {
+      "card": {
+        "it": "gli Strigoi",
+        "other": "spirits or people said to return after death in Romanian folklore",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · World folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7230,
+      "sourceExcerpt": "In Romania esistono gli Strigoi.",
+      "sourceTerm": "gli Strigoi",
+      "section": "World folklore"
+    },
+    {
+      "card": {
+        "it": "Lamia",
+        "other": "a queen transformed into a monster in Greek mythology",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · World folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7237,
+      "sourceExcerpt": "Nell’antica Grecia si raccontava la storia di Lamia.",
+      "sourceTerm": "Lamia",
+      "section": "World folklore"
+    },
+    {
+      "card": {
+        "it": "Yamauba",
+        "other": "an old woman of the mountains and forests in Japanese folklore",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · World folklore · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7245,
+      "sourceExcerpt": "Tra le montagne del Giappone vive, secondo il folclore, la Yamauba.",
+      "sourceTerm": "Yamauba",
+      "section": "World folklore"
+    },
+    {
+      "card": {
+        "it": "sorcière / sorcières",
+        "other": "witch / witches in French (terms in the Italian reading)",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and word origins · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7252,
+      "sourceExcerpt": "In Francia le streghe vengono chiamate sorcières.",
+      "sourceTerm": "sorcières",
+      "section": "Witches and word origins"
+    },
+    {
+      "card": {
+        "it": "Hexe / Hexen",
+        "other": "witch / witches in German (terms in the Italian reading)",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and word origins · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7258,
+      "sourceExcerpt": "In Germania le streghe sono chiamate Hexen.",
+      "sourceTerm": "Hexen",
+      "section": "Witches and word origins"
+    },
+    {
+      "card": {
+        "it": "wicce / wicca",
+        "other": "Old English feminine / masculine words cited as the origin of witch",
+        "lang": "EN",
+        "group": "Liam · Nord/Sud · Liguria",
+        "note": "Liam · Full document vocabulary · Witches and word origins · IT → EN",
+        "tags": [
+          "liam",
+          "vocab",
+          "nord-sud"
+        ]
+      },
+      "sourceParagraph": 7285,
+      "sourceExcerpt": "🧙 L’inglese witch deriva dall’antico inglese wicce (forma femminile) e wicca (forma maschile).",
+      "sourceTerm": "wicce",
+      "section": "Witches and word origins"
+    }
+  ],
+  "skippedBaselineDuplicates": [
+    "chiacchierona",
+    "caco / cachi",
+    "cucchiaino",
+    "tovagliolo",
+    "cameriere / cameriera",
+    "vorrei",
+    "Mi potrebbe portare…?",
+    "mentre",
+    "da piccolo",
+    "sabato scorso",
+    "la settimana scorsa",
+    "ieri sera",
+    "gabbia",
+    "pasto",
+    "diventare",
+    "chiedere",
+    "barca",
+    "svegliarsi",
+    "alzarsi",
+    "lavarsi",
+    "vestirsi",
+    "pettinarsi",
+    "rilassarsi",
+    "il treppiede",
+    "l’obiettivo",
+    "la batteria",
+    "la giungla",
+    "la cascata",
+    "il sentiero",
+    "la roccia",
+    "la foglia",
+    "l’insetto",
+    "avvicinarsi",
+    "allontanarsi",
+    "filmare",
+    "catturare",
+    "scoprire",
+    "proteggere",
+    "la spada",
+    "l’anello",
+    "il mago",
+    "l’eroe",
+    "la missione",
+    "il guerriero",
+    "combattere",
+    "allenarsi",
+    "lontra",
+    "salire",
+    "l’ulivo",
+    "l’oliva",
+    "la chiesa",
+    "gli abitanti",
+    "l’infanzia",
+    "l’alba",
+    "il tramonto",
+    "il panificio",
+    "il contadino",
+    "l’orto",
+    "gli anziani",
+    "passeggiare",
+    "conoscersi",
+    "il frantoio",
+    "la festa patronale",
+    "i fuochi d’artificio",
+    "aiutarsi",
+    "la fortezza",
+    "la steppa",
+    "il confine",
+    "il girasole",
+    "l’ospitalità",
+    "lo stipendio",
+    "la sagra",
+    "le radici",
+    "lo stereotipo"
+  ]
+}
