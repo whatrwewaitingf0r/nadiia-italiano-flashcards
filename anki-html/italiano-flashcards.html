@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta name="build-version" content="v33">
+<meta name="build-version" content="v34">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,17 +19,17 @@ header{display:flex;min-width:0;justify-content:space-between;align-items:flex-e
 .eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--laguna);font-weight:800}
 h1{min-width:0;font-size:clamp(1.5rem,7vw,2.4rem);line-height:.96;margin:.32rem 0 0;letter-spacing:-.055em;max-width:12ch}
 .counter{font-variant-numeric:tabular-nums;font-weight:800;background:rgba(255,255,255,.62);padding:8px 11px;border-radius:999px;white-space:nowrap}
-.toolbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:9px;margin-bottom:12px}
+.toolbar{position:relative;z-index:2;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:9px;margin-bottom:12px}
 .deck-picker{min-width:0;display:flex;flex-direction:column;gap:5px}.deck-picker label{padding-left:4px;font-size:.72rem;letter-spacing:.06em;font-weight:850;color:var(--laguna)}
 .toolbar select{min-width:0;width:100%;max-width:100%}
 select,.mode{border:1px solid rgba(35,66,62,.16);background:rgba(255,255,255,.75);color:var(--inchiostro);border-radius:14px;min-height:44px;padding:0 12px;font-weight:700}
-.mode{min-width:0;max-width:88px;padding-left:8px;padding-right:8px;display:flex;align-items:center;gap:7px;cursor:pointer}.mode span{color:var(--corallo)}
+.mode{position:relative;z-index:1;pointer-events:auto;min-width:44px;min-height:44px;max-width:88px;padding-left:8px;padding-right:8px;display:flex;align-items:center;gap:7px;cursor:pointer;touch-action:manipulation;user-select:none;-webkit-user-select:none}.mode span{color:var(--corallo)}
 .track{height:5px;background:rgba(52,91,85,.14);border-radius:9px;overflow:hidden;margin-bottom:14px}.track i{display:block;height:100%;width:0;background:var(--corallo);transition:width .25s ease}
 .scene{width:100%;min-width:0;perspective:1200px;min-height:clamp(340px,54vh,470px);cursor:pointer;outline:none}
 .card{position:relative;width:100%;height:100%;min-height:inherit;transform-style:preserve-3d;transition:transform .42s cubic-bezier(.22,.7,.25,1)}
 .scene.flipped .card{transform:rotateY(180deg)}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:28px;padding:26px clamp(22px,7vw,50px);background:var(--carta);box-shadow:var(--shadow);border:1px solid rgba(35,66,62,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-.face:before{content:"";position:absolute;width:130px;height:130px;border:26px solid var(--limone);border-radius:50%;right:-74px;top:-72px;opacity:.75}
+.face:before{content:"";position:absolute;pointer-events:none;width:130px;height:130px;border:26px solid var(--limone);border-radius:50%;right:-74px;top:-72px;opacity:.75}
 .back{transform:rotateY(180deg);background:var(--laguna);color:white}.back:before{border-color:var(--corallo)}
 .label{position:absolute;top:22px;left:24px;font-size:.7rem;letter-spacing:.17em;text-transform:uppercase;font-weight:850;color:var(--muted)}.back .label{color:#cde0dc}
 .word{font-size:clamp(2rem,9vw,4rem);font-weight:850;line-height:1.04;letter-spacing:-.045em;overflow-wrap:anywhere}.back .word{font-size:clamp(1.8rem,8vw,3.6rem)}
@@ -59,10 +59,10 @@ select,.mode{border:1px solid rgba(35,66,62,.16);background:rgba(255,255,255,.75
 </head>
 <body>
 <main class="app">
- <header><div><div class="eyebrow">Italiano in tasca · v33</div><h1>Una carta alla volta.</h1></div><div class="counter" id="counter">1 / 1</div></header>
+ <header><div><div class="eyebrow">Italiano in tasca · v34</div><h1>Una carta alla volta.</h1></div><div class="counter" id="counter">1 / 1</div></header>
  <div class="toolbar">
   <div class="deck-picker"><label for="filter">Mazzo / deck</label><select id="filter" aria-label="Mazzo / deck"></select></div>
-  <button class="mode" id="direction" aria-label="Cambia direzione"><b id="dirText">EN→IT</b><span>⇄</span></button>
+  <button type="button" class="mode" id="direction" aria-label="Cambia direzione"><b id="dirText">EN→IT</b><span>⇄</span></button>
  </div>
  <div class="track"><i id="progress"></i></div>
  <section class="scene" id="scene" tabindex="0" role="button" aria-label="Tocca per girare la carta">
@@ -75,10 +75,10 @@ select,.mode{border:1px solid rgba(35,66,62,.16);background:rgba(255,255,255,.75
  <nav class="controls" aria-label="Navigazione">
   <button id="prev" aria-label="Carta precedente">←</button><button class="flip" id="flip">Gira</button><button id="next" aria-label="Carta successiva">→</button>
  </nav>
- <div class="footer"><button class="shuffle" id="shuffle">Mescola ⤨</button><div class="status" id="status">Funziona offline · v33</div></div>
-<p style="text-align:center;font-size:.8rem"><a style="color:var(--laguna)" href="articoli-esercizi.html?v=33">Articoli · esercizi offline →</a></p>
-<p style="text-align:center;font-size:.8rem"><a style="color:var(--laguna)" href="articoli-aggettivi.html?v=33">Articoli + aggettivi · frasi intere →</a></p>
- <p style="margin:4px 0 0;text-align:center"><a href="verbi-tempi.html?v=33" style="color:var(--laguna);font-size:.85rem;font-weight:750">Verbi e tempi · completa e correggi →</a></p>
+ <div class="footer"><button class="shuffle" id="shuffle">Mescola ⤨</button><div class="status" id="status">Funziona offline · v34</div></div>
+<p style="text-align:center;font-size:.8rem"><a style="color:var(--laguna)" href="articoli-esercizi.html?v=34">Articoli · esercizi offline →</a></p>
+<p style="text-align:center;font-size:.8rem"><a style="color:var(--laguna)" href="articoli-aggettivi.html?v=34">Articoli + aggettivi · frasi intere →</a></p>
+ <p style="margin:4px 0 0;text-align:center"><a href="verbi-tempi.html?v=34" style="color:var(--laguna);font-size:.85rem;font-weight:750">Verbi e tempi · completa e correggi →</a></p>
 <p style="text-align:center"><a href="liam-lettura.html" style="color:var(--laguna);font-weight:750">Liam · Lettura integrale →</a></p>
 </main>
 <script>
@@ -143,7 +143,6 @@ function deckLanguage(){return 'EN'}
 function updateDirectionLabel(c=pool[index]){const otherLang=deckLanguage(c);$('dirText').textContent=reverse?otherLang+'→IT':'IT→'+otherLang}
 function render(){const c=pool[index];if(!c)return;
  const isReading=Boolean(c.reading);
- const isParole2=c.group==='100 parole 2';
  $('scene').classList.toggle('reading-card',isReading);
  const isTenses=c.group==='Lisa · irregolari tempi';
  const isLisa=c.group==='Lisa · irregolari'||isTenses;
@@ -151,8 +150,8 @@ function render(){const c=pool[index];if(!c)return;
  $('scene').classList.toggle('rule-card',isGrammar);
  const isChiara23=c.group==='23 sett · Chiara · Nuovo Espresso 1';
  $('scene').classList.toggle('tense-card',isTenses);
- if(isLisa||isChiara23||isGrammar||isReading||isParole2)reverse=false;
- $('direction').disabled=isLisa||isChiara23||isGrammar||isReading||isParole2;
+ if(isLisa||isChiara23||isGrammar||isReading)reverse=false;
+ $('direction').disabled=isLisa||isChiara23||isGrammar||isReading;
  updateDirectionLabel(c);
  const first=reverse?c.other:c.it, second=reverse?c.it:c.other;
  $('frontWord').textContent=c.kind==='reading'?c.sourceText:first;$('backWord').textContent=second;
@@ -183,11 +182,21 @@ function render(){const c=pool[index];if(!c)return;
 function move(delta){index=(index+delta+pool.length)%pool.length;render()}
 function shufflePool(){for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}}
 $('scene').onclick=()=>setFlip(!flipped);$('flip').onclick=()=>setFlip(!flipped);$('prev').onclick=()=>move(-1);$('next').onclick=()=>move(1);
-$('direction').onclick=()=>{if($('direction').disabled)return;reverse=!reverse;render()};
-filter.onchange=()=>{pool=ALL.filter(c=>matches(c,filter.value));shufflePool();index=0;reverse=false;$('status').textContent=pool.length+' carte · mescolate · offline · v33';render()};
-$('shuffle').onclick=()=>{shufflePool();index=0;$('status').textContent='Mazzo mescolato · v33';render()};
-document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1);if(e.key===' '||e.key==='Enter'){e.preventDefault();setFlip(!flipped)}});
-pool=ALL.filter(c=>matches(c,filter.value));shufflePool();$('status').textContent=pool.length+' carte · mescolate · offline · v33';render();
+let lastDirectionTouch=0;
+function toggleDirection(event){
+ event.preventDefault();event.stopPropagation();
+ if($('direction').disabled)return;
+ if(event.type==='touchend')lastDirectionTouch=Date.now();
+ else if(event.detail>0&&Date.now()-lastDirectionTouch<700)return;
+ reverse=!reverse;render();
+}
+$('direction').addEventListener('touchstart',event=>event.stopPropagation(),{passive:true});
+$('direction').addEventListener('touchend',toggleDirection,{passive:false});
+$('direction').addEventListener('click',toggleDirection);
+filter.onchange=()=>{pool=ALL.filter(c=>matches(c,filter.value));shufflePool();index=0;reverse=false;$('status').textContent=pool.length+' carte · mescolate · offline · v34';render()};
+$('shuffle').onclick=()=>{shufflePool();index=0;$('status').textContent='Mazzo mescolato · v34';render()};
+document.addEventListener('keydown',e=>{if(e.target.closest('button, select, a, input, textarea'))return;if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1);if(e.key===' '||e.key==='Enter'){e.preventDefault();setFlip(!flipped)}});
+pool=ALL.filter(c=>matches(c,filter.value));shufflePool();$('status').textContent=pool.length+' carte · mescolate · offline · v34';render();
 </script>
 </body>
 </html>
