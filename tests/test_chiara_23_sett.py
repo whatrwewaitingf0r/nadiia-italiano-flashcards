@@ -38,11 +38,11 @@ class Chiara23SettTests(unittest.TestCase):
         self.assertIn("['chiara-23-sett','23 sett · Chiara · Nuovo Espresso 1']", html)
         self.assertIn("'chiara-23-sett':'23 sett · Chiara · Nuovo Espresso 1'", html)
         self.assertIn("const isChiara23=c.group==='23 sett · Chiara · Nuovo Espresso 1';", html)
-        self.assertIn("$('direction').disabled=isLisa||isChiara23||isGrammar||isReading||isParole2;", html)
+        self.assertIn("$('direction').disabled=isLisa||isChiara23||isGrammar||isReading;", html)
 
     def test_version_and_copies(self):
         html = (ROOT / "italiano-flashcards.html").read_bytes()
-        self.assertIn(b'<meta name="build-version" content="v33">', html)
+        self.assertIn(b'<meta name="build-version" content="v34">', html)
         self.assertNotIn(b"v24", html)
         self.assertEqual(html, (ROOT / "www/italiano-flashcards.html").read_bytes())
         self.assertEqual(html, (ROOT / "anki-html/italiano-flashcards.html").read_bytes())
