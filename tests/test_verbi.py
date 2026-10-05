@@ -16,7 +16,7 @@ class VerbiTests(unittest.TestCase):
   self.assertIn('min-width:min(220px,100%)',h)
   for p in [ROOT/'www/verbi-tempi.html',ROOT/'anki-html/verbi-tempi.html',CANON/'verbi-tempi.html',CANON/'www/verbi-tempi.html']:self.assertEqual(h,p.read_text())
  def test_pack_and_preservation(self):
-  h=(ROOT/'index.html').read_text();cs=cards(h)
+  h=(ROOT/'italiano-flashcards.html').read_text();cs=cards(h)
   self.assertEqual(hashlib.sha256(json.dumps(cs[:985],ensure_ascii=False,sort_keys=True).encode()).hexdigest(),'c9cede215d23fbf6aa79d06c2db2072915f3c74ccb2a648dd840c20214c9d9c0');self.assertEqual(len(cs),1010)
   new=cs[985:];self.assertEqual(len(new),25);self.assertEqual(len({c['it'] for c in new}),25)
   for c in new:self.assertEqual(c['tags'],['grammar','verbi']);self.assertEqual(c['lang'],'EN')
@@ -24,5 +24,5 @@ class VerbiTests(unittest.TestCase):
   self.assertIn("'grammar-verbi':'Grammatica · verbi'",h)
   self.assertIn('verbi-tempi.html?v=28',h)
   self.assertIn('articoli-esercizi.html?v=26',h);self.assertIn('articoli-aggettivi.html?v=27',h)
-  for p in [ROOT/'www/index.html',ROOT/'anki-html/italiano-flashcards.html',CANON/'italiano-flashcards.html',CANON/'www/index.html']:self.assertEqual(h,p.read_text())
+  for p in [ROOT/'www/italiano-flashcards.html',ROOT/'anki-html/italiano-flashcards.html',CANON/'italiano-flashcards.html',CANON/'www/italiano-flashcards.html']:self.assertEqual(h,p.read_text())
 if __name__=='__main__':unittest.main()
