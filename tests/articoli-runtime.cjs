@@ -39,7 +39,7 @@ for(const mode of ['a','b'])for(const method of ['choose','type']){
   assert.equal(legacy.nodes.phrase.textContent,'Sessione finita.');
 }
 legacy.nodes.shuffle.onclick();assert.ok(legacy.nodes.phrase.textContent.includes(legacy.run('order[pos].word')));
-const pack=load(dir+'/index.html');
+const pack=load(dir+'/italiano-flashcards.html');
 assert.equal(pack.run('ALL.length'),1010);assert.equal(pack.run('groups[0][0]'),'aug-26-interrogativi');
 assert.equal(pack.run('ALL.filter(c=>matches(c,"grammar-articoli")).length'),26);
 assert.equal(pack.run('ALL.filter(c=>matches(c,"lisa-irregolari")).some(c=>c.group.includes("Chiara"))'),false);

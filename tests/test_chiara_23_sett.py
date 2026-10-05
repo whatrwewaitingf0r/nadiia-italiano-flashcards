@@ -26,7 +26,7 @@ EXPECTED_FRONTS = [
 
 class Chiara23SettTests(unittest.TestCase):
     def test_cards_and_filter(self):
-        html = (ROOT / "index.html").read_text()
+        html = (ROOT / "italiano-flashcards.html").read_text()
         cards, _ = json.JSONDecoder().raw_decode(html.split("const ALL=", 1)[1])
         target = [card for card in cards if card["group"] == GROUP]
         self.assertEqual(len(cards), 1010)
@@ -40,13 +40,13 @@ class Chiara23SettTests(unittest.TestCase):
         self.assertIn("$('direction').disabled=isLisa||isChiara23||isGrammar;", html)
 
     def test_version_and_copies(self):
-        html = (ROOT / "index.html").read_bytes()
+        html = (ROOT / "italiano-flashcards.html").read_bytes()
         self.assertIn(b'<meta name="build-version" content="v28">', html)
         self.assertNotIn(b"v24", html)
-        self.assertEqual(html, (ROOT / "www/index.html").read_bytes())
+        self.assertEqual(html, (ROOT / "www/italiano-flashcards.html").read_bytes())
         self.assertEqual(html, (ROOT / "anki-html/italiano-flashcards.html").read_bytes())
         self.assertEqual(html, Path("/Users/it/.jaine/workspace/memory/health/nadiia/italian/anki-html/italiano-flashcards.html").read_bytes())
-        self.assertEqual(html, Path("/Users/it/.jaine/workspace/memory/health/nadiia/italian/anki-html/www/index.html").read_bytes())
+        self.assertEqual(html, Path("/Users/it/.jaine/workspace/memory/health/nadiia/italian/anki-html/www/italiano-flashcards.html").read_bytes())
 
 
 if __name__ == "__main__":
