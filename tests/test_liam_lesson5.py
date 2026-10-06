@@ -22,11 +22,11 @@ class LiamLesson5Tests(unittest.TestCase):
 
     def test_hub_has_no_lesson5_tab(self):
         hub = (ROOT/'index.html').read_text()
-        self.assertIn('content="v34"', hub)
+        self.assertIn('content="v35"', hub)
         self.assertNotIn('liam-passato.html', hub)
         self.assertNotIn('id="tab-liam"', hub)
         self.assertNotIn('id="tab-liam-lesson5"', hub)
-        self.assertIn('id="tab-lettura"', hub)
+        self.assertNotIn('id="tab-lettura"', hub)
 
 if __name__ == '__main__':
     unittest.main()

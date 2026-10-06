@@ -1,0 +1,711 @@
+{
+  "corpus": "PAISÀ",
+  "source": "https://www.corpusitaliano.it/en/contents/description.html",
+  "frequencySource": "https://clarin.eurac.edu/repository/xmlui/bitstream/handle/20.500.12124/3/lemma-WITHOUTnumberssymbols-frequencies-paisa.txt.gz",
+  "frequencySourceSha256": "da5173ee23a9545fd80f88adc7a3d2f2bdc2e07a4fbd199eeefba2fc48748540",
+  "license": "CC BY-NC-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+  "selection": "Next 100 unused high-frequency Italian lemmas after the previous deck’s last PAISÀ rank (268). Excludes tokens and article/inflection aliases found on either face of every existing card, plus the full noun/adjective/verb drill inventories; skips basic pronoun and inflected stessa entries. This is corpus-based study vocabulary, not a universal exact top-300 claim.",
+  "words": [
+    {
+      "lemma": "luogo",
+      "rank": 271,
+      "occurrences": 74768,
+      "front": "il luogo",
+      "english": "place"
+    },
+    {
+      "lemma": "numeroso",
+      "rank": 272,
+      "occurrences": 74755,
+      "front": "numeroso",
+      "english": "numerous"
+    },
+    {
+      "lemma": "governo",
+      "rank": 276,
+      "occurrences": 73723,
+      "front": "il governo",
+      "english": "government"
+    },
+    {
+      "lemma": "livello",
+      "rank": 277,
+      "occurrences": 73633,
+      "front": "il livello",
+      "english": "level"
+    },
+    {
+      "lemma": "rappresentare",
+      "rank": 280,
+      "occurrences": 71904,
+      "front": "rappresentare",
+      "english": "to represent"
+    },
+    {
+      "lemma": "società",
+      "rank": 281,
+      "occurrences": 71882,
+      "front": "la società",
+      "english": "society; company"
+    },
+    {
+      "lemma": "dedicare",
+      "rank": 282,
+      "occurrences": 71108,
+      "front": "dedicare",
+      "english": "to dedicate"
+    },
+    {
+      "lemma": "produzione",
+      "rank": 283,
+      "occurrences": 70926,
+      "front": "la produzione",
+      "english": "production"
+    },
+    {
+      "lemma": "ricordare",
+      "rank": 284,
+      "occurrences": 70847,
+      "front": "ricordare",
+      "english": "to remember"
+    },
+    {
+      "lemma": "programma",
+      "rank": 285,
+      "occurrences": 70234,
+      "front": "il programma",
+      "english": "programme; plan"
+    },
+    {
+      "lemma": "settembre",
+      "rank": 288,
+      "occurrences": 69243,
+      "front": "settembre",
+      "english": "September"
+    },
+    {
+      "lemma": "terzo",
+      "rank": 291,
+      "occurrences": 69051,
+      "front": "terzo",
+      "english": "third"
+    },
+    {
+      "lemma": "mezzo",
+      "rank": 294,
+      "occurrences": 68726,
+      "front": "il mezzo",
+      "english": "means; vehicle"
+    },
+    {
+      "lemma": "partecipare",
+      "rank": 295,
+      "occurrences": 68657,
+      "front": "partecipare",
+      "english": "to participate"
+    },
+    {
+      "lemma": "costituire",
+      "rank": 299,
+      "occurrences": 67570,
+      "front": "costituire",
+      "english": "to constitute; to form"
+    },
+    {
+      "lemma": "rete",
+      "rank": 303,
+      "occurrences": 66767,
+      "front": "la rete",
+      "english": "network; net"
+    },
+    {
+      "lemma": "avvenire",
+      "rank": 304,
+      "occurrences": 66720,
+      "front": "avvenire",
+      "english": "to happen"
+    },
+    {
+      "lemma": "posizione",
+      "rank": 305,
+      "occurrences": 66636,
+      "front": "la posizione",
+      "english": "position"
+    },
+    {
+      "lemma": "porre",
+      "rank": 306,
+      "occurrences": 66579,
+      "front": "porre",
+      "english": "to put; to set"
+    },
+    {
+      "lemma": "attraverso",
+      "rank": 310,
+      "occurrences": 66121,
+      "front": "attraverso",
+      "english": "through; across"
+    },
+    {
+      "lemma": "presenza",
+      "rank": 311,
+      "occurrences": 64956,
+      "front": "la presenza",
+      "english": "presence"
+    },
+    {
+      "lemma": "uso",
+      "rank": 313,
+      "occurrences": 64649,
+      "front": "l’uso",
+      "english": "use"
+    },
+    {
+      "lemma": "genere",
+      "rank": 314,
+      "occurrences": 64483,
+      "front": "il genere",
+      "english": "kind; gender"
+    },
+    {
+      "lemma": "grado",
+      "rank": 316,
+      "occurrences": 63638,
+      "front": "il grado",
+      "english": "degree; level"
+    },
+    {
+      "lemma": "esistere",
+      "rank": 318,
+      "occurrences": 63442,
+      "front": "esistere",
+      "english": "to exist"
+    },
+    {
+      "lemma": "epoca",
+      "rank": 319,
+      "occurrences": 63386,
+      "front": "l’epoca",
+      "english": "era; period"
+    },
+    {
+      "lemma": "piano",
+      "rank": 321,
+      "occurrences": 63118,
+      "front": "il piano",
+      "english": "plan; floor"
+    },
+    {
+      "lemma": "finale",
+      "rank": 325,
+      "occurrences": 62455,
+      "front": "finale",
+      "english": "final"
+    },
+    {
+      "lemma": "militare",
+      "rank": 327,
+      "occurrences": 62214,
+      "front": "militare",
+      "english": "military"
+    },
+    {
+      "lemma": "struttura",
+      "rank": 328,
+      "occurrences": 62171,
+      "front": "la struttura",
+      "english": "structure"
+    },
+    {
+      "lemma": "video",
+      "rank": 332,
+      "occurrences": 61388,
+      "front": "il video",
+      "english": "video"
+    },
+    {
+      "lemma": "campionato",
+      "rank": 333,
+      "occurrences": 61319,
+      "front": "il campionato",
+      "english": "championship"
+    },
+    {
+      "lemma": "corpo",
+      "rank": 334,
+      "occurrences": 61289,
+      "front": "il corpo",
+      "english": "body"
+    },
+    {
+      "lemma": "mondiale",
+      "rank": 335,
+      "occurrences": 61173,
+      "front": "mondiale",
+      "english": "worldwide; world"
+    },
+    {
+      "lemma": "commento",
+      "rank": 339,
+      "occurrences": 60514,
+      "front": "il commento",
+      "english": "comment"
+    },
+    {
+      "lemma": "valore",
+      "rank": 345,
+      "occurrences": 59612,
+      "front": "il valore",
+      "english": "value"
+    },
+    {
+      "lemma": "autore",
+      "rank": 346,
+      "occurrences": 59394,
+      "front": "l’autore",
+      "english": "author"
+    },
+    {
+      "lemma": "specie",
+      "rank": 348,
+      "occurrences": 59062,
+      "front": "la specie",
+      "english": "species; kind"
+    },
+    {
+      "lemma": "singolo",
+      "rank": 349,
+      "occurrences": 58985,
+      "front": "singolo",
+      "english": "single; individual"
+    },
+    {
+      "lemma": "internazionale",
+      "rank": 350,
+      "occurrences": 58979,
+      "front": "internazionale",
+      "english": "international"
+    },
+    {
+      "lemma": "canzone",
+      "rank": 351,
+      "occurrences": 58750,
+      "front": "la canzone",
+      "english": "song"
+    },
+    {
+      "lemma": "dirigere",
+      "rank": 356,
+      "occurrences": 58333,
+      "front": "dirigere",
+      "english": "to direct; to manage"
+    },
+    {
+      "lemma": "carriera",
+      "rank": 357,
+      "occurrences": 58121,
+      "front": "la carriera",
+      "english": "career"
+    },
+    {
+      "lemma": "milione",
+      "rank": 358,
+      "occurrences": 57860,
+      "front": "il milione",
+      "english": "million"
+    },
+    {
+      "lemma": "intero",
+      "rank": 359,
+      "occurrences": 57769,
+      "front": "intero",
+      "english": "whole; entire"
+    },
+    {
+      "lemma": "ricerca",
+      "rank": 360,
+      "occurrences": 57297,
+      "front": "la ricerca",
+      "english": "research; search"
+    },
+    {
+      "lemma": "popolazione",
+      "rank": 361,
+      "occurrences": 57267,
+      "front": "la popolazione",
+      "english": "population"
+    },
+    {
+      "lemma": "maggio",
+      "rank": 362,
+      "occurrences": 57201,
+      "front": "maggio",
+      "english": "May"
+    },
+    {
+      "lemma": "motore",
+      "rank": 363,
+      "occurrences": 57194,
+      "front": "il motore",
+      "english": "engine"
+    },
+    {
+      "lemma": "membro",
+      "rank": 368,
+      "occurrences": 56658,
+      "front": "il membro",
+      "english": "member"
+    },
+    {
+      "lemma": "definire",
+      "rank": 376,
+      "occurrences": 55919,
+      "front": "definire",
+      "english": "to define"
+    },
+    {
+      "lemma": "ricevere",
+      "rank": 378,
+      "occurrences": 55808,
+      "front": "ricevere",
+      "english": "to receive"
+    },
+    {
+      "lemma": "sito",
+      "rank": 379,
+      "occurrences": 55781,
+      "front": "il sito",
+      "english": "site"
+    },
+    {
+      "lemma": "modello",
+      "rank": 380,
+      "occurrences": 55664,
+      "front": "il modello",
+      "english": "model"
+    },
+    {
+      "lemma": "uccidere",
+      "rank": 381,
+      "occurrences": 55652,
+      "front": "uccidere",
+      "english": "to kill"
+    },
+    {
+      "lemma": "effetto",
+      "rank": 384,
+      "occurrences": 55422,
+      "front": "l’effetto",
+      "english": "effect"
+    },
+    {
+      "lemma": "indicare",
+      "rank": 385,
+      "occurrences": 55231,
+      "front": "indicare",
+      "english": "to indicate"
+    },
+    {
+      "lemma": "prevedere",
+      "rank": 386,
+      "occurrences": 55138,
+      "front": "prevedere",
+      "english": "to foresee; to predict"
+    },
+    {
+      "lemma": "basso",
+      "rank": 387,
+      "occurrences": 55044,
+      "front": "basso",
+      "english": "low; short"
+    },
+    {
+      "lemma": "mostrare",
+      "rank": 390,
+      "occurrences": 54769,
+      "front": "mostrare",
+      "english": "to show"
+    },
+    {
+      "lemma": "comporre",
+      "rank": 391,
+      "occurrences": 54409,
+      "front": "comporre",
+      "english": "to compose"
+    },
+    {
+      "lemma": "sede",
+      "rank": 393,
+      "occurrences": 54219,
+      "front": "la sede",
+      "english": "headquarters; location"
+    },
+    {
+      "lemma": "arte",
+      "rank": 394,
+      "occurrences": 54121,
+      "front": "l’arte",
+      "english": "art"
+    },
+    {
+      "lemma": "fondare",
+      "rank": 396,
+      "occurrences": 53812,
+      "front": "fondare",
+      "english": "to found; to establish"
+    },
+    {
+      "lemma": "agosto",
+      "rank": 398,
+      "occurrences": 53442,
+      "front": "agosto",
+      "english": "August"
+    },
+    {
+      "lemma": "funzione",
+      "rank": 400,
+      "occurrences": 53397,
+      "front": "la funzione",
+      "english": "function"
+    },
+    {
+      "lemma": "umano",
+      "rank": 401,
+      "occurrences": 53306,
+      "front": "umano",
+      "english": "human"
+    },
+    {
+      "lemma": "sviluppo",
+      "rank": 402,
+      "occurrences": 53071,
+      "front": "lo sviluppo",
+      "english": "development"
+    },
+    {
+      "lemma": "completo",
+      "rank": 403,
+      "occurrences": 53033,
+      "front": "completo",
+      "english": "complete"
+    },
+    {
+      "lemma": "giugno",
+      "rank": 404,
+      "occurrences": 52935,
+      "front": "giugno",
+      "english": "June"
+    },
+    {
+      "lemma": "cominciare",
+      "rank": 406,
+      "occurrences": 52763,
+      "front": "cominciare",
+      "english": "to begin"
+    },
+    {
+      "lemma": "sociale",
+      "rank": 407,
+      "occurrences": 52509,
+      "front": "sociale",
+      "english": "social"
+    },
+    {
+      "lemma": "luglio",
+      "rank": 408,
+      "occurrences": 52494,
+      "front": "luglio",
+      "english": "July"
+    },
+    {
+      "lemma": "svolgere",
+      "rank": 409,
+      "occurrences": 52434,
+      "front": "svolgere",
+      "english": "to carry out"
+    },
+    {
+      "lemma": "massimo",
+      "rank": 413,
+      "occurrences": 51747,
+      "front": "massimo",
+      "english": "maximum; greatest"
+    },
+    {
+      "lemma": "movimento",
+      "rank": 415,
+      "occurrences": 51120,
+      "front": "il movimento",
+      "english": "movement"
+    },
+    {
+      "lemma": "episodio",
+      "rank": 419,
+      "occurrences": 50924,
+      "front": "l’episodio",
+      "english": "episode"
+    },
+    {
+      "lemma": "economico",
+      "rank": 420,
+      "occurrences": 50879,
+      "front": "economico",
+      "english": "economic; inexpensive"
+    },
+    {
+      "lemma": "ottobre",
+      "rank": 421,
+      "occurrences": 50863,
+      "front": "ottobre",
+      "english": "October"
+    },
+    {
+      "lemma": "centrale",
+      "rank": 422,
+      "occurrences": 50748,
+      "front": "centrale",
+      "english": "central"
+    },
+    {
+      "lemma": "sviluppare",
+      "rank": 424,
+      "occurrences": 50724,
+      "front": "sviluppare",
+      "english": "to develop"
+    },
+    {
+      "lemma": "migliore",
+      "rank": 425,
+      "occurrences": 50662,
+      "front": "migliore",
+      "english": "better; best"
+    },
+    {
+      "lemma": "contenere",
+      "rank": 426,
+      "occurrences": 50544,
+      "front": "contenere",
+      "english": "to contain"
+    },
+    {
+      "lemma": "azione",
+      "rank": 427,
+      "occurrences": 50511,
+      "front": "l’azione",
+      "english": "action"
+    },
+    {
+      "lemma": "dicembre",
+      "rank": 428,
+      "occurrences": 50474,
+      "front": "dicembre",
+      "english": "December"
+    },
+    {
+      "lemma": "gennaio",
+      "rank": 432,
+      "occurrences": 50112,
+      "front": "gennaio",
+      "english": "January"
+    },
+    {
+      "lemma": "credere",
+      "rank": 433,
+      "occurrences": 50066,
+      "front": "credere",
+      "english": "to believe"
+    },
+    {
+      "lemma": "formare",
+      "rank": 434,
+      "occurrences": 50023,
+      "front": "formare",
+      "english": "to form"
+    },
+    {
+      "lemma": "età",
+      "rank": 436,
+      "occurrences": 49734,
+      "front": "l’età",
+      "english": "age"
+    },
+    {
+      "lemma": "famoso",
+      "rank": 439,
+      "occurrences": 49596,
+      "front": "famoso",
+      "english": "famous"
+    },
+    {
+      "lemma": "elemento",
+      "rank": 440,
+      "occurrences": 49559,
+      "front": "l’elemento",
+      "english": "element"
+    },
+    {
+      "lemma": "senso",
+      "rank": 441,
+      "occurrences": 49531,
+      "front": "il senso",
+      "english": "sense; meaning"
+    },
+    {
+      "lemma": "apparire",
+      "rank": 442,
+      "occurrences": 49477,
+      "front": "apparire",
+      "english": "to appear"
+    },
+    {
+      "lemma": "caratteristica",
+      "rank": 444,
+      "occurrences": 49456,
+      "front": "la caratteristica",
+      "english": "characteristic; feature"
+    },
+    {
+      "lemma": "ufficiale",
+      "rank": 446,
+      "occurrences": 49348,
+      "front": "ufficiale",
+      "english": "official"
+    },
+    {
+      "lemma": "prodotto",
+      "rank": 447,
+      "occurrences": 49328,
+      "front": "il prodotto",
+      "english": "product"
+    },
+    {
+      "lemma": "aprile",
+      "rank": 449,
+      "occurrences": 49233,
+      "front": "aprile",
+      "english": "April"
+    },
+    {
+      "lemma": "costruzione",
+      "rank": 450,
+      "occurrences": 49189,
+      "front": "la costruzione",
+      "english": "construction"
+    },
+    {
+      "lemma": "metà",
+      "rank": 451,
+      "occurrences": 49126,
+      "front": "la metà",
+      "english": "half"
+    },
+    {
+      "lemma": "cittadino",
+      "rank": 453,
+      "occurrences": 49033,
+      "front": "il cittadino",
+      "english": "citizen"
+    }
+  ]
+}

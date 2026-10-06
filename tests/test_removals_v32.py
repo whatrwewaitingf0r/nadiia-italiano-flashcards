@@ -18,11 +18,12 @@ def cards(html):
     return json.JSONDecoder().raw_decode(html.split('const ALL=', 1)[1])[0]
 
 def assert_retained(test, deck):
-    expected = json.loads((ROOT/'tests/removals-v32.json').read_text())
-    # v34 is append-only; the frozen v32 removal contract remains unchanged.
-    retained = [c for c in deck if c['group'] != '100 parole 2']
-    test.assertEqual(len(retained), expected['after'])
+    # v35 intentionally removes the 257 Lettura cards; all other v34 cards are frozen.
+    expected = json.loads((ROOT/'tests/streghe-v35-baseline.json').read_text())
+    retained = deck[:expected['count']]
+    test.assertEqual(len(retained), expected['count'])
     test.assertEqual(hashlib.sha256(json.dumps(retained, ensure_ascii=False, sort_keys=True).encode()).hexdigest(), expected['sha256'])
+    test.assertFalse(any(c.get('reading') for c in deck))
 
 class RemovalTests(unittest.TestCase):
     def test_only_requested_cards_removed(self):
@@ -39,11 +40,11 @@ class RemovalTests(unittest.TestCase):
 
     def test_hub_and_all_copies(self):
         hub = (ROOT/'index.html').read_text()
-        self.assertIn('content="v34"', hub)
-        self.assertIn('content="v34"', (ROOT/'italiano-flashcards.html').read_text())
+        self.assertIn('content="v35"', hub)
+        self.assertIn('content="v35"', (ROOT/'italiano-flashcards.html').read_text())
         for term in ['liam-passato.html', 'tab-liam"', 'tab-liam-lesson5', 'app-liam"', 'app-liam-lesson5']:
             self.assertNotIn(term, hub)
-        for key, name in [('carte', 'italiano-flashcards.html'), ('articoli', 'articoli-esercizi.html'), ('aggettivi', 'articoli-aggettivi.html'), ('verbi', 'verbi-tempi.html'), ('lettura', 'liam-lettura.html')]:
+        for key, name in [('carte', 'italiano-flashcards.html'), ('articoli', 'articoli-esercizi.html'), ('aggettivi', 'articoli-aggettivi.html'), ('verbi', 'verbi-tempi.html')]:
             self.assertIn('id="tab-'+key+'"', hub)
             embedded = re.search(r'<script type="application/json" id="app-'+key+r'">([\s\S]*?)</script>', hub)
             self.assertEqual(json.loads(embedded[1]), (ROOT/name).read_text())
@@ -52,21 +53,9 @@ class RemovalTests(unittest.TestCase):
             for name in ['index.html', 'italiano-flashcards.html']:
                 self.assertEqual((base/name).read_bytes(), (ROOT/name).read_bytes())
 
-    def test_reading_reintegration_does_not_restore_lesson5(self):
-        spec = importlib.util.spec_from_file_location('integrate_reading', ROOT/'scripts/integrate_lettura.py')
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-        with tempfile.TemporaryDirectory() as folder:
-            root = Path(folder)
-            module.ROOT, module.CANON = root, root/'canon'
-            for base in [root/'www', root/'anki-html', module.CANON, module.CANON/'www', root/'scripts']:
-                base.mkdir(parents=True, exist_ok=True)
-            for name in ['index.html', 'italiano-flashcards.html', 'liam-lettura.html', 'liam-lettura.json', 'scripts/lesson5-preserved.json']:
-                (root/name).write_bytes((ROOT/name).read_bytes())
-            if (ROOT/'liam-passato.html').exists():
-                (root/'liam-passato.html').write_bytes((ROOT/'liam-passato.html').read_bytes())
-            module.integrate()
-            assert_retained(self, cards((root/'italiano-flashcards.html').read_text()))
+    def test_deleted_reading_builders_cannot_resurrect_the_section(self):
+        for name in ['integrate_lettura.py', 'build_lettura.py', 'lettura-template.html']:
+            self.assertFalse((ROOT/'scripts'/name).exists())
 
     def test_vocabulary_reimport_accepts_retained_baseline(self):
         spec = importlib.util.spec_from_file_location('reimport_vocab', ROOT/'scripts/add_liam_vocab.py')

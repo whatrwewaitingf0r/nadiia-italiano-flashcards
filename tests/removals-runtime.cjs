@@ -13,28 +13,28 @@ function load(name){
  return{html,nodes,run,location};
 }
 const deck=load('italiano-flashcards.html');
-assert.equal(deck.run('ALL.length'),1332);
+assert.equal(deck.run('ALL.length'),1377);
 assert.equal(deck.run("ALL.filter(c=>['Grammatica · articoli','Grammatica · concordanza'].includes(c.group)||(c.tags||[]).includes('lesson5')).length"),0);
 assert.equal(deck.nodes.get('filter').value,'chiara-23-sett');
 assert.equal(deck.nodes.get('counter').textContent,'1 / 44');
-assert.equal(deck.run('groups.length'),17);
-for(const [key,count] of [['grammar-verbi',25],['lisa-irregolari',20],['lisa-irregolari-tempi',20],['liam-16',20],['ref-100-parole',100],['100parole-2',100],['vocabolario',539],['liam-liguria',53],['liam-lettura',257]]){
+assert.equal(deck.run('groups.length'),19);
+for(const [key,count] of [['grammar-verbi',25],['lisa-irregolari',20],['lisa-irregolari-tempi',20],['liam-16',20],['ref-100-parole',100],['100parole-2',100],['vocabolario',539],['liam-liguria',53],['100parole-3',100],['streghe-it-en',101],['streghe-en-it',101]]){
  deck.nodes.get('filter').value=key;deck.nodes.get('filter').onchange();assert.equal(deck.run('pool.length'),count,key);
 }
 deck.run('pool=ALL.slice();index=0');
-for(let i=0;i<1332;i++){
- deck.run(`index=${i};render()`);
- assert.equal(deck.nodes.get('frontWord').textContent,deck.run("pool[index].kind==='reading'?pool[index].sourceText:pool[index].it"));
- assert.equal(deck.nodes.get('backWord').textContent,deck.run('pool[index].other'));
+for(let i=0;i<1377;i++){
+ deck.run(`index=${i};reverse=false;render()`);
+ assert.equal(deck.nodes.get('frontWord').textContent,deck.run("pool[index].direction==='EN→IT'?pool[index].other:pool[index].it"));
+ assert.equal(deck.nodes.get('backWord').textContent,deck.run("pool[index].direction==='EN→IT'?pool[index].it:pool[index].other"));
  assert.equal(deck.nodes.get('scene').classList.values.has('rule-card'),deck.run("pool[index].group==='Grammatica · verbi'"));
 }
 const hub=load('index.html');
-assert.equal(hub.run('JSON.stringify(keys)'),JSON.stringify(['carte','parole-2','articoli','aggettivi','verbi','lettura']));
+assert.equal(hub.run('JSON.stringify(keys)'),JSON.stringify(['carte','articoli','aggettivi','verbi']));
 assert.equal(hub.location.hash,'#carte');
 assert(!hub.html.includes('liam-passato.html'));
-for(const key of ['carte','parole-2','articoli','aggettivi','verbi','lettura']){
+for(const key of ['carte','articoli','aggettivi','verbi']){
  hub.nodes.get('tab-'+key).events.click();assert.equal(hub.location.hash,'#'+key);assert.equal(hub.nodes.get('panel-'+key).hidden,false);assert(hub.nodes.get('frame-'+key).srcdoc.includes('<main'));
 }
-hub.nodes.get('tab-carte').events.keydown({key:'End',preventDefault(){}});assert.equal(hub.location.hash,'#lettura');
-hub.nodes.get('tab-lettura').events.keydown({key:'Home',preventDefault(){}});assert.equal(hub.location.hash,'#carte');
-console.log('PASS: 1332 real card renders, retained filters/counts, six hub routes, removed-hash fallback, keyboard navigation (DOM stub; not browser QA).');
+hub.nodes.get('tab-carte').events.keydown({key:'End',preventDefault(){}});assert.equal(hub.location.hash,'#verbi');
+hub.nodes.get('tab-verbi').events.keydown({key:'Home',preventDefault(){}});assert.equal(hub.location.hash,'#carte');
+console.log('PASS: 1377 real card renders, retained filters/counts, four hub routes, removed-hash fallback, keyboard navigation (DOM stub; not browser QA).');

@@ -7,9 +7,10 @@ const assert=require('node:assert/strict'),path=require('node:path');
   const page=await browser.newPage({viewport:{width:375,height:812},isMobile:true,hasTouch:true});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   const url=process.env.DIRECTION_URL||'file://'+path.resolve(__dirname,'../index.html');
-  await page.goto(url+'#parole-2');
-  await page.locator('#loading-parole-2').waitFor({state:'hidden'});
-  const app=await (await page.locator('#frame-parole-2').elementHandle()).contentFrame();
+  await page.goto(url+'#carte');
+  await page.locator('#loading-carte').waitFor({state:'hidden'});
+  const app=await (await page.locator('#frame-carte').elementHandle()).contentFrame();
+  await app.locator('#filter').selectOption('100parole-2');
   await app.evaluate(()=>{index=pool.findIndex(c=>c.it==='politico');if(index<0)throw Error('politico missing');render();});
   const button=app.locator('#direction');
   console.log('Before tap:',await button.evaluate(el=>({disabled:el.disabled,text:el.innerText,width:el.getBoundingClientRect().width,height:el.getBoundingClientRect().height,pointerEvents:getComputedStyle(el).pointerEvents})));
@@ -36,14 +37,14 @@ const assert=require('node:assert/strict'),path=require('node:path');
   await app.evaluate(()=>lastDirectionTouch=0);
   await button.click();assert.equal(await app.locator('#dirText').innerText(),'IT→EN');
   await app.locator('#flip').tap();assert.equal(await app.locator('#scene').evaluate(el=>el.classList.contains('flipped')),true);
-  for(const deck of ['lisa-irregolari','chiara-23-sett','grammar-verbi','liam-lettura']){
+  for(const deck of ['lisa-irregolari','chiara-23-sett','grammar-verbi']){
    await app.locator('#filter').selectOption(deck);assert.equal(await button.isDisabled(),true,deck+' retains its structured-card direction lock');
   }
   await app.locator('#filter').selectOption('100parole-2');assert.equal(await button.isEnabled(),true);
   await button.tap();assert.equal(await app.locator('#dirText').innerText(),'EN→IT');
-  await page.locator('#tab-carte').tap();await page.locator('#tab-parole-2').tap();
+  await page.locator('#tab-verbi').tap();await page.locator('#tab-carte').tap();
   assert.equal(await app.locator('#dirText').innerText(),'EN→IT','Hub preserves reversed deck state');
-  assert.equal(await app.evaluate(()=>ALL.length),1332);
+  assert.equal(await app.evaluate(()=>ALL.length),1377);
   assert.equal(await app.evaluate(()=>ALL.filter(c=>c.group==='100 parole 2').length),100);
   assert.equal(await app.evaluate(()=>ALL.filter(c=>['Grammatica · articoli','Grammatica · concordanza'].includes(c.group)||(c.tags||[]).includes('lesson5')).length),0);
   assert.deepEqual(errors,[]);

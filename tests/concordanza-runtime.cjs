@@ -37,7 +37,7 @@ for(const mode of ['a','b']){
  }
  assert.equal(nodes.phrase.textContent,'Sessione finita.');assert.equal(nodes.progress.style.width,'100%');assert.equal(nodes.next.disabled,true);
 }
-const pack=load(root+'/italiano-flashcards.html');assert.equal(pack.run('ALL.length'),1332);assert.equal(pack.run('ALL.filter(c=>matches(c,"grammar-concordanza")).length'),0);
+const pack=load(root+'/italiano-flashcards.html');assert.equal(pack.run('ALL.length'),1377);assert.equal(pack.run('ALL.filter(c=>matches(c,"grammar-concordanza")).length'),0);
 assert.ok(pack.run('groups.findIndex(g=>g[0]==="chiara-23-sett")<groups.findIndex(g=>g[0]==="lisa-irregolari")'));
 pack.nodes.filter.value='grammar-verbi';pack.nodes.filter.onchange();assert.equal(pack.nodes.direction.disabled,true);assert.equal(pack.nodes.dirText.textContent,'IT→EN');
 console.log('PASS: noun inventory, irregular agreement, all A/B exercises, hints, retry/score, apostrophes, shuffle/finish, grammar filter/direction.');

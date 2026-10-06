@@ -41,11 +41,11 @@ class LiamVocabTests(unittest.TestCase):
         repeated, _ = importer.append_missing(merged, candidates)
         self.assertEqual(repeated, merged)
 
-    def test_missing_reading_vocabulary_is_present(self):
+    def test_imported_vocabulary_survives_reading_removal(self):
         deck = cards((ROOT / 'italiano-flashcards.html').read_text())
         fronts = set().union(*(aliases(c['it']) for c in deck))
         for word in ['ghiro', 'formula magica', 'guaritrice', 'strix',
-                     'strigoi', 'lamia', 'yamauba', 'sorcières', 'hexen',
+                     'hexen',
                      'matteuccia di todi', 'stregoneria']:
             self.assertTrue(word in fronts, f'Missing vocabulary: {word}')
 

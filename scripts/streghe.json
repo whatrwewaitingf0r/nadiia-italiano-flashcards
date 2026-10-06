@@ -1,0 +1,515 @@
+{
+  "title": "Streghe",
+  "directions": [
+    "IT→EN",
+    "EN→IT"
+  ],
+  "words": [
+    {
+      "it": "la scopa volante",
+      "en": "flying broom",
+      "source": "text-required"
+    },
+    {
+      "it": "la guaritrice",
+      "en": "healer",
+      "source": "text-required"
+    },
+    {
+      "it": "la levatrice",
+      "en": "midwife",
+      "source": "text-required"
+    },
+    {
+      "it": "la partoriente",
+      "en": "woman in labour",
+      "source": "text-required"
+    },
+    {
+      "it": "la stregoneria",
+      "en": "witchcraft",
+      "source": "text-required"
+    },
+    {
+      "it": "il diavolo",
+      "en": "devil",
+      "source": "text-required"
+    },
+    {
+      "it": "il Quattrocento",
+      "en": "15th century",
+      "source": "text-required"
+    },
+    {
+      "it": "il Seicento",
+      "en": "17th century",
+      "source": "text-required"
+    },
+    {
+      "it": "il cornicello",
+      "en": "little horn",
+      "source": "text-required"
+    },
+    {
+      "it": "la spalla sinistra",
+      "en": "left shoulder",
+      "source": "text-required"
+    },
+    {
+      "it": "il numero diciassette",
+      "en": "seventeen",
+      "source": "text-required"
+    },
+    {
+      "it": "VIXI",
+      "en": "I have lived",
+      "source": "text-required"
+    },
+    {
+      "it": "la strega",
+      "en": "witch",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la magia",
+      "en": "magic",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "l’erba medicinale",
+      "en": "medicinal herb",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il fungo",
+      "en": "mushroom",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la luna piena",
+      "en": "full moon",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il rogo",
+      "en": "stake / bonfire",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il processo",
+      "en": "trial",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la superstizione",
+      "en": "superstition",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la leggenda",
+      "en": "legend",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il villaggio",
+      "en": "village",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il bosco",
+      "en": "forest",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la scopa",
+      "en": "broom",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il regalo",
+      "en": "gift",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "l’anziana",
+      "en": "elderly woman",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il noce",
+      "en": "walnut tree",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il sabba",
+      "en": "witches’ gathering",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la fata",
+      "en": "fairy",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "l’incantesimo",
+      "en": "spell",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la leggenda popolare",
+      "en": "folk legend",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il gufo",
+      "en": "owl",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il folclore",
+      "en": "folklore",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il crepuscolo",
+      "en": "twilight",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il falò",
+      "en": "bonfire",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il testimone",
+      "en": "witness",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il cavaliere",
+      "en": "horseman",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la cronaca",
+      "en": "chronicle",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il tribunale",
+      "en": "court",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il giudice",
+      "en": "judge",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "l’accusa",
+      "en": "accusation",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la difesa",
+      "en": "defense",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la paura",
+      "en": "fear",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "l’eresia",
+      "en": "heresy",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il carcere",
+      "en": "prison",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la confessione",
+      "en": "confession",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la testimonianza",
+      "en": "testimony",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il malocchio",
+      "en": "evil eye",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il corno rosso",
+      "en": "red horn amulet",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il sale",
+      "en": "salt",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "lo specchio",
+      "en": "mirror",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il gatto nero",
+      "en": "black cat",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il portafortuna",
+      "en": "lucky charm",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "incrociare le dita",
+      "en": "to cross one’s fingers",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la credenza popolare",
+      "en": "popular belief",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il pane",
+      "en": "bread",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il destino",
+      "en": "destiny",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "l’unguento",
+      "en": "ointment",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il caprone",
+      "en": "billy goat",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la formula magica",
+      "en": "magic formula",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "l’accusato",
+      "en": "accused person",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il manoscritto",
+      "en": "manuscript",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la soglia",
+      "en": "threshold",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il letto",
+      "en": "bed",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la paralisi",
+      "en": "paralysis",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "l’incubo",
+      "en": "nightmare",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la serratura",
+      "en": "keyhole / lock",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la porta",
+      "en": "door",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "l’impronta",
+      "en": "footprint / imprint",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il buio",
+      "en": "darkness",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il gatto",
+      "en": "cat",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il lupo",
+      "en": "wolf",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la nebbia",
+      "en": "fog",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il raccolto",
+      "en": "harvest",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il latte",
+      "en": "milk",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il bestiame",
+      "en": "livestock",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la maledizione",
+      "en": "curse",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il camino",
+      "en": "fireplace / chimney",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il borgo",
+      "en": "small historic town",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la carestia",
+      "en": "famine",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il magistrato",
+      "en": "magistrate",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la prigione",
+      "en": "prison",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la diceria",
+      "en": "rumour",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il sospetto",
+      "en": "suspicion",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "il verbale",
+      "en": "official record",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la folla",
+      "en": "crowd",
+      "source": "requested-vocabulary"
+    },
+    {
+      "it": "la janara",
+      "en": "janara (Campania witch)",
+      "source": "themed-extra"
+    },
+    {
+      "it": "la masca",
+      "en": "masca (Piedmont witch)",
+      "source": "themed-extra"
+    },
+    {
+      "it": "il noce di Benevento",
+      "en": "walnut tree of Benevento",
+      "source": "themed-extra"
+    },
+    {
+      "it": "l’inquisizione",
+      "en": "Inquisition",
+      "source": "themed-extra"
+    },
+    {
+      "it": "il Malleus Maleficarum",
+      "en": "Hammer of Witches",
+      "source": "themed-extra"
+    },
+    {
+      "it": "la caccia alle streghe",
+      "en": "witch hunt",
+      "source": "themed-extra"
+    },
+    {
+      "it": "il patto",
+      "en": "pact",
+      "source": "themed-extra"
+    },
+    {
+      "it": "il sabba notturno",
+      "en": "night sabbath",
+      "source": "themed-extra"
+    },
+    {
+      "it": "l’unguento volante",
+      "en": "flying ointment",
+      "source": "themed-extra"
+    },
+    {
+      "it": "la veglia",
+      "en": "vigil",
+      "source": "themed-extra"
+    },
+    {
+      "it": "il sortilegio",
+      "en": "hex",
+      "source": "themed-extra"
+    },
+    {
+      "it": "il filtro d’amore",
+      "en": "love potion",
+      "source": "themed-extra"
+    },
+    {
+      "it": "la luna nera",
+      "en": "dark moon",
+      "source": "themed-extra"
+    },
+    {
+      "it": "il cimitero",
+      "en": "cemetery",
+      "source": "themed-extra"
+    },
+    {
+      "it": "la veggente",
+      "en": "seer",
+      "source": "themed-extra"
+    }
+  ],
+  "sourcePolicy": "Required vocabulary and themed additions requested by the learner. Italian and English only; Latin titles preserved."
+}

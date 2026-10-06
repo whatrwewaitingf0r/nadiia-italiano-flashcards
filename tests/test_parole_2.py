@@ -8,8 +8,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CANON = Path('/Users/it/.jaine/workspace/memory/health/nadiia/italian/anki-html')
 GROUP = '100 parole 2'
-BASELINE_COUNT = 1232
-BASELINE_SHA = 'f95492ab959ca699c724620cf217575c2febab2dc922d96fcac876143b279dbd'
+BASELINE_COUNT = 975
+BASELINE_SHA = '334c2ba5ac84f8176cd418331eea026421b090db0068e93972e2256f8180f11d'
 
 
 def aliases(text):
@@ -28,8 +28,8 @@ class Parole2Tests(unittest.TestCase):
 
     def test_exactly_100_new_words_without_touching_any_v32_card(self):
         self.assertEqual(len(self.new), 100)
-        self.assertEqual(len(self.deck), 1332)
-        retained = [c for c in self.deck if c['group'] != GROUP]
+        self.assertEqual(len(self.deck), 1377)
+        retained = [c for c in self.deck if c['group'] not in {GROUP, '100 parole 3', 'Streghe · IT→EN', 'Streghe · EN→IT'}]
         self.assertEqual(len(retained), BASELINE_COUNT)
         digest = hashlib.sha256(json.dumps(retained, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
         self.assertEqual(digest, BASELINE_SHA)
@@ -58,18 +58,16 @@ class Parole2Tests(unittest.TestCase):
         self.assertLess(max(ranks), 400)
         self.assertEqual(ranks, sorted(ranks))
 
-    def test_dedicated_hub_tab_and_synchronized_v34_copies(self):
+    def test_no_duplicate_hub_tab_and_synchronized_v35_copies(self):
         hub = (ROOT/'index.html').read_text()
-        self.assertIn('id="tab-parole-2"', hub)
-        self.assertIn('data-app="parole-2">100 parole 2</button>', hub)
-        self.assertLess(hub.index('id="tab-carte"'), hub.index('id="tab-parole-2"'))
-        self.assertIn('id="panel-parole-2"', hub)
-        self.assertIn('id="frame-parole-2"', hub)
+        for term in ['tab-parole-2', 'panel-parole-2', 'frame-parole-2']:
+            self.assertNotIn(term, hub)
+        self.assertIn("['100parole-2','100 parole 2 · Altre 100']", self.html)
         for base in [ROOT, ROOT/'www', ROOT/'anki-html', CANON, CANON/'www']:
             for name in ['index.html', 'italiano-flashcards.html']:
                 content = (base/name).read_text()
                 self.assertEqual(content, (ROOT/name).read_text())
-                self.assertIn('content="v34"', content)
+                self.assertIn('content="v35"', content)
                 self.assertNotIn('?v=32', content)
         payload = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)
         self.assertEqual(json.loads(payload[1]), self.html)

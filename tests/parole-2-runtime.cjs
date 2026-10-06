@@ -44,7 +44,7 @@ assert.equal(deck.run("ALL.filter(c=>['Grammatica · articoli','Grammatica · co
 const standalone=load(cardHTML,'#100parole-2');assert.equal(standalone.nodes.get('counter').textContent,'1 / 100');
 const hub=load(fs.readFileSync(path.join(root,'index.html'),'utf8'),'#liam-lesson5');
 assert.equal(hub.location.hash,'#carte');
-assert.equal(hub.run('JSON.stringify(keys)'),JSON.stringify(['carte','parole-2','articoli','aggettivi','verbi','lettura']));
+assert.equal(hub.run('JSON.stringify(keys)'),JSON.stringify(['carte','articoli','aggettivi','verbi']));
 const frames=new Map();
 function activate(key){
  hub.nodes.get('tab-'+key).events.click();
@@ -59,10 +59,12 @@ const carte=activate('carte');assert.equal(carte.nodes.get('filter').value,'chia
 assert(carte.nodes.get('filter').options[0].value.startsWith('chiara-'));
 carte.nodes.get('filter').value='lisa-irregolari';carte.nodes.get('filter').onchange();carte.nodes.get('flip').onclick();
 const lisaFront=carte.nodes.get('frontWord').textContent;
-const more=activate('parole-2');assert.equal(more.nodes.get('filter').value,'100parole-2');assert.equal(more.nodes.get('counter').textContent,'1 / 100');assert.equal(more.nodes.get('direction').disabled,false);
-assert(more.document.head.children[0].textContent.includes('backface-visibility:visible'));
-activate('carte');assert.equal(carte.nodes.get('frontWord').textContent,lisaFront);assert.equal(carte.nodes.get('filter').value,'lisa-irregolari');assert(carte.nodes.get('scene').classList.values.has('flipped'));
-hub.nodes.get('tab-carte').events.keydown({key:'ArrowRight',preventDefault(){}});assert.equal(hub.location.hash,'#parole-2');
-hub.nodes.get('tab-parole-2').events.keydown({key:'End',preventDefault(){}});assert.equal(hub.location.hash,'#lettura');
-hub.nodes.get('tab-lettura').events.keydown({key:'Home',preventDefault(){}});assert.equal(hub.location.hash,'#carte');
-console.log('PASS: 100 new IT→EN renders, independent hub tab, original 100/Lisa isolation, Chiara-first default, iframe load/filter and keyboard behavior. DOM stub; not browser visual QA.');
+// No duplicate top entry point; the full second deck remains inside Carte.
+carte.nodes.get('filter').value='100parole-2';carte.nodes.get('filter').onchange();
+assert.equal(carte.nodes.get('counter').textContent,'1 / 100');assert.equal(carte.nodes.get('direction').disabled,false);
+assert(carte.document.head.children[0].textContent.includes('backface-visibility:visible'));
+assert(!hub.nodes.has('tab-parole-2'));
+hub.nodes.get('tab-carte').events.keydown({key:'ArrowRight',preventDefault(){}});assert.equal(hub.location.hash,'#articoli');
+hub.nodes.get('tab-articoli').events.keydown({key:'End',preventDefault(){}});assert.equal(hub.location.hash,'#verbi');
+hub.nodes.get('tab-verbi').events.keydown({key:'Home',preventDefault(){}});assert.equal(hub.location.hash,'#carte');
+console.log('PASS: 100 second-deck renders and directions in Carte, no duplicate top tab, Chiara-first, keyboard navigation (DOM stub).');
