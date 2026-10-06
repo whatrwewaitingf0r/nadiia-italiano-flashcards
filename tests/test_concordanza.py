@@ -21,5 +21,5 @@ class ConcordanzaTests(unittest.TestCase):
   self.assertFalse(re.search('[\u0400-\u04ff]',h))
   for p in [ROOT/'www/italiano-flashcards.html',ROOT/'anki-html/italiano-flashcards.html',CANON/'italiano-flashcards.html',CANON/'www/italiano-flashcards.html']:self.assertEqual(h,p.read_text())
   self.assertIn('.scene.rule-card{min-height:560px}',h);self.assertIn('.scene.rule-card{min-height:640px}',h)
-  self.assertIn('articoli-aggettivi.html?v=36',h);self.assertIn('articoli-esercizi.html?v=36',h)
+  self.assertIn('articoli-aggettivi.html?v=37',h);self.assertIn('articoli-esercizi.html?v=37',h)
 if __name__=='__main__':unittest.main()

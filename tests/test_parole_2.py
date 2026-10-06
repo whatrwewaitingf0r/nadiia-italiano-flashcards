@@ -28,8 +28,8 @@ class Parole2Tests(unittest.TestCase):
 
     def test_exactly_100_new_words_without_touching_any_v32_card(self):
         self.assertEqual(len(self.new), 100)
-        self.assertEqual(len(self.deck), 1377)
-        retained = [c for c in self.deck if c['group'] not in {GROUP, '100 parole 3', 'Streghe · IT→EN', 'Streghe · EN→IT'}]
+        self.assertEqual(len(self.deck), 1276)
+        retained = [c for c in self.deck if c['group'] not in {GROUP, '100 parole 3', 'Streghe'}]
         self.assertEqual(len(retained), BASELINE_COUNT)
         digest = hashlib.sha256(json.dumps(retained, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
         self.assertEqual(digest, BASELINE_SHA)
@@ -67,7 +67,7 @@ class Parole2Tests(unittest.TestCase):
             for name in ['index.html', 'italiano-flashcards.html']:
                 content = (base/name).read_text()
                 self.assertEqual(content, (ROOT/name).read_text())
-                self.assertIn('content="v36"', content)
+                self.assertIn('content="v37"', content)
                 self.assertNotIn('?v=32', content)
         payload = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)
         self.assertEqual(json.loads(payload[1]), self.html)
