@@ -9,6 +9,7 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
   await page.goto(url+'#lettura');
   assert.deepEqual(await page.locator('[role=tab]').evaluateAll(ns=>ns.map(n=>n.dataset.app)),['carte','articoli','aggettivi','verbi']);
   assert.equal(await page.locator('#tab-lettura,#panel-lettura,#tab-parole-2,#panel-parole-2').count(),0);
+  assert.equal(await page.locator('.tabs').evaluate(el=>el.scrollWidth<=el.clientWidth),true,'All four tabs must fit on mobile without clipping');
   assert.equal(await page.locator('#tab-carte').getAttribute('aria-selected'),'true');
   await page.locator('#loading-carte').waitFor({state:'hidden'});
   const frame=await (await page.locator('#frame-carte').elementHandle()).contentFrame();
