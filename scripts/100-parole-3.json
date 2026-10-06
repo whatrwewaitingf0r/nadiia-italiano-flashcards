@@ -5,7 +5,7 @@
   "frequencySourceSha256": "da5173ee23a9545fd80f88adc7a3d2f2bdc2e07a4fbd199eeefba2fc48748540",
   "license": "CC BY-NC-SA 3.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
-  "selection": "Next 100 unused high-frequency Italian lemmas after the previous deck’s last PAISÀ rank (268). Excludes tokens and article/inflection aliases found on either face of every existing card, plus the full noun/adjective/verb drill inventories; skips basic pronoun and inflected stessa entries. This is corpus-based study vocabulary, not a universal exact top-300 claim.",
+  "selection": "Next 100 unused high-frequency Italian lemmas after the previous deck’s last PAISÀ rank (268). Excludes tokens and article/inflection aliases found on either face of every existing card, plus the full noun/adjective/verb drill inventories; skips basic pronoun and inflected stessa entries. This is corpus-based study vocabulary, not a universal exact top-300 claim. Manual conjugation/reflexive normalization also excludes ricordarsi/ricordare, esistono/esistere, formando/formare and umana/umano; retained 100 terms are sorted by corpus rank. Also conservatively excludes migliore because buono/buona are already studied.",
   "words": [
     {
       "lemma": "luogo",
@@ -62,13 +62,6 @@
       "occurrences": 70926,
       "front": "la produzione",
       "english": "production"
-    },
-    {
-      "lemma": "ricordare",
-      "rank": 284,
-      "occurrences": 70847,
-      "front": "ricordare",
-      "english": "to remember"
     },
     {
       "lemma": "programma",
@@ -174,13 +167,6 @@
       "occurrences": 63638,
       "front": "il grado",
       "english": "degree; level"
-    },
-    {
-      "lemma": "esistere",
-      "rank": 318,
-      "occurrences": 63442,
-      "front": "esistere",
-      "english": "to exist"
     },
     {
       "lemma": "epoca",
@@ -470,13 +456,6 @@
       "english": "function"
     },
     {
-      "lemma": "umano",
-      "rank": 401,
-      "occurrences": 53306,
-      "front": "umano",
-      "english": "human"
-    },
-    {
       "lemma": "sviluppo",
       "rank": 402,
       "occurrences": 53071,
@@ -575,13 +554,6 @@
       "english": "to develop"
     },
     {
-      "lemma": "migliore",
-      "rank": 425,
-      "occurrences": 50662,
-      "front": "migliore",
-      "english": "better; best"
-    },
-    {
       "lemma": "contenere",
       "rank": 426,
       "occurrences": 50544,
@@ -615,13 +587,6 @@
       "occurrences": 50066,
       "front": "credere",
       "english": "to believe"
-    },
-    {
-      "lemma": "formare",
-      "rank": 434,
-      "occurrences": 50023,
-      "front": "formare",
-      "english": "to form"
     },
     {
       "lemma": "età",
@@ -706,6 +671,77 @@
       "occurrences": 49033,
       "front": "il cittadino",
       "english": "citizen"
+    },
+    {
+      "lemma": "occupare",
+      "rank": 455,
+      "occurrences": 48794,
+      "front": "occupare",
+      "english": "to occupy"
+    },
+    {
+      "lemma": "offrire",
+      "rank": 457,
+      "occurrences": 48597,
+      "front": "offrire",
+      "english": "to offer"
+    },
+    {
+      "lemma": "legare",
+      "rank": 458,
+      "occurrences": 48493,
+      "front": "legare",
+      "english": "to tie; to bind"
+    },
+    {
+      "lemma": "controllo",
+      "rank": 461,
+      "occurrences": 48286,
+      "front": "il controllo",
+      "english": "control; check"
+    },
+    {
+      "lemma": "stile",
+      "rank": 462,
+      "occurrences": 48277,
+      "front": "lo stile",
+      "english": "style"
+    }
+  ],
+  "excludedInflectionAliases": [
+    {
+      "lemma": "umano",
+      "existingForms": [
+        "umana"
+      ]
+    },
+    {
+      "lemma": "ricordare",
+      "existingForms": [
+        "ricordarsi"
+      ]
+    },
+    {
+      "lemma": "esistere",
+      "existingForms": [
+        "esistono"
+      ]
+    },
+    {
+      "lemma": "formare",
+      "existingForms": [
+        "formando",
+        "forma",
+        "formano"
+      ]
+    },
+    {
+      "lemma": "migliore",
+      "existingForms": [
+        "buono",
+        "buona"
+      ],
+      "reason": "Conservative exclusion of the irregular comparative family."
     }
   ]
 }
