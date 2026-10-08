@@ -1,4 +1,4 @@
-"""v37: one Streghe deck, reversed only with the shared direction toggle."""
+"""v38: one Streghe deck, reversed only with the shared direction toggle."""
 import hashlib,json,re,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -35,13 +35,13 @@ class StregheTests(unittest.TestCase):
   self.assertIn("'streghe':'Streghe'",self.h)
   self.assertNotRegex(self.h,r'Streghe · (?:IT→EN|EN→IT)|streghe-(?:it-en|en-it)')
  def test_all_unrelated_cards_preserved(self):
-  unrelated=[c for c in self.cards if c['group'] not in GROUPS and c['group']!='100 parole 3']
+  unrelated=[c for c in self.cards if c['group'] not in GROUPS and c['group'] not in {'100 parole 3', 'Verbi · forme'}]
   frozen=json.loads((ROOT/'tests/streghe-v35-baseline.json').read_text())
   self.assertEqual(len(unrelated),frozen['count'])
   self.assertEqual(hashlib.sha256(json.dumps(unrelated,ensure_ascii=False,sort_keys=True).encode()).hexdigest(),frozen['sha256'])
  def test_version_embedded_apps_and_copies(self):
   h=(ROOT/'index.html').read_text()
-  self.assertIn('content="v37"',h);self.assertIn('content="v37"',self.h)
+  self.assertIn('content="v38"',h);self.assertIn('content="v38"',self.h)
   self.assertEqual(re.findall(r'data-app="([^"]+)">',h),['carte','articoli','aggettivi','verbi'])
   m=re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>',h)
   self.assertEqual(json.loads(m[1]),self.h)

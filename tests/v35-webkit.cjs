@@ -17,7 +17,7 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
   const options=await frame.locator('#filter option').evaluateAll(os=>os.map(o=>o.value));
   assert(options[0].startsWith('chiara-'));assert(!options.includes('liam-lettura'));
   assert.deepEqual(await frame.locator('#filter option').evaluateAll(os=>os.filter(o=>o.value.startsWith('streghe')).map(o=>({value:o.value,label:o.textContent}))),[{value:'streghe',label:'Streghe'}]);
-  assert.equal(await frame.evaluate(()=>ALL.length),1276);
+  assert.equal(await frame.evaluate(()=>ALL.length),1444);
   assert.equal(await frame.evaluate(()=>ALL.filter(c=>c.reading).length),0);
   let checked=0;
   for(const [key,count] of [['streghe',101],['100parole-3',100]]){
@@ -57,10 +57,10 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
   await frame.locator('#filter').selectOption('100parole-2');assert.equal(await frame.locator('#counter').innerText(),'1 / 100');assert.equal(await frame.locator('#direction').isEnabled(),true);
   await frame.locator('#filter').selectOption('ref-100-parole');assert.equal(await frame.locator('#counter').innerText(),'1 / 100');
   await frame.locator('#filter').selectOption('streghe');
-  await page.screenshot({path:path.resolve(__dirname,'../.aitemp/streghe-v37/mobile.png'),animations:'disabled'});
+  await page.screenshot({path:path.resolve(__dirname,'../.aitemp/streghe-v38/mobile.png'),animations:'disabled'});
   await page.setViewportSize({width:1040,height:850});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
-  await page.screenshot({path:path.resolve(__dirname,'../.aitemp/streghe-v37/desktop.png'),animations:'disabled'});
+  await page.screenshot({path:path.resolve(__dirname,'../.aitemp/streghe-v38/desktop.png'),animations:'disabled'});
   for(const old of ['lettura','parole-2']){
    await page.evaluate(key=>location.hash=key,old);assert.equal(await page.locator('#tab-carte').getAttribute('aria-selected'),'true');
   }
