@@ -47,7 +47,7 @@ class VerbFormTests(unittest.TestCase):
             self.assertEqual(forms[front], back)
 
     def test_old_1276_cards_are_unchanged(self):
-        old = [c for c in self.cards if c['group'] != GROUP]
+        old = [c for c in self.cards if c['group'] not in {GROUP, '7 ott'}]
         self.assertEqual(len(old), 1276)
         self.assertEqual(hashlib.sha256(json.dumps(old, ensure_ascii=False, sort_keys=True).encode()).hexdigest(),
                          '1383a6ac2fb27014e599ca2f5117addbc57d3d153de11478f58407891ca64f0a')
@@ -62,14 +62,14 @@ class VerbFormTests(unittest.TestCase):
         self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi'])
         self.assertNotRegex(hub + self.html, r'(?i)lettura|verbi-forme-(?:it-en|en-it)')
 
-    def test_v38_embedded_app_and_local_copies(self):
+    def test_v39_embedded_app_and_local_copies(self):
         hub = (ROOT / 'index.html').read_text()
         embedded = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(embedded), self.html)
         for name in ['index.html', 'italiano-flashcards.html']:
             content = (ROOT / name).read_bytes()
-            self.assertIn(b'content="v38"', content)
-            self.assertNotRegex(content.decode(), r'\?v=(?!38\b)\d+')
+            self.assertIn(b'content="v39"', content)
+            self.assertNotRegex(content.decode(), r'\?v=(?!39\b)\d+')
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / name).read_bytes(), content)
 

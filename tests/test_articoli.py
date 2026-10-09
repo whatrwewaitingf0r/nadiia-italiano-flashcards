@@ -23,8 +23,8 @@ class ArticoliTests(unittest.TestCase):
         self.assertNotIn("'grammar-articoli':'Grammatica · articoli'", html)
         self.assertLess(html.index("['chiara-23-sett'"), html.index("['lisa-irregolari'"))
         self.assertIn('isGrammar', html)
-        self.assertIn('v38', html)
-        self.assertIn('articoli-esercizi.html?v=38', html)
+        self.assertIn('v39', html)
+        self.assertIn('articoli-esercizi.html?v=39', html)
     def test_drill(self):
         html = (ROOT/'articoli-esercizi.html').read_text()
         self.assertFalse(re.search('[А-Яа-яЁё]', html))

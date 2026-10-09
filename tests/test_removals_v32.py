@@ -40,8 +40,8 @@ class RemovalTests(unittest.TestCase):
 
     def test_hub_and_all_copies(self):
         hub = (ROOT/'index.html').read_text()
-        self.assertIn('content="v38"', hub)
-        self.assertIn('content="v38"', (ROOT/'italiano-flashcards.html').read_text())
+        self.assertIn('content="v39"', hub)
+        self.assertIn('content="v39"', (ROOT/'italiano-flashcards.html').read_text())
         for term in ['liam-passato.html', 'tab-liam"', 'tab-liam-lesson5', 'app-liam"', 'app-liam-lesson5']:
             self.assertNotIn(term, hub)
         for key, name in [('carte', 'italiano-flashcards.html'), ('articoli', 'articoli-esercizi.html'), ('aggettivi', 'articoli-aggettivi.html'), ('verbi', 'verbi-tempi.html')]:

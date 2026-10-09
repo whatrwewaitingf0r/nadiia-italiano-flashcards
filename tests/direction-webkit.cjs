@@ -44,7 +44,7 @@ const assert=require('node:assert/strict'),path=require('node:path');
   await button.tap();assert.equal(await app.locator('#dirText').innerText(),'EN→IT');
   await page.locator('#tab-verbi').tap();await page.locator('#tab-carte').tap();
   assert.equal(await app.locator('#dirText').innerText(),'EN→IT','Hub preserves reversed deck state');
-  assert.equal(await app.evaluate(()=>ALL.length),1444);
+  assert.equal(await app.evaluate(()=>ALL.length),1492);
   assert.equal(await app.evaluate(()=>ALL.filter(c=>c.group==='100 parole 2').length),100);
   assert.equal(await app.evaluate(()=>ALL.filter(c=>['Grammatica · articoli','Grammatica · concordanza'].includes(c.group)||(c.tags||[]).includes('lesson5')).length),0);
   assert.deepEqual(errors,[]);

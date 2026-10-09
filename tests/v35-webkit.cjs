@@ -17,7 +17,7 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
   const options=await frame.locator('#filter option').evaluateAll(os=>os.map(o=>o.value));
   assert(options[0].startsWith('chiara-'));assert(!options.includes('liam-lettura'));
   assert.deepEqual(await frame.locator('#filter option').evaluateAll(os=>os.filter(o=>o.value.startsWith('streghe')).map(o=>({value:o.value,label:o.textContent}))),[{value:'streghe',label:'Streghe'}]);
-  assert.equal(await frame.evaluate(()=>ALL.length),1444);
+  assert.equal(await frame.evaluate(()=>ALL.length),1492);
   assert.equal(await frame.evaluate(()=>ALL.filter(c=>c.reading).length),0);
   let checked=0;
   for(const [key,count] of [['streghe',101],['100parole-3',100]]){

@@ -22,7 +22,7 @@ class LiamLesson5Tests(unittest.TestCase):
 
     def test_hub_has_no_lesson5_tab(self):
         hub = (ROOT/'index.html').read_text()
-        self.assertIn('content="v38"', hub)
+        self.assertIn('content="v39"', hub)
         self.assertNotIn('liam-passato.html', hub)
         self.assertNotIn('id="tab-liam"', hub)
         self.assertNotIn('id="tab-liam-lesson5"', hub)
