@@ -13,7 +13,7 @@ class LiamLesson5Tests(unittest.TestCase):
         cards = json.JSONDecoder().raw_decode(html.split('const ALL=', 1)[1])[0]
         assert_v29_cards(self, cards)
         self.assertFalse(any('lesson5' in c.get('tags', []) for c in cards))
-        self.assertIn("filter.value='chiara-23-sett'", html)
+        self.assertIn("filter.value='7-ott'", html)
         self.assertIn("['liam-liguria','Liam · Nord/Sud · Liguria']", html)
 
     def test_doc_exercises_removed_from_every_copy(self):
@@ -22,7 +22,7 @@ class LiamLesson5Tests(unittest.TestCase):
 
     def test_hub_has_no_lesson5_tab(self):
         hub = (ROOT/'index.html').read_text()
-        self.assertIn('content="v39"', hub)
+        self.assertIn('content="v40"', hub)
         self.assertNotIn('liam-passato.html', hub)
         self.assertNotIn('id="tab-liam"', hub)
         self.assertNotIn('id="tab-liam-lesson5"', hub)

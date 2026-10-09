@@ -11,14 +11,17 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
   assert.deepEqual(await page.locator('[role=tab]').evaluateAll(ns=>ns.map(n=>n.dataset.app)),['carte','articoli','aggettivi','verbi']);
   assert.equal(await page.locator('.tabs').evaluate(el=>el.scrollWidth<=el.clientWidth),true);
   const frame=await (await page.locator('#frame-carte').elementHandle()).contentFrame();
-  assert.equal(await frame.locator('#filter').inputValue(),'chiara-23-sett');
+  assert.equal(await frame.locator('#filter').inputValue(),'7-ott');
   const options=await frame.locator('#filter option').evaluateAll(os=>os.map(o=>({value:o.value,label:o.textContent})));
-  assert(options[0].value.startsWith('chiara-'));
+  assert.deepEqual(options[0],{value:'7-ott',label:'7 ott'});
   assert.deepEqual(options.filter(o=>o.value.startsWith('7-ott')),[{value:'7-ott',label:'7 ott'}]);
   await frame.locator('#filter').selectOption('7-ott');
   assert.equal(await frame.locator('#counter').innerText(),'1 / 48');
   assert.equal(await frame.locator('#dirText').innerText(),'IT→EN');
   assert.equal(await frame.locator('#direction').isEnabled(),true);
+  const lessonOrder=await frame.evaluate(()=>ALL.filter(c=>c.group==='7 ott').map(c=>c.it));
+  assert.equal(await frame.locator('#frontWord').innerText(),'un panino con prosciutto e formaggio');
+  assert.deepEqual(await frame.evaluate(()=>pool.map(c=>c.it)),lessonOrder);
   const members=await frame.evaluate(()=>pool.map(c=>c.it).sort());
   assert.equal(new Set(members).size,48);
   assert(members.includes('questo')&&members.includes('il bar')&&members.includes('un panino con prosciutto e formaggio'));
@@ -43,10 +46,13 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
   assert.equal(await frame.locator('#dirText').innerText(),'EN→IT');
   await verifyAll(true);
   await frame.locator('#flip').tap();assert.equal(await frame.locator('.back').evaluate(e=>getComputedStyle(e).visibility),'visible');
-  for(const id of ['next','prev','shuffle']){
+  assert.equal(await frame.locator('#shuffle').isEnabled(),false);
+  for(const id of ['next','prev']){
    await frame.locator('#'+id).tap();assert.equal(await frame.locator('#dirText').innerText(),'EN→IT');
-   assert.deepEqual(await frame.evaluate(()=>pool.map(c=>c.it).sort()),members);
+   assert.deepEqual(await frame.evaluate(()=>pool.map(c=>c.it)),lessonOrder);
   }
+  await frame.evaluate(()=>{shufflePool();render();});
+  assert.deepEqual(await frame.evaluate(()=>pool.map(c=>c.it)),lessonOrder);
   await page.locator('#tab-verbi').tap();await page.locator('#tab-carte').tap();
   assert.equal(await frame.locator('#filter').inputValue(),'7-ott');
   assert.equal(await frame.locator('#dirText').innerText(),'EN→IT');
@@ -55,9 +61,22 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
    await frame.locator('#filter').selectOption(key);assert.equal(await frame.locator('#counter').innerText(),'1 / '+count);
   }
   await frame.locator('#filter').selectOption('7-ott');
+  assert.deepEqual(await frame.evaluate(()=>pool.map(c=>c.it)),lessonOrder);
+  // Even a global shuffle must keep the entire new lesson first and in sheet order.
+  for(let n=0;n<5;n++){
+   await frame.evaluate(()=>{pool=ALL.slice();shufflePool();});
+   assert.deepEqual(await frame.evaluate(()=>pool.slice(0,48).map(c=>c.it)),lessonOrder);
+   assert.equal(await frame.evaluate(()=>pool.slice(48).some(c=>c.group==='7 ott')),false);
+  }
+  await frame.locator('#filter').selectOption('7-ott');
   await frame.evaluate(()=>{index=pool.findIndex(c=>c.it==='un panino con prosciutto e formaggio');render();});
-  await page.screenshot({path:'/tmp/nadiia-7-ott-v39-mobile.png',animations:'disabled'});
+  await page.screenshot({path:'/tmp/nadiia-7-ott-v40-mobile.png',animations:'disabled'});
+  await page.reload();
+  await page.locator('#loading-carte').waitFor({state:'hidden'});
+  const reloaded=await (await page.locator('#frame-carte').elementHandle()).contentFrame();
+  assert.equal(await reloaded.locator('#filter').inputValue(),'7-ott');
+  assert.deepEqual(await reloaded.evaluate(()=>pool.map(c=>c.it)),lessonOrder);
   assert.deepEqual(errors,[]);
-  console.log(JSON.stringify({engine:'mobile WebKit',lessonCards:48,checkedDirections:checked,oneMixedDeck:true,chiaraFirst:true,onlyFourTabs:true,errors}));
+  console.log(JSON.stringify({engine:'mobile WebKit',lessonCards:48,checkedDirections:checked,oneMixedDeck:true,lessonFirst:true,stableLessonOrder:true,onlyFourTabs:true,errors}));
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1});

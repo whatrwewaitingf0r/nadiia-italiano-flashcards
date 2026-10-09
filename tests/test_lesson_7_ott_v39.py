@@ -2,6 +2,7 @@
 import hashlib
 import json
 import re
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -41,6 +42,11 @@ class LessonTests(unittest.TestCase):
         self.assertEqual(digest, '6f381a4344df2375a3558b28a1f6d067d07bd234bb9c55cf49e80334947168ed')
         self.assertEqual(self.cards[1444:], self.lesson)
 
+    def test_stable_order_and_first_block_at_runtime(self):
+        result = subprocess.run(['node', str(ROOT / 'tests/lesson-7-ott-order-runtime.cjs')],
+                                capture_output=True, text=True, timeout=15)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_one_dropdown_option_and_shared_shuffle(self):
         options = re.search(r'const groups=([\s\S]*?);', self.html)[1]
         self.assertEqual(re.findall(r"\['(7-ott[^']*)','([^']*)'\]", options), [('7-ott', '7 ott')])
@@ -50,14 +56,14 @@ class LessonTests(unittest.TestCase):
         self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi'])
         self.assertNotRegex(self.html + hub, '(?i)lettura')
 
-    def test_v39_all_copies_and_embedded_cards(self):
+    def test_v40_all_copies_and_embedded_cards(self):
         hub = (ROOT / 'index.html').read_text()
         payload = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(payload), self.html)
         for filename in ['index.html', 'italiano-flashcards.html', 'articoli-esercizi.html', 'articoli-aggettivi.html', 'verbi-tempi.html']:
             content = (ROOT / filename).read_bytes()
             if filename in ['index.html', 'italiano-flashcards.html']:
-                self.assertIn(b'content="v39"', content)
-            self.assertNotRegex(content.decode(), r'\?v=(?!39\b)\d+')
+                self.assertIn(b'content="v40"', content)
+            self.assertNotRegex(content.decode(), r'\?v=(?!40\b)\d+')
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / filename).read_bytes(), content)

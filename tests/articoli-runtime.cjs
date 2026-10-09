@@ -40,7 +40,7 @@ for(const mode of ['a','b'])for(const method of ['choose','type']){
 }
 legacy.nodes.shuffle.onclick();assert.ok(legacy.nodes.phrase.textContent.includes(legacy.run('order[pos].word')));
 const pack=load(dir+'/italiano-flashcards.html');
-assert.equal(pack.run('ALL.length'),1492);assert.equal(pack.run('groups[0][0]'),'chiara-16-dove');
+assert.equal(pack.run('ALL.length'),1492);assert.equal(pack.run('groups[0][0]'),'7-ott');
 assert.equal(pack.run('ALL.filter(c=>matches(c,"grammar-articoli")).length'),0);
 assert.equal(pack.run('ALL.filter(c=>matches(c,"lisa-irregolari")).some(c=>c.group.includes("Chiara"))'),false);
 assert.equal(pack.run('ALL.filter(c=>matches(c,"chiara-23-sett")).some(c=>c.group.includes("Lisa"))'),false);

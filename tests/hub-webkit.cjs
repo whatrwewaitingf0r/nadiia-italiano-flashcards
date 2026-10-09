@@ -7,9 +7,9 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
  await page.goto(file);
  const get=async key=>{await page.locator('#tab-'+key).click();await page.locator('#loading-'+key).waitFor({state:'hidden'});return await page.locator('#frame-'+key).contentFrame();};
  const carte=await get('carte');
- assert.equal(await carte.locator('#filter').inputValue(),'chiara-23-sett');
- assert.match(await carte.locator('#filter option').first().innerText(),/Chiara/);
- assert.equal(await carte.locator('#counter').innerText(),'1 / 44');
+ assert.equal(await carte.locator('#filter').inputValue(),'7-ott');
+ assert.equal(await carte.locator('#filter option').first().innerText(),'7 ott');
+ assert.equal(await carte.locator('#counter').innerText(),'1 / 48');
  assert.equal(await carte.locator('.back').evaluate(e=>getComputedStyle(e).visibility),'hidden');
  assert.equal(await carte.locator('.front').evaluate(e=>getComputedStyle(e).visibility),'visible');
  await page.screenshot({path:path.resolve(__dirname,'../.aitemp/hub-carte-mobile-v29.png'),animations:'disabled'});

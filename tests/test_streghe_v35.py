@@ -1,4 +1,4 @@
-"""v39: one Streghe deck, reversed only with the shared direction toggle."""
+"""v40: one Streghe deck, reversed only with the shared direction toggle."""
 import hashlib,json,re,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -41,7 +41,7 @@ class StregheTests(unittest.TestCase):
   self.assertEqual(hashlib.sha256(json.dumps(unrelated,ensure_ascii=False,sort_keys=True).encode()).hexdigest(),frozen['sha256'])
  def test_version_embedded_apps_and_copies(self):
   h=(ROOT/'index.html').read_text()
-  self.assertIn('content="v39"',h);self.assertIn('content="v39"',self.h)
+  self.assertIn('content="v40"',h);self.assertIn('content="v40"',self.h)
   self.assertEqual(re.findall(r'data-app="([^"]+)">',h),['carte','articoli','aggettivi','verbi'])
   m=re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>',h)
   self.assertEqual(json.loads(m[1]),self.h)

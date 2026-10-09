@@ -57,19 +57,19 @@ class VerbFormTests(unittest.TestCase):
         options = re.search(r'const groups=([\s\S]*?);', self.html)[1]
         self.assertEqual(re.findall(r"\['(verbi-forme[^']*)','([^']*)'\]", options), [('verbi-forme', GROUP)])
         self.assertIn("'verbi-forme':'Verbi · forme'", self.html)
-        self.assertTrue(re.findall(r"\['([^']+)'", options)[0].startswith('chiara-'))
+        self.assertEqual(re.findall(r"\['([^']+)'", options)[0], '7-ott')
         hub = (ROOT / 'index.html').read_text()
         self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi'])
         self.assertNotRegex(hub + self.html, r'(?i)lettura|verbi-forme-(?:it-en|en-it)')
 
-    def test_v39_embedded_app_and_local_copies(self):
+    def test_v40_embedded_app_and_local_copies(self):
         hub = (ROOT / 'index.html').read_text()
         embedded = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(embedded), self.html)
         for name in ['index.html', 'italiano-flashcards.html']:
             content = (ROOT / name).read_bytes()
-            self.assertIn(b'content="v39"', content)
-            self.assertNotRegex(content.decode(), r'\?v=(?!39\b)\d+')
+            self.assertIn(b'content="v40"', content)
+            self.assertNotRegex(content.decode(), r'\?v=(?!40\b)\d+')
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / name).read_bytes(), content)
 

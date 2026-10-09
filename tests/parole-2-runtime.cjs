@@ -20,8 +20,8 @@ function load(html,hash=''){
 const cardHTML=fs.readFileSync(path.join(root,'italiano-flashcards.html'),'utf8');
 const deck=load(cardHTML);
 assert.equal(deck.run("ALL.filter(c=>matches(c,'100parole-2')).length"),100);
-assert.equal(deck.nodes.get('filter').value,'chiara-23-sett');
-assert.equal(deck.nodes.get('counter').textContent,'1 / 44');
+assert.equal(deck.nodes.get('filter').value,'7-ott');
+assert.equal(deck.nodes.get('counter').textContent,'1 / 48');
 deck.nodes.get('filter').value='100parole-2';deck.nodes.get('filter').onchange();
 assert.equal(deck.nodes.get('counter').textContent,'1 / 100');
 assert.equal(deck.nodes.get('direction').disabled,false);
@@ -55,8 +55,8 @@ function activate(key){
  assert.equal(hub.nodes.get('panel-'+key).hidden,false);
  return frames.get(key);
 }
-const carte=activate('carte');assert.equal(carte.nodes.get('filter').value,'chiara-23-sett');
-assert(carte.nodes.get('filter').options[0].value.startsWith('chiara-'));
+const carte=activate('carte');assert.equal(carte.nodes.get('filter').value,'7-ott');
+assert(carte.nodes.get('filter').options[0].value==='7-ott');
 carte.nodes.get('filter').value='lisa-irregolari';carte.nodes.get('filter').onchange();carte.nodes.get('flip').onclick();
 const lisaFront=carte.nodes.get('frontWord').textContent;
 // No duplicate top entry point; the full second deck remains inside Carte.
@@ -67,4 +67,4 @@ assert(!hub.nodes.has('tab-parole-2'));
 hub.nodes.get('tab-carte').events.keydown({key:'ArrowRight',preventDefault(){}});assert.equal(hub.location.hash,'#articoli');
 hub.nodes.get('tab-articoli').events.keydown({key:'End',preventDefault(){}});assert.equal(hub.location.hash,'#verbi');
 hub.nodes.get('tab-verbi').events.keydown({key:'Home',preventDefault(){}});assert.equal(hub.location.hash,'#carte');
-console.log('PASS: 100 second-deck renders and directions in Carte, no duplicate top tab, Chiara-first, keyboard navigation (DOM stub).');
+console.log('PASS: 100 second-deck renders and directions in Carte, no duplicate top tab, 7 ott first, keyboard navigation (DOM stub).');

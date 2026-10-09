@@ -11,9 +11,9 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
   assert.deepEqual(await page.locator('[role=tab]').evaluateAll(ns=>ns.map(n=>n.dataset.app)),['carte','articoli','aggettivi','verbi']);
   assert.equal(await page.locator('.tabs').evaluate(el=>el.scrollWidth<=el.clientWidth),true);
   const frame=await (await page.locator('#frame-carte').elementHandle()).contentFrame();
-  assert.equal(await frame.locator('#filter').inputValue(),'chiara-23-sett');
+  assert.equal(await frame.locator('#filter').inputValue(),'7-ott');
   const options=await frame.locator('#filter option').evaluateAll(os=>os.map(o=>({value:o.value,label:o.textContent})));
-  assert(options[0].value.startsWith('chiara-'));
+  assert(options[0].value==='7-ott');
   assert.deepEqual(options.filter(o=>o.value.startsWith('verbi-forme')),[{value:'verbi-forme',label:'Verbi · forme'}]);
   await frame.locator('#filter').selectOption('verbi-forme');
   assert.equal(await frame.locator('#counter').innerText(),'1 / 168');
@@ -51,6 +51,6 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
   await frame.evaluate(()=>{index=pool.findIndex(c=>c.it==='io vorrei');render();});
   await page.screenshot({path:'/tmp/nadiia-verbi-v38-mobile.png',animations:'disabled'});
   assert.deepEqual(errors,[]);
-  console.log(JSON.stringify({engine:'mobile WebKit',verbForms:168,checkedDirections:checked,oneDeck:true,chiaraFirst:true,onlyFourTabs:true,errors}));
+  console.log(JSON.stringify({engine:'mobile WebKit',verbForms:168,checkedDirections:checked,oneDeck:true,lessonFirst:true,onlyFourTabs:true,errors}));
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1});

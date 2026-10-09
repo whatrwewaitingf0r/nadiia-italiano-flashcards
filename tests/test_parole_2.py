@@ -67,7 +67,7 @@ class Parole2Tests(unittest.TestCase):
             for name in ['index.html', 'italiano-flashcards.html']:
                 content = (base/name).read_text()
                 self.assertEqual(content, (ROOT/name).read_text())
-                self.assertIn('content="v39"', content)
+                self.assertIn('content="v40"', content)
                 self.assertNotIn('?v=32', content)
         payload = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)
         self.assertEqual(json.loads(payload[1]), self.html)
