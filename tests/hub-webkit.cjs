@@ -7,9 +7,9 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
  await page.goto(file);
  const get=async key=>{await page.locator('#tab-'+key).click();await page.locator('#loading-'+key).waitFor({state:'hidden'});return await page.locator('#frame-'+key).contentFrame();};
  const carte=await get('carte');
- assert.equal(await carte.locator('#filter').inputValue(),'7-ott');
- assert.equal(await carte.locator('#filter option').first().innerText(),'7 ott');
- assert.equal(await carte.locator('#counter').innerText(),'1 / 48');
+ assert.equal(await carte.locator('#filter').inputValue(),'14-ott');
+ assert.equal(await carte.locator('#filter option').first().innerText(),'14 ott');
+ assert.equal(await carte.locator('#counter').innerText(),'1 / 100');
  assert.equal(await carte.locator('.back').evaluate(e=>getComputedStyle(e).visibility),'hidden');
  assert.equal(await carte.locator('.front').evaluate(e=>getComputedStyle(e).visibility),'visible');
  await page.screenshot({path:path.resolve(__dirname,'../.aitemp/hub-carte-mobile-v29.png'),animations:'disabled'});
@@ -17,7 +17,7 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
  const result=await page.evaluate(()=>{
   const frame=document.getElementById('frame-carte');
   return frame.contentWindow.eval('({count:ALL.length,ru:ALL.some(c=>/[\\u0400-\\u04ff]/.test(JSON.stringify(c))),groups:groups.length})');
- });assert.equal(result.count,1492);assert.equal(result.ru,false);
+ });assert.equal(result.count,1592);assert.equal(result.ru,false);
  await carte.locator('#filter').selectOption('lisa-irregolari');
  assert.equal(await carte.locator('#direction').isDisabled(),true);
  await carte.locator('#flip').click();assert.equal(await carte.locator('.front').evaluate(e=>getComputedStyle(e).visibility),'hidden');assert.equal(await carte.locator('.back').evaluate(e=>getComputedStyle(e).visibility),'visible');assert.equal(await carte.locator('.back').evaluate(e=>getComputedStyle(e).transform),'none');assert.match(await carte.locator('#backWord').innerText(),/io/);
