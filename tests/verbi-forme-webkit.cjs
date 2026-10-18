@@ -11,9 +11,9 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
   assert.deepEqual(await page.locator('[role=tab]').evaluateAll(ns=>ns.map(n=>n.dataset.app)),['carte','articoli','aggettivi','verbi']);
   assert.equal(await page.locator('.tabs').evaluate(el=>el.scrollWidth<=el.clientWidth),true);
   const frame=await (await page.locator('#frame-carte').elementHandle()).contentFrame();
-  assert.equal(await frame.locator('#filter').inputValue(),'14-ott');
+  assert.equal(await frame.locator('#filter').inputValue(),'18-ott');
   const options=await frame.locator('#filter option').evaluateAll(os=>os.map(o=>({value:o.value,label:o.textContent})));
-  assert(options[0].value==='14-ott');
+  assert(options[0].value==='18-ott');
   assert.deepEqual(options.filter(o=>o.value.startsWith('verbi-forme')),[{value:'verbi-forme',label:'Verbi · forme'}]);
   await frame.locator('#filter').selectOption('verbi-forme');
   assert.equal(await frame.locator('#counter').innerText(),'1 / 168');

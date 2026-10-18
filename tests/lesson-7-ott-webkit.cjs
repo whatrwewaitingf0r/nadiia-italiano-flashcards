@@ -11,7 +11,7 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
   assert.deepEqual(await page.locator('[role=tab]').evaluateAll(ns=>ns.map(n=>n.dataset.app)),['carte','articoli','aggettivi','verbi']);
   assert.equal(await page.locator('.tabs').evaluate(el=>el.scrollWidth<=el.clientWidth),true);
   const frame=await (await page.locator('#frame-carte').elementHandle()).contentFrame();
-  assert.equal(await frame.locator('#filter').inputValue(),'14-ott');
+  assert.equal(await frame.locator('#filter').inputValue(),'18-ott');
   const options=await frame.locator('#filter option').evaluateAll(os=>os.map(o=>({value:o.value,label:o.textContent})));
   assert.deepEqual(options[1],{value:'7-ott',label:'7 ott'});
   assert.deepEqual(options.filter(o=>o.value.startsWith('7-ott')),[{value:'7-ott',label:'7 ott'}]);
@@ -70,11 +70,11 @@ const {webkit}=require('playwright'),assert=require('node:assert/strict'),path=r
   }
   await frame.locator('#filter').selectOption('7-ott');
   await frame.evaluate(()=>{index=pool.findIndex(c=>c.it==='un panino con prosciutto e formaggio');render();});
-  await page.screenshot({path:'/tmp/nadiia-7-ott-v41-mobile.png',animations:'disabled'});
+  await page.screenshot({path:'/tmp/nadiia-7-ott-v42-mobile.png',animations:'disabled'});
   await page.reload();
   await page.locator('#loading-carte').waitFor({state:'hidden'});
   const reloaded=await (await page.locator('#frame-carte').elementHandle()).contentFrame();
-  assert.equal(await reloaded.locator('#filter').inputValue(),'14-ott');
+  assert.equal(await reloaded.locator('#filter').inputValue(),'18-ott');
   await reloaded.locator('#filter').selectOption('7-ott');
   assert.deepEqual(await reloaded.evaluate(()=>pool.map(c=>c.it)),lessonOrder);
   assert.deepEqual(errors,[]);

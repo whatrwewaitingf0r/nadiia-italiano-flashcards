@@ -54,8 +54,8 @@ class Lesson14Tests(unittest.TestCase):
                 self.assertEqual(backs.get(form), f'{verb} · {persons[i]} · {subjects[i]} {inflected}')
 
     def test_all_1492_older_cards_are_untouched_and_not_retagged(self):
-        old = [c for c in self.cards if c['group'] != '14 ott']
-        self.assertEqual(len(self.cards), 1592)
+        old = [c for c in self.cards if c['group'] not in {'14 ott', '18 ott'}]
+        self.assertEqual(len(self.cards), 1673)
         self.assertEqual(self.cards[:1492], old)
         self.assertEqual(hashlib.sha256(json.dumps(old, ensure_ascii=False, sort_keys=True).encode()).hexdigest(),
                          'f9ffdd50f8d1010ce34c5a30fa958864e665cb2a46837559e27b29cafc63738f')
@@ -63,7 +63,7 @@ class Lesson14Tests(unittest.TestCase):
     def test_one_option_first_and_no_new_top_tab_or_reading(self):
         groups = re.search(r'const groups=([\s\S]*?);', self.html)[1]
         options = re.findall(r"\['([^']+)','([^']+)'\]", groups)
-        self.assertEqual(options[:2], [('14-ott', '14 ott'), ('7-ott', '7 ott')])
+        self.assertEqual(options[1:3], [('14-ott', '14 ott'), ('7-ott', '7 ott')])
         self.assertEqual([o for o in options if o[0].startswith('14-ott')], [('14-ott', '14 ott')])
         hub = (ROOT / 'index.html').read_text()
         self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi'])
@@ -74,14 +74,14 @@ class Lesson14Tests(unittest.TestCase):
                                 capture_output=True, text=True, timeout=15)
         self.assertEqual(result.returncode, 0, result.stderr)
 
-    def test_v41_copies_and_embedded_cards_match(self):
+    def test_v42_copies_and_embedded_cards_match(self):
         hub = (ROOT / 'index.html').read_text()
         embedded = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(embedded), self.html)
         for name in ['index.html', 'italiano-flashcards.html', 'articoli-esercizi.html', 'articoli-aggettivi.html', 'verbi-tempi.html']:
             content = (ROOT / name).read_bytes()
-            self.assertNotRegex(content.decode(), r'\?v=(?!41\b)\d+')
+            self.assertNotRegex(content.decode(), r'\?v=(?!42\b)\d+')
             if name in ['index.html', 'italiano-flashcards.html']:
-                self.assertIn(b'content="v41"', content)
+                self.assertIn(b'content="v42"', content)
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / name).read_bytes(), content)

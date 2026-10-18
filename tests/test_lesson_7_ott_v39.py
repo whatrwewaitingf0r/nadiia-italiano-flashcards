@@ -36,7 +36,7 @@ class LessonTests(unittest.TestCase):
             self.assertEqual(back[word], meaning)
 
     def test_all_1444_existing_cards_are_unchanged_in_order(self):
-        self.assertEqual(len(self.cards), 1592)
+        self.assertEqual(len(self.cards), 1673)
         old = self.cards[:1444]
         digest = hashlib.sha256(json.dumps(old, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
         self.assertEqual(digest, '6f381a4344df2375a3558b28a1f6d067d07bd234bb9c55cf49e80334947168ed')
@@ -56,14 +56,14 @@ class LessonTests(unittest.TestCase):
         self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi'])
         self.assertNotRegex(self.html + hub, '(?i)lettura')
 
-    def test_v41_all_copies_and_embedded_cards(self):
+    def test_v42_all_copies_and_embedded_cards(self):
         hub = (ROOT / 'index.html').read_text()
         payload = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(payload), self.html)
         for filename in ['index.html', 'italiano-flashcards.html', 'articoli-esercizi.html', 'articoli-aggettivi.html', 'verbi-tempi.html']:
             content = (ROOT / filename).read_bytes()
             if filename in ['index.html', 'italiano-flashcards.html']:
-                self.assertIn(b'content="v41"', content)
-            self.assertNotRegex(content.decode(), r'\?v=(?!41\b)\d+')
+                self.assertIn(b'content="v42"', content)
+            self.assertNotRegex(content.decode(), r'\?v=(?!42\b)\d+')
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / filename).read_bytes(), content)

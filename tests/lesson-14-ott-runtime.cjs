@@ -8,8 +8,9 @@ const context=vm.createContext({document,location:{hash:''},Math:Object.assign(O
 const script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
 vm.runInContext(script,context);
 const run=s=>vm.runInContext(s,context), el=id=>document.getElementById(id);
-assert.equal(el('filter').value,'14-ott');
-assert.deepEqual(el('filter').children.slice(0,2).map(o=>[o.value,o.textContent]),[['14-ott','14 ott'],['7-ott','7 ott']]);
+assert.equal(el('filter').value,'18-ott');
+run("filter.value='14-ott';filter.onchange()");
+assert.deepEqual(el('filter').children.slice(1,3).map(o=>[o.value,o.textContent]),[['14-ott','14 ott'],['7-ott','7 ott']]);
 assert.equal(el('counter').textContent,'1 / 100');
 assert.equal(el('frontWord').textContent,'I signori desiderano?');
 assert.equal(el('backWord').textContent,'What would you like?');
@@ -43,7 +44,7 @@ run("filter.value='14-ott';filter.onchange()");
 assert.equal(el('frontWord').textContent,'I signori desiderano?');
 assert.equal(el('dirText').textContent,'IT→EN');
 // Even a direct global shuffle keeps both dated lessons contiguous, newest first.
-run('pool=ALL.slice();shufflePool()');
+run("pool=ALL.filter(c=>c.group!=='18 ott');shufflePool()");
 assert.equal(run('JSON.stringify(pool.slice(0,100).map(c=>c.it))'),expected);
 assert.equal(run("pool.slice(100,148).every(c=>c.group==='7 ott')"),true);
 assert.equal(run("pool.slice(148).some(c=>['14 ott','7 ott'].includes(c.group))"),false);

@@ -2,7 +2,7 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 const html=fs.readFileSync(process.env.CARD_HTML_PATH||path.resolve(__dirname,'../italiano-flashcards.html'),'utf8');
 const start=html.indexOf('const ALL=')+'const ALL='.length;
-const cards=JSON.parse(html.slice(start,html.indexOf(';\nconst $=',start))).filter(c=>c.group!=='14 ott');
+const cards=JSON.parse(html.slice(start,html.indexOf(';\nconst $=',start))).filter(c=>!['18 ott','14 ott'].includes(c.group));
 const shuffler=html.slice(html.indexOf('function shufflePool()'),html.indexOf("$('scene').onclick="));
 const context=vm.createContext({pool:[],Math:Object.assign(Object.create(Math),{random:()=>0})});
 vm.runInContext(shuffler,context);
