@@ -4,7 +4,7 @@ const html=fs.readFileSync(process.env.COPPIE_HTML_PATH||path.resolve(__dirname,
 function setup(random=Math.random){
  const elements=new Map(), jobs=new Map();let now=0, sequence=0;
  function element(){const classes=new Set();return {textContent:'',disabled:false,children:[],dataset:{},attributes:{},className:'',classList:{add(...names){names.forEach(n=>classes.add(n))},remove(...names){names.forEach(n=>classes.delete(n))},contains(n){return classes.has(n)}},setAttribute(k,v){this.attributes[k]=v},appendChild(c){this.children.push(c)},replaceChildren(...c){this.children=c},addEventListener(k,fn){this['on'+k]=fn}}}
- const chips=[0,10,15,45].map(n=>{const e=element();e.dataset.seconds=String(n);return e});
+ const chips=[...html.matchAll(/data-seconds="(\d+)" aria-pressed="(true|false)"/g)].map(m=>{const e=element();e.dataset.seconds=m[1];e.setAttribute('aria-pressed',m[2]);return e});
  const document={getElementById(id){if(!elements.has(id))elements.set(id,element());return elements.get(id)},createElement:element,querySelectorAll(){return chips}};
  const context=vm.createContext({document,Math:Object.assign(Object.create(Math),{random}),Date:{now:()=>now},setTimeout(fn,delay){jobs.set(++sequence,{fn,at:now+delay});return sequence},clearTimeout(id){jobs.delete(id)},setInterval(fn,delay){jobs.set(++sequence,{fn,at:now+delay,delay});return sequence},clearInterval(id){jobs.delete(id)}});
  vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1],context);
@@ -32,8 +32,8 @@ for(const random of [Math.random,()=>0,()=>.99999]){
  assert(left[0].disabled);assert(left[0].classList.contains('matched'));assert.equal(el('english').children.length,5);
  assert.equal(el('count').textContent,'1 / 5');
  s.solve();assert.equal(el('count').textContent,'5 / 5');assert.equal(el('next').disabled,false);
- const drawn=left.map(t=>t.dataset.pair);
- for(let n=0;n<32;n++){click(el('next'));const ids=el('english').children.map(t=>t.dataset.pair);assert.equal(new Set(ids).size,5);ids.forEach((id,i)=>assert.notEqual(id,el('italian').children[i].dataset.pair));drawn.push(...ids);s.solve()}
+ const drawn=JSON.parse(run('JSON.stringify(round)'));
+ for(let n=0;n<32;n++){click(el('next'));const ids=el('english').children.map(t=>t.dataset.pair);assert.equal(new Set(ids).size,5);ids.forEach((id,i)=>assert.notEqual(id,el('italian').children[i].dataset.pair));drawn.push(...JSON.parse(run('JSON.stringify(round)')));s.solve()}
  assert.equal(new Set(drawn.slice(0,81)).size,81,'all deck cards once before repeating');
  assert.equal(new Set(drawn.slice(81,162)).size,81,'second full cycle has no repeats either');
  click(el('next'));click(chips[1]);assert.equal(chips[1].attributes['aria-pressed'],'true');assert.equal(el('clock').textContent,'10 s');

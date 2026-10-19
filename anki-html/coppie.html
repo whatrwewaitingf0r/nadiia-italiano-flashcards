@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="build-version" content="v43">
+<meta name="theme-color" content="#122824">
+<title>Coppie · Italiano in tasca</title>
+<style>
+:root{color-scheme:dark;--bg:#122824;--panel:#1c3530;--line:#446159;--text:#f2f5ec;--muted:#a8bdb5;--accent:#f0af91;--green:#9bdbab}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+main{max-width:560px;margin:auto;padding:max(20px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(28px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px}a{color:var(--text);text-decoration:none;font-size:.9rem;font-weight:700;padding:12px 0}.deck{font-size:.76rem;color:var(--muted);border:1px solid var(--line);border-radius:30px;padding:8px 12px}
+.eyebrow{text-transform:uppercase;letter-spacing:.17em;font-size:.64rem;font-weight:800;color:var(--accent)}h1{font-size:clamp(1.85rem,7vw,2.5rem);line-height:1.1;letter-spacing:-.045em;margin:8px 0 10px}.intro{color:var(--muted);font-size:.9rem;line-height:1.5;margin:0 0 22px;max-width:34ch}
+.timer{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}button{font:inherit;touch-action:manipulation;cursor:pointer}.timer button{min-height:44px;padding:8px 13px;border:1px solid var(--line);border-radius:30px;background:transparent;color:var(--muted);font-size:.8rem;font-weight:700}.timer button[aria-pressed="true"]{color:var(--text);background:#365449;border-color:#91b59f}.round-info{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:.78rem;margin-bottom:15px}.round-info strong{color:var(--green);font-variant-numeric:tabular-nums}#clock{font-variant-numeric:tabular-nums}
+.languages,.board{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.languages{color:var(--muted);font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px}.languages span{padding-left:3px}.column{display:flex;flex-direction:column;gap:11px;min-width:0}
+.tile{min-height:72px;width:100%;border:1px solid var(--line);border-bottom-width:3px;border-radius:15px;background:var(--panel);color:var(--text);padding:12px 8px;font-size:clamp(.92rem,3.7vw,1.08rem);font-weight:650;line-height:1.25;overflow-wrap:anywhere;transition:background .16s,border-color .16s,opacity .22s,color .22s}
+.tile.selected{background:#594437;border-color:var(--accent);color:#ffdfca}.tile.wrong{background:#57302f;border-color:#ef9a94;color:#ffe1de}.tile.matched{background:#234b36;border-color:var(--green);color:transparent;opacity:.42;cursor:default}
+#feedback{min-height:2.8em;font-size:.84rem;line-height:1.4;color:var(--muted);margin:19px 0 13px}#next{width:100%;min-height:54px;border:0;border-bottom:3px solid #bb8168;border-radius:15px;background:var(--accent);color:#1a2b24;font-size:1rem;font-weight:800}#next:disabled{background:#263e37;border-color:#314b42;color:#799389;cursor:default}footer{margin-top:18px;text-align:center;color:var(--muted);font-size:.7rem}button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+@media(max-height:740px){header{margin-bottom:17px}.intro{margin-bottom:15px}.tile{min-height:60px}.column{gap:9px}#feedback{margin-top:14px}}
+@media(prefers-reduced-motion:reduce){.tile{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<header><a href="index.html?v=43#carte">← Carte</a><span class="deck">18 ott · 81 carte</span></header>
+<div class="eyebrow">Italiano in tasca · Coppie</div>
+<h1>Tocca le coppie.</h1>
+<p class="intro">Una parola inglese, la sua traduzione italiana. Cinque coppie, con calma.</p>
+<div class="timer" role="group" aria-label="Timer facoltativo per ogni round">
+<button type="button" data-seconds="0" aria-pressed="true">Senza timer</button>
+<button type="button" data-seconds="10" aria-pressed="false">10 s</button>
+<button type="button" data-seconds="15" aria-pressed="false">15 s</button>
+<button type="button" data-seconds="45" aria-pressed="false">45 s</button>
+</div>
+<div class="round-info"><span>Coppie <strong id="count">0 / 5</strong></span><span id="clock">Nessuna fretta</span></div>
+<div class="languages" aria-hidden="true"><span>English</span><span>Italiano</span></div>
+<div class="board" aria-label="Abbina le parole inglesi e italiane">
+<div class="column" id="english" role="group" aria-label="English"></div>
+<div class="column" id="italian" role="group" aria-label="Italiano"></div>
+</div>
+<p id="feedback" role="status" aria-live="polite">Tocca una parola e la sua traduzione.</p>
+<button type="button" id="next" disabled>Ancora · 5 nuove coppie →</button>
+<footer>Solo il mazzo 18 ott · offline · v43</footer>
+</main>
+<script>
+'use strict';
+const PAIRS=[["il tempo","weather"],["la bugia","a lie"],["la legge","law"],["il collo","neck"],["il petto","chest"],["la schiena","back (body)"],["il dito","finger"],["la pelle","skin"],["l'osso","bone"],["lo stomaco","stomach"],["il pensiero","thought"],["il sentimento","feeling"],["il passato","the past"],["l'ombra","shadow"],["la pioggia","rain"],["la nuvola","cloud"],["la neve","snow"],["la lettera","letter"],["il suono","sound"],["il silenzio","silence"],["le lacrime","tears"],["il sorriso","smile"],["il dubbio","doubt"],["la linea","line"],["la scelta","choice"],["l'errore","mistake"],["la certezza","certainty"],["dimenticare","to forget"],["l'inizio","beginning"],["la fine","end"],["la regola","rule"],["l'eccezione","exception"],["la richiesta","request"],["il discorso","speech"],["il testo","text"],["la stagione","season"],["presto","early"],["tardi","late"],["mai","never"],["separatamente","separately"],["lontano","far"],["dentro","inside"],["il cerchio","circle"],["il quadrato","square"],["il triangolo","triangle"],["la misura","size"],["il punto","dot / point"],["il coltello","knife"],["il cucchiaio","spoon"],["la tazza","cup"],["la tazzina","small cup"],["amaro","bitter"],["piccante","spicy"],["aspro","sour"],["il sapore","taste"],["l'odore","smell"],["la puzza","stink"],["il profumo","pleasant smell"],["leggero","light"],["pesante","heavy"],["debole","weak"],["tiepido","warm"],["fresco","cool"],["sbagliato","wrong"],["rumoroso","loud"],["sicuro","safe"],["piangere","to cry"],["tenere","to hold"],["portare","to carry"],["decidere","to decide"],["indossare","to wear"],["la scala","stairs"],["lo scaffale","shelf"],["la lampada","lamp"],["il tappeto","carpet"],["la foglia","leaf"],["il vento","wind"],["il cuore","heart"],["la speranza","hope"],["la pace","peace"],["il fuoco","fire"]];
+const $=id=>document.getElementById(id);
+const chips=[...document.querySelectorAll('[data-seconds]')];
+let queue=[],round=[],selected={en:null,it:null},matched=new Set(),busy=false;
+let timerChoice=0,timer=null,deadline=0,expired=false,mismatch=null;
+function shuffle(items){
+ const result=items.slice();
+ for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}
+ return result;
+}
+function drawRound(){
+ const drawn=[];
+ while(drawn.length<5){
+  if(!queue.length)queue=shuffle(PAIRS.map((_,id)=>id));
+  // On the 81-card boundary, begin the next cycle without duplicating a visible pair.
+  const index=queue.findIndex(id=>!drawn.includes(id));
+  drawn.push(queue.splice(index,1)[0]);
+ }
+ return drawn;
+}
+function stopTimer(){if(timer!==null)clearInterval(timer);timer=null;}
+function tick(){
+ const remaining=Math.max(0,Math.ceil((deadline-Date.now())/1000));
+ $('clock').textContent=remaining+' s';
+ if(!remaining){
+  stopTimer();expired=true;$('next').disabled=false;
+  $('feedback').textContent='Tempo finito. Continua con calma, oppure passa alle prossime coppie.';
+ }
+}
+function startTimer(){
+ stopTimer();expired=false;
+ $('next').disabled=matched.size!==round.length;
+ if(!timerChoice){$('clock').textContent='Nessuna fretta';return;}
+ if(matched.size===round.length)return;
+ deadline=Date.now()+timerChoice*1000;tick();timer=setInterval(tick,200);
+}
+function clearSelection(){
+ for(const side of ['en','it']){
+  const tile=selected[side];
+  if(tile){tile.classList.remove('selected','wrong');tile.setAttribute('aria-pressed','false');}
+  selected[side]=null;
+ }
+}
+function choose(tile,side,id){
+ if(busy||matched.has(id))return;
+ if(selected[side]===tile){tile.classList.remove('selected');tile.setAttribute('aria-pressed','false');selected[side]=null;return;}
+ if(selected[side]){selected[side].classList.remove('selected');selected[side].setAttribute('aria-pressed','false');}
+ selected[side]=tile;tile.classList.add('selected');tile.setAttribute('aria-pressed','true');
+ if(!selected.en||!selected.it)return;
+ if(selected.en.dataset.pair===selected.it.dataset.pair){
+  matched.add(id);
+  for(const tile of [selected.en,selected.it]){
+   tile.classList.add('matched');tile.disabled=true;
+   tile.setAttribute('aria-label','Coppia trovata: '+tile.textContent);
+  }
+  clearSelection();$('count').textContent=matched.size+' / '+round.length;
+  $('feedback').textContent='Coppia trovata. Avanti così.';
+  if(matched.size===round.length){stopTimer();$('next').disabled=false;$('feedback').textContent='Tutte e cinque! Pronta per altre coppie?';}
+ }else{
+  busy=true;selected.en.classList.add('wrong');selected.it.classList.add('wrong');
+  $('feedback').textContent='Non è questa coppia. Riprova, senza fretta.';
+  mismatch=setTimeout(()=>{clearSelection();busy=false;mismatch=null;},420);
+ }
+}
+function makeTile(id,side){
+ const tile=document.createElement('button');
+ tile.type='button';tile.className='tile';tile.dataset.pair=String(id);
+ tile.textContent=PAIRS[id][side==='en'?1:0];tile.setAttribute('lang',side==='en'?'en':'it');
+ tile.setAttribute('aria-pressed','false');tile.onclick=()=>choose(tile,side,id);
+ return tile;
+}
+function newRound(){
+ if(mismatch!==null)clearTimeout(mismatch);mismatch=null;
+ stopTimer();clearSelection();matched=new Set();busy=false;round=drawRound();
+ const left=shuffle(round);let right=shuffle(round);
+ // Shuffle both columns separately, rejecting accidental matching rows.
+ for(let tries=0;tries<20&&left.some((id,i)=>id===right[i]);tries++)right=shuffle(round);
+ if(left.some((id,i)=>id===right[i]))right=left.slice(1).concat(left[0]);
+ $('english').replaceChildren(...left.map(id=>makeTile(id,'en')));
+ $('italian').replaceChildren(...right.map(id=>makeTile(id,'it')));
+ $('count').textContent='0 / '+round.length;
+ $('feedback').textContent='Tocca una parola e la sua traduzione.';
+ startTimer();
+}
+chips.forEach(chip=>{chip.onclick=()=>{
+ const seconds=Number(chip.dataset.seconds);timerChoice=seconds===timerChoice?0:seconds;
+ chips.forEach(c=>c.setAttribute('aria-pressed',String(Number(c.dataset.seconds)===timerChoice)));
+ $('feedback').textContent=timerChoice?'Timer per ogni round. Puoi spegnerlo quando vuoi.':'Senza timer. Tutto il tempo che vuoi.';
+ startTimer();
+};});
+$('next').onclick=newRound;
+newRound();
+</script>
+</body>
+</html>
