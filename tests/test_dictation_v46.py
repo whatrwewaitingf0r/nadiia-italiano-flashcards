@@ -12,6 +12,9 @@ class DictationReleaseTests(unittest.TestCase):
     def test_runtime(self):
         subprocess.run(['node', str(ROOT/'tests/dictation-runtime.cjs')], check=True)
 
+    def test_top_window_bridge(self):
+        subprocess.run(['node', str(ROOT/'tests/dictation-bridge-runtime.cjs')], check=True)
+
     def test_release_and_embedded_apps(self):
         hub=(ROOT/'index.html').read_text()
         self.assertIn('content="v46"',hub)

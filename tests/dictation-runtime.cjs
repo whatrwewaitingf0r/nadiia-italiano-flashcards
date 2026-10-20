@@ -44,7 +44,7 @@ for(const file of ['articoli-aggettivi.html','articoli-esercizi.html','verbi-tem
   assert.equal(run('total'),0,'Dictation must not submit');assert.equal(nodes.answer.disabled,false);
   click();assert.equal(first.stopped,true,'Second tap stops recording');first.onend();
   assert.equal(nodes.speak.textContent,'Parla');assert.equal(nodes.speak.attrs['aria-pressed'],'false');
-  click();const second=sessions[1];second.onend();assert.equal(nodes.speak.textContent,'Parla','Auto-stop restores button');
+  click();const second=sessions[1];second.onend();assert.equal(nodes.speak.textContent,'Parla','Auto-stop restores button');assert.equal(nodes['speech-status'].textContent,'','End clears listening status');
   click();const stale=sessions[2];nodes.shuffle.onclick();result(stale,'stale text');
   assert.equal(stale.aborted,true);assert.equal(nodes.answer.value,'','New exercise rejects old audio');
   click();const hidden=sessions[3];app.document.hidden=true;app.events.visibilitychange();result(hidden,'hidden text');
