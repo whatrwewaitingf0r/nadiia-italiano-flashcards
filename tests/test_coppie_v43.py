@@ -24,7 +24,7 @@ class CoppieTests(unittest.TestCase):
         self.assertEqual(pairs, json.loads((ROOT / 'tests/lesson-18-ott-pairs.json').read_text()))
         self.assertEqual(len(pairs), 81)
         self.assertNotRegex(html, r'[\u0400-\u04ff]|(?i:duolingo|lettura)|https?://|fetch\(')
-        self.assertIn('content="v44"', html)
+        self.assertIn('content="v45"', html)
         self.assertIn('viewport-fit=cover', html)
         self.assertIn('prefers-reduced-motion', html)
         self.assertIn('color-scheme:dark', html)
@@ -34,13 +34,13 @@ class CoppieTests(unittest.TestCase):
         hub = (ROOT / 'index.html').read_text()
         card = (ROOT / 'italiano-flashcards.html').read_text()
         self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi', 'coppie'])
-        self.assertIn('href="coppie.html?v=44" target="_top"', card)
+        self.assertIn('href="coppie.html?v=45" target="_top"', card)
         self.assertIn('>Coppie', card)
         embedded = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(embedded), card)
         for file in ['index.html', 'italiano-flashcards.html', 'articoli-esercizi.html', 'articoli-aggettivi.html', 'verbi-tempi.html', 'coppie.html']:
             expected = (ROOT / file).read_bytes()
-            self.assertNotRegex(expected.decode(), r'\?v=(?!44\b)\d+')
+            self.assertNotRegex(expected.decode(), r'\?v=(?!45\b)\d+')
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / file).read_bytes(), expected)
 
