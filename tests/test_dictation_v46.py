@@ -12,13 +12,13 @@ class DictationReleaseTests(unittest.TestCase):
     def test_runtime(self):
         subprocess.run(['node', str(ROOT/'tests/dictation-runtime.cjs')], check=True)
 
-    def test_top_window_bridge(self):
-        subprocess.run(['node', str(ROOT/'tests/dictation-bridge-runtime.cjs')], check=True)
+    def test_top_window_navigation(self):
+        subprocess.run(['node', str(ROOT/'tests/dictation-gesture-runtime.cjs')], check=True)
 
     def test_release_and_embedded_apps(self):
         hub=(ROOT/'index.html').read_text()
-        self.assertIn('content="v47"',hub)
-        self.assertIn("frame.src=files[key]+'?v=47'",hub)
+        self.assertIn('content="v48"',hub)
+        self.assertIn("frame.src=files[key]+'?v=48'",hub)
         for key,file in APPS.items():
             app=(ROOT/file).read_text()
             payload=re.search(r'<script type="application/json" id="app-'+key+r'">([\s\S]*?)</script>',hub)[1]
@@ -26,6 +26,7 @@ class DictationReleaseTests(unittest.TestCase):
             for folder in ['www','anki-html']:
                 self.assertEqual(app,(ROOT/folder/file).read_text())
             if key in ['articoli','aggettivi','verbi']:
+                self.assertIn('content="v48"',app)
                 self.assertRegex(app,r'<button id="speak"[^>]*type="button"[^>]*>Parla</button>')
                 self.assertIn('#speak{min-width:44px;min-height:44px',app)
                 self.assertRegex(app,r'</button></div><p id="speech-status"[^>]*aria-live="polite"')

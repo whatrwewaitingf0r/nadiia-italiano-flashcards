@@ -60,18 +60,6 @@ for(const file of ['articoli-aggettivi.html','articoli-esercizi.html','verbi-tem
  assert.equal(missing.nodes['speech-status'].textContent,'Detta solo in Safari.');
  missing.nodes.answer.value='written';missing.nodes['answer-form'].onsubmit({preventDefault(){}});
  assert.equal(missing.run('total'),1,'Unsupported speech must preserve typing');
- // Hub tab changes must abort recognition even when CSS-hidden iframes remain visible to Page Visibility.
- const embedded=load(file),hubNodes={};
- const hubGet=id=>hubNodes[id]??=new Element();
- const hub=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
- const hubContext=vm.createContext({document:{getElementById:hubGet},location:{hash:''},history:{replaceState(){}},window:{addEventListener(){}},Event:class{constructor(type){this.type=type;}}});
- for(const match of hub.matchAll(/<script type="application\/json" id="([^"]+)">([\s\S]*?)<\/script>/g))hubGet(match[1]).textContent=match[2];
- vm.runInContext(hub.match(/<script>([\s\S]*?)<\/script>/)[1],hubContext);
- const key=file==='articoli-aggettivi.html'?'aggettivi':file==='articoli-esercizi.html'?'articoli':'verbi';
- hubGet('frame-'+key).contentDocument={dispatchEvent:event=>embedded.events[event.type]?.()};
- vm.runInContext(`activate('${key}')`,hubContext);embedded.click();
- vm.runInContext("activate('carte')",hubContext);
- assert.equal(embedded.sessions[0].aborted,true,'Leaving a hub tab stops its microphone');
  const blocked=load(file,'SpeechRecognition',true);blocked.click();
  assert.equal(blocked.nodes.speak.attrs['aria-pressed'],'false');assert.equal(blocked.nodes.answer.disabled,false);
  assert.ok(blocked.nodes['speech-status'].textContent.length>0);

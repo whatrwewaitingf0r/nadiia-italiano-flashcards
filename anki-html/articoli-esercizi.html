@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#345b55">
-<meta name="build-version" content="v30">
+<meta name="build-version" content="v48">
 <title>Articoli · Il laboratorio di Nadiia</title>
 <style>
 :root{--laguna:#345b55;--cielo:#dceff1;--limone:#f3d45b;--carta:#fffdf8;--inchiostro:#17302d;--corallo:#e87962;--muted:#536c67;--line:#b6ccc7}
@@ -27,11 +27,13 @@ header{display:grid;grid-template-columns:1fr auto;align-items:end;gap:15px;marg
 #speak{min-width:44px;min-height:44px;flex:none;white-space:nowrap}
 #speak[aria-pressed="true"]{background:#345b55;color:#fffdf8}
 #speech-status{font-size:.78rem;line-height:1.4;margin:8px 0 0;min-height:1.4em}
+.back-link{display:inline-block;margin:0 0 12px;padding:10px 0;color:inherit;font-weight:700;min-height:44px;box-sizing:border-box}
 </style>
 </head>
 <body>
 <main>
-<header><div><div class="eyebrow">Italiano in tasca · Nadiia · v30</div><h1>Piccole parole.<br>Regole precise.</h1><p>Prima la regola, poi la prova: scegli l’articolo o correggi l’errore.</p><div class="legend" aria-label="Tre famiglie di articoli"><span class="article">il / lo / l’</span><span class="article">un / uno / un’</span><span class="article">dei / degli / delle</span></div></div><div class="stamp">ARTICOLI<br>80 PROVE<br>OFFLINE</div></header>
+<a class="back-link" href="index.html?v=48" target="_top">« Tutte le schede</a>
+<header><div><div class="eyebrow">Italiano in tasca · Nadiia · v48</div><h1>Piccole parole.<br>Regole precise.</h1><p>Prima la regola, poi la prova: scegli l’articolo o correggi l’errore.</p><div class="legend" aria-label="Tre famiglie di articoli"><span class="article">il / lo / l’</span><span class="article">un / uno / un’</span><span class="article">dei / degli / delle</span></div></div><div class="stamp">ARTICOLI<br>80 PROVE<br>OFFLINE</div></header>
 <div class="layout">
 <aside class="lesson" aria-label="Regole degli articoli">
 <p class="step"><span>1</span> Leggi la regola</p><h2>Genere + numero<br>+ inizio della parola.</h2>
@@ -107,49 +109,29 @@ $('answer').oninput=()=>{cancelDictation();setAnswerState('idle');};
 // Browser-managed dictation: no recording, upload endpoint or API key in this app.
 const cancelDictation=(()=>{
  const input=$('answer'),button=$('speak'),status=$('speech-status');
- const embedded=globalThis.parent&&globalThis.parent!==globalThis;
- const Recognition=globalThis.SpeechRecognition||globalThis.webkitSpeechRecognition;
- let current=null,stopping=false,requestId=0;
+ const Recognition=globalThis.webkitSpeechRecognition||globalThis.SpeechRecognition;
+ let current=null,stopping=false;
  function idle(){button.textContent='Parla';button.setAttribute('aria-pressed','false');if(status.textContent==='In ascolto…')status.textContent='';}
- function errorText(error){return error==='unsupported'?'Detta solo in Safari.':error==='not-allowed'||error==='service-not-allowed'?'Consenti il microfono per dettare, oppure scrivi.':error==='no-speech'?'Non ho sentito. Riprova o scrivi.':'Dettatura non disponibile. Riprova o scrivi.';}
+ function errorText(error){return error==='not-allowed'||error==='service-not-allowed'?'Consenti il microfono per dettare, oppure scrivi.':error==='no-speech'?'Non ho sentito. Riprova o scrivi.':'Dettatura non disponibile. Riprova o scrivi.';}
  function write(text){if(input.disabled||$('answer-form').hidden)return;const transcript=text.trim().replace(/[.!?]+$/,'');if(!transcript)return;input.value=transcript;setAnswerState('idle');status.textContent='Testo inserito. Controlla la risposta.';}
- function send(on,cancel=false){parent.postMessage({type:'parla',on,cancel,requestId:current},'*');}
- function cancel(){const old=current;current=null;stopping=false;idle();if(old!==null){status.textContent='';if(embedded)parent.postMessage({type:'parla',on:false,cancel:true,requestId:old},'*');else old.abort();}}
- if(embedded){
-  // Safari can fire onstart inside an iframe without ever supplying results.
-  // Only the top window is allowed to construct/start the recognizer.
-  globalThis.addEventListener('message',event=>{
-   if(event.source!==parent||!event.data)return;
-   const data=event.data;
-   if(data.type==='parla-support'){button.disabled=!data.supported;if(!data.supported)status.textContent='Detta solo in Safari.';return;}
-   if(current===null||data.requestId!==current)return;
-   if(data.type==='parla-text')write(data.text);
-   if(data.type==='parla-state'){
-    if(data.on&&!stopping){button.textContent='Ferma';button.setAttribute('aria-pressed','true');status.textContent='In ascolto…';}
-    else if(!data.on){current=null;stopping=false;idle();if(data.error)status.textContent=errorText(data.error);}
-   }
-  });
-  parent.postMessage({type:'parla-support'},'*');
- }else if(!Recognition){button.disabled=true;status.textContent='Detta solo in Safari.';return cancel;}
+ function cancel(){const old=current;current=null;stopping=false;idle();if(old!==null){status.textContent='';old.abort();}}
+ if(!Recognition){button.disabled=true;status.textContent='Detta solo in Safari.';return cancel;}
  button.onclick=()=>{
   if(button.disabled||input.disabled||$('answer-form').hidden)return;
-  if(current!==null){if(!stopping){stopping=true;idle();if(embedded)send(false);else current.stop();}return;}
+  if(current!==null){if(!stopping){stopping=true;idle();current.stop();}return;}
   status.textContent='';
   try{
-   stopping=false;
-   if(embedded){current=++requestId;send(true);}
-   else{
-    const session=new Recognition();current=session;
-    session.lang='it-IT';session.continuous=false;session.interimResults=false;
-    session.onresult=event=>{if(current===session)write(Array.from(event.results).map(result=>result[0].transcript).join(' '));};
-    session.onend=()=>{if(current===session){current=null;stopping=false;idle();}};
-    session.onerror=event=>{if(current!==session)return;current=null;stopping=false;idle();status.textContent=errorText(event.error);};
-   }
+   // Construct and start here, in this document's tap: no message or async hop.
+   const session=new Recognition();current=session;stopping=false;
+   session.lang='it-IT';session.continuous=false;session.interimResults=true;
+   session.onresult=event=>{if(current===session)write(Array.from(event.results).map(result=>result[0].transcript).join(' '));};
+   session.onend=()=>{if(current===session){current=null;stopping=false;idle();}};
+   session.onerror=event=>{if(current!==session)return;current=null;stopping=false;idle();status.textContent=errorText(event.error);};
    button.textContent='Ferma';button.setAttribute('aria-pressed','true');status.textContent='In ascolto…';
-   if(!embedded)current.start();
+   session.start();
   }catch(error){current=null;stopping=false;idle();status.textContent=errorText('failed');}
  };
- document.addEventListener('dictationcancel',cancel);
+ globalThis.addEventListener?.('pagehide',cancel);
  document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});
  return cancel;
 })();
