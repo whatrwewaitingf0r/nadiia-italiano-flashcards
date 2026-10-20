@@ -17,8 +17,8 @@ class DictationReleaseTests(unittest.TestCase):
 
     def test_release_and_embedded_apps(self):
         hub=(ROOT/'index.html').read_text()
-        self.assertIn('content="v46"',hub)
-        self.assertIn("frame.src=files[key]+'?v=46'",hub)
+        self.assertIn('content="v47"',hub)
+        self.assertIn("frame.src=files[key]+'?v=47'",hub)
         for key,file in APPS.items():
             app=(ROOT/file).read_text()
             payload=re.search(r'<script type="application/json" id="app-'+key+r'">([\s\S]*?)</script>',hub)[1]

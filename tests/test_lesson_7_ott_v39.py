@@ -56,14 +56,14 @@ class LessonTests(unittest.TestCase):
         self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi', 'coppie'])
         self.assertNotRegex(self.html + hub, '(?i)lettura')
 
-    def test_v46_all_copies_and_embedded_cards(self):
+    def test_v47_all_copies_and_embedded_cards(self):
         hub = (ROOT / 'index.html').read_text()
         payload = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(payload), self.html)
         for filename in ['index.html', 'italiano-flashcards.html', 'articoli-esercizi.html', 'articoli-aggettivi.html', 'verbi-tempi.html']:
             content = (ROOT / filename).read_bytes()
             if filename in ['index.html', 'italiano-flashcards.html']:
-                self.assertIn(b'content="v46"', content)
-            self.assertNotRegex(content.decode(), r'\?v=(?!46\b)\d+')
+                self.assertIn(b'content="v47"', content)
+            self.assertNotRegex(content.decode(), r'\?v=(?!47\b)\d+')
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / filename).read_bytes(), content)

@@ -62,14 +62,14 @@ class VerbFormTests(unittest.TestCase):
         self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi', 'coppie'])
         self.assertNotRegex(hub + self.html, r'(?i)lettura|verbi-forme-(?:it-en|en-it)')
 
-    def test_v46_embedded_app_and_local_copies(self):
+    def test_v47_embedded_app_and_local_copies(self):
         hub = (ROOT / 'index.html').read_text()
         embedded = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(embedded), self.html)
         for name in ['index.html', 'italiano-flashcards.html']:
             content = (ROOT / name).read_bytes()
-            self.assertIn(b'content="v46"', content)
-            self.assertNotRegex(content.decode(), r'\?v=(?!46\b)\d+')
+            self.assertIn(b'content="v47"', content)
+            self.assertNotRegex(content.decode(), r'\?v=(?!47\b)\d+')
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / name).read_bytes(), content)
 
