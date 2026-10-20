@@ -46,4 +46,29 @@ for(const random of [Math.random,()=>0,()=>.99999]){
  advance(2000);click(chips[3]);assert.equal(el('clock').textContent,'45 s');s.solve();assert.equal(s.jobs.size,0,'round completion stops timer');
  click(el('next'));click(chips[0]);advance(60000);assert.equal(el('next').disabled,true);assert.equal(s.jobs.size,0);
 }
+// Picker handlers must reset all round state and isolate the pool to checked decks.
+{
+ const {run,el,click,jobs}=setup(()=>0);
+ const inputs=run('deckInputs');
+ assert.deepEqual(inputs.filter(i=>i.checked).map(i=>i.value),['18-ott']);
+ function select(ids){for(const input of inputs)input.checked=ids.includes(input.value);inputs[0].onchange();}
+ select(['14-ott','7-ott']);
+ assert.equal(run('PAIRS.length'),148);
+ assert.equal(run("PAIRS.some(p=>p[0]==='il cuore'&&p[1]==='heart')"),false);
+ assert.equal(run("PAIRS.some(p=>p[0]==='I signori desiderano?')"),true);
+ for(let n=0;n<40;n++){
+  const pairs=run('round.map(id=>PAIRS[id])');
+  assert.equal(new Set(pairs.map(p=>p[0].toLowerCase())).size,5);
+  assert.equal(new Set(pairs.map(p=>p[1].toLowerCase())).size,5);
+  click(el('next'));run('newRound()');
+ }
+ select(['verbi-forme']);assert.equal(run('PAIRS.length'),168);
+ select([]);assert.equal(el('english').children.length,0);assert.equal(el('count').textContent,'0 / 0');assert.equal(el('next').disabled,true);assert.equal(jobs.size,0);assert.match(el('feedback').textContent,/Scegli/);
+ click(run('chips[1]'));assert.equal(jobs.size,0,'empty selection must not start timer');
+ select(['18-ott']);assert.equal(el('english').children.length,5);assert.equal(jobs.size,1);
+ click(el('english').children[0]);click(el('italian').children.find(t=>t.dataset.pair!==el('english').children[0].dataset.pair));
+ assert.equal(run('busy'),true);select(['14-ott']);assert.equal(run('busy'),false);assert.equal(run('mismatch'),null);assert.equal(run('matched.size'),0);assert.equal(jobs.size,1);
+ select(['18-ott','14-ott','7-ott','vocabolario','100parole-2','verbi-forme']);
+ for(let n=0;n<400;n++){run('newRound()');const pairs=run('round.map(id=>PAIRS[id])');assert.equal(pairs.length,5);assert.equal(new Set(pairs.map(p=>p[0].toLowerCase())).size,5);assert.equal(new Set(pairs.map(p=>p[1].toLowerCase())).size,5);}
+}
 console.log('PASS: both language columns, disjoint shuffled rows, selection, mismatch recovery, locked matches, preserved slots, 2 full 81-card cycles, timers off/10/15/45 and calm expiry.');

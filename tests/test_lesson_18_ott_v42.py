@@ -34,15 +34,15 @@ class Lesson18Tests(unittest.TestCase):
         result = subprocess.run(['node', str(ROOT / 'tests/lesson-18-ott-runtime.cjs')], capture_output=True, text=True, timeout=15)
         self.assertEqual(result.returncode, 0, result.stderr)
 
-    def test_v43_hub_and_synchronized_payloads(self):
+    def test_v44_hub_and_synchronized_payloads(self):
         hub = (ROOT / 'index.html').read_text()
-        self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi'])
+        self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi', 'coppie'])
         embedded = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(embedded), self.html)
         for name in ['index.html', 'italiano-flashcards.html', 'articoli-esercizi.html', 'articoli-aggettivi.html', 'verbi-tempi.html']:
             content = (ROOT / name).read_bytes()
-            self.assertNotRegex(content.decode(), r'\?v=(?!43\b)\d+')
+            self.assertNotRegex(content.decode(), r'\?v=(?!44\b)\d+')
             if name in ['index.html', 'italiano-flashcards.html']:
-                self.assertIn(b'content="v43"', content)
+                self.assertIn(b'content="v44"', content)
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / name).read_bytes(), content)

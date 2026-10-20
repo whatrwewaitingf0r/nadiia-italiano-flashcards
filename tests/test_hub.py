@@ -6,11 +6,11 @@ import unittest
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CANON = Path('/Users/it/.jaine/workspace/memory/health/nadiia/italian/anki-html')
-APPS = {'carte': 'italiano-flashcards.html', 'articoli': 'articoli-esercizi.html', 'aggettivi': 'articoli-aggettivi.html', 'verbi': 'verbi-tempi.html'}
+APPS = {'carte': 'italiano-flashcards.html', 'articoli': 'articoli-esercizi.html', 'aggettivi': 'articoli-aggettivi.html', 'verbi': 'verbi-tempi.html', 'coppie': 'coppie.html'}
 class HubTests(unittest.TestCase):
     def test_single_file_apps_and_copies(self):
         h = (ROOT/'index.html').read_text()
-        self.assertIn('content="v43"', h)
+        self.assertIn('content="v44"', h)
         self.assertIn('role="tablist"', h)
         self.assertIn('srcdoc', h)
         self.assertNotRegex(h, '[\u0400-\u04ff]')
