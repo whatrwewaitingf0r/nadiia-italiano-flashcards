@@ -74,14 +74,14 @@ class Lesson14Tests(unittest.TestCase):
                                 capture_output=True, text=True, timeout=15)
         self.assertEqual(result.returncode, 0, result.stderr)
 
-    def test_v45_copies_and_embedded_cards_match(self):
+    def test_v46_copies_and_embedded_cards_match(self):
         hub = (ROOT / 'index.html').read_text()
         embedded = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(embedded), self.html)
         for name in ['index.html', 'italiano-flashcards.html', 'articoli-esercizi.html', 'articoli-aggettivi.html', 'verbi-tempi.html']:
             content = (ROOT / name).read_bytes()
-            self.assertNotRegex(content.decode(), r'\?v=(?!45\b)\d+')
+            self.assertNotRegex(content.decode(), r'\?v=(?!46\b)\d+')
             if name in ['index.html', 'italiano-flashcards.html']:
-                self.assertIn(b'content="v45"', content)
+                self.assertIn(b'content="v46"', content)
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / name).read_bytes(), content)

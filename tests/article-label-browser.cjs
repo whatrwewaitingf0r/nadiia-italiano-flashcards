@@ -26,7 +26,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),path
     }
    }
    assert.deepEqual(errors,[]);
-   if(width===375)await page.screenshot({path:'/tmp/nadiia-v45-phone.png'});
+   if(width===375)await page.screenshot({path:'/tmp/nadiia-v46-phone.png'});
    await page.close();
   }
   console.log('PASS: mobile/desktop Chromium, 48 mode/article cases; uppercase category beside input and visible after scrolling; no overflow/page errors.');

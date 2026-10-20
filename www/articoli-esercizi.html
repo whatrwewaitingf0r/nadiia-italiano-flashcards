@@ -21,6 +21,12 @@ header{display:grid;grid-template-columns:1fr auto;align-items:end;gap:15px;marg
 #answer[data-state="bad"]{border-color:var(--corallo);background:#f9e0d7}
 #answer[data-state="bad"]:focus{outline-color:var(--corallo)}
 #phrase[data-state="bad"] .blank,#phrase[data-state="bad"] .wrong,#phrase[data-state="bad"] .given{color:var(--corallo);border-color:var(--corallo);background:#f9e0d7}
+
+/* Keep the answer usable beside two 44px phone controls. */
+.input-row{flex-wrap:wrap;align-items:center}.input-row input{flex:1 1 140px;width:0}
+#speak{min-width:44px;min-height:44px;flex:none;white-space:nowrap}
+#speak[aria-pressed="true"]{background:#345b55;color:#fffdf8}
+#speech-status{font-size:.78rem;line-height:1.4;margin:8px 0 0;min-height:1.4em}
 </style>
 </head>
 <body>
@@ -46,7 +52,7 @@ header{display:grid;grid-template-columns:1fr auto;align-items:end;gap:15px;marg
 <div class="meta"><span id="category"></span><span id="position"></span></div>
 <div id="phrase"><span class="blank">___ </span><span class="noun">studente</span></div><p id="gloss"></p>
 <div id="input-method"><label for="method">Come rispondi?</label><select id="method"><option value="choose">Scegli</option><option value="type">Scrivi</option></select></div>
-<form id="answer-form"><label class="answer-label" id="answer-label" for="answer">Scrivi solo l’articolo.</label><div class="input-row"><input id="answer" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Articolo"><button class="primary" type="submit" id="check">Verifica</button></div></form>
+<form id="answer-form"><label class="answer-label" id="answer-label" for="answer">Scrivi solo l’articolo.</label><div class="input-row"><input id="answer" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Articolo"><button id="speak" type="button" aria-pressed="false" aria-describedby="speech-status">Parla</button><button class="primary" type="submit" id="check">Verifica</button></div><p id="speech-status" role="status" aria-live="polite"></p></form>
 <div class="choices" id="choices" role="group" aria-label="Scegli l’articolo"></div>
 <div class="feedback" id="feedback" aria-live="polite" aria-atomic="true">Una risposta per prova. La soluzione arriva subito.</div>
 <button id="next" disabled>Prossima →</button>
@@ -54,7 +60,7 @@ header{display:grid;grid-template-columns:1fr auto;align-items:end;gap:15px;marg
 <div class="score"><span id="score">0 corrette / 0 risposte</span><span id="accuracy">—</span></div><div class="track" aria-label="Avanzamento"><i id="progress"></i></div>
 </section>
 </div>
-<footer>80 prove in ogni modalità · 20 nomi × 4 forme. “Mescola” e il cambio modalità iniziano una nuova sessione. Nessuna connessione, nessun account, nessun dato inviato.</footer>
+<footer>80 prove in ogni modalità · 20 nomi × 4 forme. “Mescola” e il cambio modalità iniziano una nuova sessione. La dettatura usa il servizio vocale del browser. Puoi sempre scrivere.</footer>
 </main>
 <script>
 'use strict';
@@ -82,13 +88,13 @@ function wrongFor(item){if(item.form==='ind-sg'&&item.noun.sg==='amico')return '
 function start(){order=ITEMS.slice();for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}pos=0;correct=0;total=0;render();}
 function updateScore(){$('score').textContent=correct+' corrette / '+total+' risposte';$('accuracy').textContent=total?Math.round(correct/total*100)+'%':'—';$('progress').style.width=total/order.length*100+'%';}
 function setAnswerState(state){$('answer').setAttribute('data-state',state);$('phrase').setAttribute('data-state',state);}
-function render(){setAnswerState('idle');const item=order[pos];answered=false;const rule=ruleFor(item);$('rule').textContent=rule.it;$('rule-en').textContent=rule.en;$('category').textContent=LABELS[item.form];$('position').textContent=(pos+1)+' / '+order.length;
+function render(){cancelDictation();setAnswerState('idle');const item=order[pos];answered=false;const rule=ruleFor(item);$('rule').textContent=rule.it;$('rule-en').textContent=rule.en;$('category').textContent=LABELS[item.form];$('position').textContent=(pos+1)+' / '+order.length;
 $('phrase').textContent='';const lead=document.createElement('span');lead.className=mode==='a'?'blank':'given';const wrong=mode==='b'?wrongFor(item):'';lead.textContent=mode==='a'?'___ ':wrong+(wrong.endsWith('’')?'':' ');const noun=document.createElement('span');noun.className='noun';noun.textContent=item.word;$('phrase').appendChild(lead);$('phrase').appendChild(noun);
 $('gloss').textContent=item.noun.en+' · '+(item.noun.gender==='m'?'maschile':'femminile')+' · '+(item.form.endsWith('pl')?'plurale':'singolare');
 const choosing=mode==='a'&&$('method').value==='choose';$('input-method').hidden=mode==='b';$('answer-form').hidden=choosing;$('choices').hidden=!choosing;$('answer').value='';$('answer').disabled=false;$('check').disabled=false;$('answer-label').textContent=mode==='b'?'Riscrivi tutta la frase con l’articolo corretto.':'Scrivi solo l’articolo.';$('answer').placeholder=mode==='b'?'Articolo + nome':'Articolo';
 $('choices').textContent='';OPTIONS[item.form].forEach(a=>{const b=document.createElement('button');b.type='button';b.textContent=a;b.onclick=()=>submit(a);$('choices').appendChild(b);});
 $('feedback').className='feedback';$('feedback').textContent=mode==='b'?'Correggi l’articolo: il nome è già giusto.':'Scegli o scrivi l’articolo richiesto.';$('next').disabled=true;$('next').textContent=pos===order.length-1?'Vedi il risultato →':'Prossima →';updateScore();}
-function submit(value){if(answered)return;if(!norm(value)){setAnswerState('idle');$('feedback').textContent='Scrivi una risposta prima di verificare.';return;}const item=order[pos],expected=mode==='b'?join(item.answer,item.word):item.answer;const good=norm(value)===norm(expected);setAnswerState(good?'good':'bad');answered=true;total++;if(good)correct++;
+function submit(value){cancelDictation();if(answered)return;if(!norm(value)){setAnswerState('idle');$('feedback').textContent='Scrivi una risposta prima di verificare.';return;}const item=order[pos],expected=mode==='b'?join(item.answer,item.word):item.answer;const good=norm(value)===norm(expected);setAnswerState(good?'good':'bad');answered=true;total++;if(good)correct++;
 $('feedback').textContent='';const strong=document.createElement('strong');strong.textContent=good?'Esatto! '+join(item.answer,item.word):'Non ancora. La forma corretta è '+join(item.answer,item.word)+'.';$('feedback').appendChild(strong);const explain=document.createElement('span');explain.textContent=ruleFor(item).it;$('feedback').appendChild(explain);$('feedback').className='feedback '+(good?'good':'bad');$('answer').disabled=true;$('check').disabled=true;Array.from($('choices').children).forEach(b=>b.disabled=true);$('next').disabled=false;updateScore();}
 function finish(){$('phrase').textContent='Sessione finita.';$('gloss').textContent=correct+' / '+order.length+' corrette · '+Math.round(correct/order.length*100)+'%';$('answer-form').hidden=true;$('choices').hidden=true;$('input-method').hidden=true;$('feedback').className='feedback';$('feedback').textContent='Rileggi le regole e premi “Mescola” per ricominciare. Puoi anche cambiare modalità.';$('next').disabled=true;$('next').textContent='Completato';}
 function setMode(m){mode=m;$('mode-a').setAttribute('aria-pressed',String(m==='a'));$('mode-b').setAttribute('aria-pressed',String(m==='b'));start();}
@@ -97,7 +103,42 @@ $('method').onchange=()=>{if(!answered)render();};
 $('answer-form').onsubmit=e=>{e.preventDefault();submit($('answer').value);};
 $('next').onclick=()=>{if(!answered)return;if(pos===order.length-1)finish();else{pos++;render();}};
 NOUNS.forEach(n=>{const tr=document.createElement('tr');[join(article(n,'def-sg'),n.sg),join(article(n,'def-pl'),n.pl),join(article(n,'some-pl'),n.pl)].forEach(t=>{const td=document.createElement('td');td.textContent=t;tr.appendChild(td);});$('noun-table').appendChild(tr);});
-$('answer').oninput=()=>setAnswerState('idle');
+$('answer').oninput=()=>{cancelDictation();setAnswerState('idle');};
+// Browser-managed dictation: no recording, upload endpoint or API key in this app.
+const cancelDictation=(()=>{
+ const input=$('answer'),button=$('speak'),status=$('speech-status');
+ const Recognition=globalThis.SpeechRecognition||globalThis.webkitSpeechRecognition;
+ let current=null,stopping=false;
+ function idle(){button.textContent='Parla';button.setAttribute('aria-pressed','false');}
+ function cancel(){const old=current;current=null;stopping=false;idle();if(old){status.textContent='';old.abort();}}
+ if(!Recognition){button.disabled=true;status.textContent='Detta solo in Safari.';return cancel;}
+ button.onclick=()=>{
+  if(input.disabled||$('answer-form').hidden)return;
+  if(current){if(!stopping){stopping=true;current.stop();}return;}
+  status.textContent='';
+  try{
+   const session=new Recognition();current=session;stopping=false;
+   session.lang='it-IT';session.continuous=false;session.interimResults=false;
+   session.onresult=event=>{
+    if(current!==session||input.disabled||$('answer-form').hidden)return;
+    const transcript=Array.from(event.results).map(result=>result[0].transcript).join(' ').trim().replace(/[.!?]+$/,'');
+    if(!transcript)return;
+    input.value=transcript;setAnswerState('idle');status.textContent='Testo inserito. Controlla la risposta.';
+   };
+   session.onend=()=>{if(current===session){current=null;stopping=false;idle();}};
+   session.onerror=event=>{
+    if(current!==session)return;
+    current=null;stopping=false;idle();
+    status.textContent=event.error==='not-allowed'||event.error==='service-not-allowed'?'Consenti il microfono per dettare, oppure scrivi.':event.error==='no-speech'?'Non ho sentito. Riprova o scrivi.':'Dettatura non disponibile. Riprova o scrivi.';
+   };
+   button.textContent='Ferma';button.setAttribute('aria-pressed','true');status.textContent='In ascolto…';
+   session.start();
+  }catch(error){current=null;stopping=false;idle();status.textContent='Dettatura non disponibile. Riprova o scrivi.';}
+ };
+ document.addEventListener('dictationcancel',cancel);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});
+ return cancel;
+})();
 start();
 </script>
 </body>

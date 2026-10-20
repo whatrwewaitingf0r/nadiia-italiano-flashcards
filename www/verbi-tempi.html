@@ -16,6 +16,12 @@
 #answer[data-state="bad"]{border-color:var(--corallo);background:#f9e0d7}
 #answer[data-state="bad"]:focus{outline-color:var(--corallo)}
 #phrase[data-state="bad"] .blank,#phrase[data-state="bad"] .wrong,#phrase[data-state="bad"] .given{color:var(--corallo);border-color:var(--corallo);background:#f9e0d7}
+
+/* Keep the answer usable beside two 44px phone controls. */
+.input-row{flex-wrap:wrap;align-items:center}.input-row input{flex:1 1 140px;width:0}
+#speak{min-width:44px;min-height:44px;flex:none;white-space:nowrap}
+#speak[aria-pressed="true"]{background:#345b55;color:#fffdf8}
+#speech-status{font-size:.78rem;line-height:1.4;margin:8px 0 0;min-height:1.4em}
 </style>
 </head>
 <body>
@@ -34,7 +40,7 @@
 <div class="filter"><label for="tense">Tempo</label><select id="tense"><option value="all">Tutti i tempi</option><option>presente</option><option>passato prossimo</option><option>imperfetto</option><option>futuro semplice</option><option>condizionale presente</option></select></div>
 <div class="ticket"><div class="ticket-top"><strong id="rule">Infinito → forma coniugata</strong><span id="instruction">Completa lo spazio. Scrivi solo il verbo.</span></div>
 <div class="exercise"><div class="meta" id="count">Prova 1 / 900</div><p id="phrase">Oggi io <span class="blank">___</span> al mercato.</p><div id="lemma">andare · presente · io (femminile)</div>
-<form id="answer-form"><label class="answer-label" for="answer">La forma corretta (anche due parole)</label><div class="input-row"><input id="answer" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Scrivi il verbo…" aria-describedby="lemma feedback"><button id="check" class="primary" type="submit">Controlla</button></div></form>
+<form id="answer-form"><label class="answer-label" for="answer">La forma corretta (anche due parole)</label><div class="input-row"><input id="answer" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Scrivi il verbo…" aria-describedby="lemma feedback"><button id="speak" type="button" aria-pressed="false" aria-describedby="speech-status">Parla</button><button id="check" class="primary" type="submit">Controlla</button></div><p id="speech-status" role="status" aria-live="polite"></p></form>
 <div class="accents" aria-label="Lettere accentate"><button type="button" id="accent-a">à</button><button type="button" id="accent-e">è</button><button type="button" id="accent-ee">é</button><button type="button" id="accent-i">ì</button><button type="button" id="accent-o">ò</button><button type="button" id="accent-u">ù</button></div>
 <div id="feedback" class="feedback" aria-live="polite">Scrivi la forma, poi controlla.</div><p id="hint" class="en" hidden></p><button id="next" disabled>Avanti →</button>
 </div></div><div class="score"><span id="score">Corrette: 0 / 0</span><span id="inventory">30 verbi · 900 prove per modalità</span></div><div class="track" aria-label="Avanzamento"><i id="progress"></i></div>
@@ -55,16 +61,51 @@ function wrongForm(it){const v=VERBS.find(v=>v.inf===it.inf);if(it.tense==='pass
 function showSentence(it,form,cls){const el=$('phrase');el.textContent='';el.appendChild(document.createTextNode(it.before));const gap=document.createElement('span');gap.className=cls;gap.textContent=form;el.appendChild(gap);el.appendChild(document.createTextNode(it.after));}
 function score(){ $('score').textContent='Corrette al primo tentativo: '+correct+' / '+total;$('progress').style.width=(pos/order.length*100)+'%';}
 function setAnswerState(state){$('answer').setAttribute('data-state',state);$('phrase').setAttribute('data-state',state);}
-function render(){setAnswerState('idle');tried=false;solved=false;$('answer').value='';$('hint').hidden=true;$('hint').textContent='';$('next').disabled=true;$('feedback').className='feedback';$('feedback').textContent='Scrivi la forma, poi controlla.';$('check').disabled=false;$('answer').disabled=false;
+function render(){cancelDictation();setAnswerState('idle');tried=false;solved=false;$('answer').value='';$('hint').hidden=true;$('hint').textContent='';$('next').disabled=true;$('feedback').className='feedback';$('feedback').textContent='Scrivi la forma, poi controlla.';$('check').disabled=false;$('answer').disabled=false;
 $('mode-a').setAttribute('aria-pressed',mode==='a');$('mode-b').setAttribute('aria-pressed',mode==='b');$('instruction').textContent=mode==='a'?'Completa lo spazio. Scrivi solo il verbo.':'La forma sottolineata è sbagliata. Scrivi solo il verbo corretto.';
 if(pos>=order.length){$('phrase').textContent='Sessione finita.';$('lemma').textContent='Premi Mescola per ricominciare.';$('count').textContent=order.length+' prove completate';$('check').disabled=true;$('answer').disabled=true;$('feedback').textContent=correct+' risposte corrette al primo tentativo su '+total+'.';score();return;}
 const it=order[pos];showSentence(it,mode==='a'?'___':wrongForm(it),mode==='a'?'blank':'wrong');$('lemma').textContent=it.inf+' · '+it.tense+' · '+it.person;$('count').textContent='Prova '+(pos+1)+' / '+order.length;score();}
 function start(m=mode){mode=m;order=ITEMS.filter(it=>$('tense').value==='all'||!$('tense').value||it.tense===$('tense').value).slice();for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}pos=0;total=0;correct=0;render();}
 function acceptedAnswers(it){const out=[it.answer];if(it.inf==='dovere'&&it.tense==='presente'){if(it.p===0)out.push('debbo');if(it.p===5)out.push('debbono');}if(it.inf==='vedere'&&it.tense==='passato prossimo')out.push(AUX.avere[it.p]+' veduto');return out;}
-function submit(value){if(solved||pos>=order.length)return;const text=norm(value);if(!text){setAnswerState('idle');return;}const it=order[pos],ok=acceptedAnswers(it).some(a=>text===norm(a));setAnswerState(ok?'good':'bad');if(!tried){total++;if(ok)correct++;tried=true;}if(ok){solved=true;showSentence(it,it.answer,'solved');$('feedback').className='feedback good';$('feedback').textContent='Corretto! '+it.before+it.answer+it.after;$('next').disabled=false;$('check').disabled=true;$('answer').disabled=true;}else{$('feedback').className='feedback bad';$('feedback').textContent='Forma corretta: '+it.answer+'. Riscrivila e controlla ancora.';$('hint').hidden=false;$('hint').textContent=it.tense==='passato prossimo'?(it.aux==='essere'?'Use essere + past participle; match the shown gender and number.':'Use avere + past participle; keep the participle unchanged here.'):'Match the displayed tense and subject; accents count.';}score();}
+function submit(value){cancelDictation();if(solved||pos>=order.length)return;const text=norm(value);if(!text){setAnswerState('idle');return;}const it=order[pos],ok=acceptedAnswers(it).some(a=>text===norm(a));setAnswerState(ok?'good':'bad');if(!tried){total++;if(ok)correct++;tried=true;}if(ok){solved=true;showSentence(it,it.answer,'solved');$('feedback').className='feedback good';$('feedback').textContent='Corretto! '+it.before+it.answer+it.after;$('next').disabled=false;$('check').disabled=true;$('answer').disabled=true;}else{$('feedback').className='feedback bad';$('feedback').textContent='Forma corretta: '+it.answer+'. Riscrivila e controlla ancora.';$('hint').hidden=false;$('hint').textContent=it.tense==='passato prossimo'?(it.aux==='essere'?'Use essere + past participle; match the shown gender and number.':'Use avere + past participle; keep the participle unchanged here.'):'Match the displayed tense and subject; accents count.';}score();}
 $('mode-a').onclick=()=>start('a');$('mode-b').onclick=()=>start('b');$('shuffle').onclick=()=>start();$('tense').onchange=()=>start();$('answer-form').onsubmit=e=>{e.preventDefault();submit($('answer').value);};$('next').onclick=()=>{if(!solved)return;pos++;render();if(pos<order.length)$('answer').focus();};
 [['accent-a','à'],['accent-e','è'],['accent-ee','é'],['accent-i','ì'],['accent-o','ò'],['accent-u','ù']].forEach(([id,char])=>{$(id).onclick=()=>{const el=$('answer');if(el.disabled)return;const at=el.selectionStart==null?el.value.length:el.selectionStart,end=el.selectionEnd==null?at:el.selectionEnd;el.value=el.value.slice(0,at)+char+el.value.slice(end);setAnswerState('idle');el.focus();el.setSelectionRange(at+1,at+1);};});
-$('answer').oninput=()=>setAnswerState('idle');
+$('answer').oninput=()=>{cancelDictation();setAnswerState('idle');};
+// Browser-managed dictation: no recording, upload endpoint or API key in this app.
+const cancelDictation=(()=>{
+ const input=$('answer'),button=$('speak'),status=$('speech-status');
+ const Recognition=globalThis.SpeechRecognition||globalThis.webkitSpeechRecognition;
+ let current=null,stopping=false;
+ function idle(){button.textContent='Parla';button.setAttribute('aria-pressed','false');}
+ function cancel(){const old=current;current=null;stopping=false;idle();if(old){status.textContent='';old.abort();}}
+ if(!Recognition){button.disabled=true;status.textContent='Detta solo in Safari.';return cancel;}
+ button.onclick=()=>{
+  if(input.disabled||$('answer-form').hidden)return;
+  if(current){if(!stopping){stopping=true;current.stop();}return;}
+  status.textContent='';
+  try{
+   const session=new Recognition();current=session;stopping=false;
+   session.lang='it-IT';session.continuous=false;session.interimResults=false;
+   session.onresult=event=>{
+    if(current!==session||input.disabled||$('answer-form').hidden)return;
+    const transcript=Array.from(event.results).map(result=>result[0].transcript).join(' ').trim().replace(/[.!?]+$/,'');
+    if(!transcript)return;
+    input.value=transcript;setAnswerState('idle');status.textContent='Testo inserito. Controlla la risposta.';
+   };
+   session.onend=()=>{if(current===session){current=null;stopping=false;idle();}};
+   session.onerror=event=>{
+    if(current!==session)return;
+    current=null;stopping=false;idle();
+    status.textContent=event.error==='not-allowed'||event.error==='service-not-allowed'?'Consenti il microfono per dettare, oppure scrivi.':event.error==='no-speech'?'Non ho sentito. Riprova o scrivi.':'Dettatura non disponibile. Riprova o scrivi.';
+   };
+   button.textContent='Ferma';button.setAttribute('aria-pressed','true');status.textContent='In ascolto…';
+   session.start();
+  }catch(error){current=null;stopping=false;idle();status.textContent='Dettatura non disponibile. Riprova o scrivi.';}
+ };
+ document.addEventListener('dictationcancel',cancel);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});
+ return cancel;
+})();
 start();
 </script>
 </body>
