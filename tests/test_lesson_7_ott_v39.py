@@ -53,17 +53,17 @@ class LessonTests(unittest.TestCase):
         self.assertIn("'7-ott':'7 ott'", self.html)
         self.assertIn('pool=ALL.filter(c=>matches(c,filter.value));shufflePool()', self.html)
         hub = (ROOT / 'index.html').read_text()
-        self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi'])
+        self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi', 'coppie'])
         self.assertNotRegex(self.html + hub, '(?i)lettura')
 
-    def test_v43_all_copies_and_embedded_cards(self):
+    def test_v44_all_copies_and_embedded_cards(self):
         hub = (ROOT / 'index.html').read_text()
         payload = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(payload), self.html)
         for filename in ['index.html', 'italiano-flashcards.html', 'articoli-esercizi.html', 'articoli-aggettivi.html', 'verbi-tempi.html']:
             content = (ROOT / filename).read_bytes()
             if filename in ['index.html', 'italiano-flashcards.html']:
-                self.assertIn(b'content="v43"', content)
-            self.assertNotRegex(content.decode(), r'\?v=(?!43\b)\d+')
+                self.assertIn(b'content="v44"', content)
+            self.assertNotRegex(content.decode(), r'\?v=(?!44\b)\d+')
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / filename).read_bytes(), content)

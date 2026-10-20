@@ -66,7 +66,7 @@ class Lesson14Tests(unittest.TestCase):
         self.assertEqual(options[1:3], [('14-ott', '14 ott'), ('7-ott', '7 ott')])
         self.assertEqual([o for o in options if o[0].startswith('14-ott')], [('14-ott', '14 ott')])
         hub = (ROOT / 'index.html').read_text()
-        self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi'])
+        self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi', 'coppie'])
         self.assertNotRegex(self.html + hub, '(?i)lettura')
 
     def test_runtime_default_order_direction_and_deck_isolation(self):
@@ -74,14 +74,14 @@ class Lesson14Tests(unittest.TestCase):
                                 capture_output=True, text=True, timeout=15)
         self.assertEqual(result.returncode, 0, result.stderr)
 
-    def test_v43_copies_and_embedded_cards_match(self):
+    def test_v44_copies_and_embedded_cards_match(self):
         hub = (ROOT / 'index.html').read_text()
         embedded = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(embedded), self.html)
         for name in ['index.html', 'italiano-flashcards.html', 'articoli-esercizi.html', 'articoli-aggettivi.html', 'verbi-tempi.html']:
             content = (ROOT / name).read_bytes()
-            self.assertNotRegex(content.decode(), r'\?v=(?!43\b)\d+')
+            self.assertNotRegex(content.decode(), r'\?v=(?!44\b)\d+')
             if name in ['index.html', 'italiano-flashcards.html']:
-                self.assertIn(b'content="v43"', content)
+                self.assertIn(b'content="v44"', content)
             for folder in ['www', 'anki-html']:
                 self.assertEqual((ROOT / folder / name).read_bytes(), content)

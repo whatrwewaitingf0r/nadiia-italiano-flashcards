@@ -19,7 +19,7 @@ class HubTests(unittest.TestCase):
             self.assertIsNotNone(match, key)
             self.assertEqual(json.loads(match[1]), (ROOT/file).read_text())
             self.assertIn('id="tab-'+key+'"', h)
-            self.assertIn(file+'?v=43', h)
+            self.assertIn(file+'?v=44', h)
         for p in [ROOT/'www/index.html', ROOT/'anki-html/index.html', CANON/'index.html', CANON/'www/index.html']:
             self.assertEqual(h, p.read_text())
     def test_cards_preserved(self):

@@ -50,10 +50,10 @@ for(const random of [Math.random,()=>0,()=>.99999]){
 {
  const {run,el,click,jobs}=setup(()=>0);
  const inputs=run('deckInputs');
- assert.deepEqual(inputs.filter(i=>i.checked).map(i=>i.value),['18-ott']);
+ assert.deepEqual(Array.from(inputs).filter(i=>i.checked).map(i=>i.value),['18-ott']);
  function select(ids){for(const input of inputs)input.checked=ids.includes(input.value);inputs[0].onchange();}
  select(['14-ott','7-ott']);
- assert.equal(run('PAIRS.length'),148);
+ assert.equal(run('PAIRS.length'),run("new Set(DECKS.filter(d=>['14-ott','7-ott'].includes(d.id)).flatMap(d=>d.pairs.map(p=>JSON.stringify(p.map(w=>w.toLowerCase()))))).size"));
  assert.equal(run("PAIRS.some(p=>p[0]==='il cuore'&&p[1]==='heart')"),false);
  assert.equal(run("PAIRS.some(p=>p[0]==='I signori desiderano?')"),true);
  for(let n=0;n<40;n++){

@@ -6,7 +6,7 @@ def tokens(s):return set(re.findall(r'[a-zà-öø-ÿ]+',unicodedata.normalize('N
 class Parole3Tests(unittest.TestCase):
  def test_no_duplicate_hub_entry_point(self):
   h=(ROOT/'index.html').read_text()
-  self.assertEqual(re.findall(r'data-app="([^"]+)">',h),['carte','articoli','aggettivi','verbi'])
+  self.assertEqual(re.findall(r'data-app="([^"]+)">',h),['carte','articoli','aggettivi','verbi','coppie'])
   self.assertNotIn('panel-parole-2',h);self.assertNotIn('frame-parole-2',h)
  def test_known_feminine_adjective_alias_is_not_reimported(self):
   # Existing frozen card: "Perché è un’umana, è normale." Human is not new vocabulary.

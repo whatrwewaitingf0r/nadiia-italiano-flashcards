@@ -34,7 +34,7 @@ class CoppieTests(unittest.TestCase):
         hub = (ROOT / 'index.html').read_text()
         card = (ROOT / 'italiano-flashcards.html').read_text()
         self.assertEqual(re.findall(r'data-app="([^"]+)">', hub), ['carte', 'articoli', 'aggettivi', 'verbi', 'coppie'])
-        self.assertIn('href="coppie.html?v=43" target="_top"', card)
+        self.assertIn('href="coppie.html?v=44" target="_top"', card)
         self.assertIn('>Coppie', card)
         embedded = re.search(r'<script type="application/json" id="app-carte">([\s\S]*?)</script>', hub)[1]
         self.assertEqual(json.loads(embedded), card)
