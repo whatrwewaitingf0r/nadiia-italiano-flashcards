@@ -28,6 +28,8 @@ class Articles24Tests(unittest.TestCase):
             self.assertEqual(len(deck['pairs']), 100)
             self.assertEqual([it for it, _ in deck['pairs']], EXPECTED[deck_id])
             self.assertEqual([[c['it'], c['other']] for c in lesson], deck['pairs'])
+        decks = [d for d in decks if not d['id'].startswith('25-ott-')]
+        cards = [c for c in cards if not c['group'].startswith('25 ott · ')]
         # Removing only the new target articles must recover every original field/order.
         for d in decks:
             if d['id'] in TARGET:
@@ -44,12 +46,12 @@ class Articles24Tests(unittest.TestCase):
             source = (ROOT / name).read_text()
             payload = re.search(r'<script type="application/json" id="app-' + key + r'">([\s\S]*?)</script>', hub)[1]
             self.assertEqual(json.loads(payload), source)
-            self.assertIn(name + '?v=54', hub)
+            self.assertIn(name + '?v=55', hub)
         for name in ['index.html', 'coppie.html', 'italiano-flashcards.html']:
             content = (ROOT / name).read_bytes()
-            self.assertIn(b'content="v54"', content)
+            self.assertIn(b'content="v55"', content)
             for folder in [ROOT / 'www', ROOT / 'anki-html']:
                 self.assertEqual((folder / name).read_bytes(), content)
-        self.assertIn("(['carte','coppie'].includes(key)?54:", hub)
-        self.assertIn('index.html?v=54#carte', (ROOT / 'coppie.html').read_text())
+        self.assertIn("(['carte','coppie'].includes(key)?55:", hub)
+        self.assertIn('index.html?v=55#carte', (ROOT / 'coppie.html').read_text())
         self.assertIn('.tile.selected{background:#3d4f68;border-color:#d7c4a3;color:#f4efe4}', (ROOT / 'coppie.html').read_text())

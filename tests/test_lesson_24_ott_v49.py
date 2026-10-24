@@ -59,7 +59,7 @@ class Lesson24Tests(unittest.TestCase):
             self.assertEqual(json.loads(embedded), (ROOT / name).read_text())
         for name in ['index.html', *apps.values()]:
             content = (ROOT / name).read_bytes()
-            self.assertIn(b'content="v54"', content)
+            self.assertIn(b'content="v55"', content)
             for folder in [ROOT / 'www', ROOT / 'anki-html', CANON, CANON / 'www']:
                 self.assertEqual((folder / name).read_bytes(), content)
 

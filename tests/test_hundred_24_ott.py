@@ -14,6 +14,8 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 def original_words(items):
+    # Scope historical 24 October snapshots to the payload before 25 October.
+    items = [item for item in items if not item.get('id', '').startswith('25-ott-') and not item.get('group', '').startswith('25 ott · ')]
     for item in items:
         if item.get('id', '').startswith('24-ott-'):
             item['pairs'] = [[re.sub(r"^(?:(?:il|lo|la|i|gli|le) |l')", '', it), en] for it, en in item['pairs']]
