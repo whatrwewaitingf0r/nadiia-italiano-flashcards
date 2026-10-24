@@ -22,10 +22,10 @@ class Lesson24Tests(unittest.TestCase):
     def test_exact_new_cards_and_old_cards_untouched(self):
         cards = payload((ROOT / 'italiano-flashcards.html').read_text(), 'const ALL=')
         expected = json.loads((ROOT / 'tests/lesson-24-ott-decks.json').read_text())
-        self.assertEqual(len(cards), 1852)
+        self.assertEqual(len(cards), 1973)
         self.assertEqual(digest(cards[:1673]), '47e9df611cbf3f14344244eb9edeb1865850b503a74307971b68cda1960ac2a3')
         seen = {c['it'].casefold() for c in cards[:1673]}
-        for deck, count in zip(expected, [43, 71, 65]):
+        for deck, count in zip(expected, [100, 100, 100]):
             lesson = [c for c in cards if c['group'] == deck['label']]
             self.assertEqual(len(lesson), count)
             self.assertEqual([[c['it'], c['other']] for c in lesson], deck['pairs'])
@@ -58,7 +58,7 @@ class Lesson24Tests(unittest.TestCase):
             self.assertEqual(json.loads(embedded), (ROOT / name).read_text())
         for name in ['index.html', *apps.values()]:
             content = (ROOT / name).read_bytes()
-            self.assertIn(b'content="v51"', content)
+            self.assertIn(b'content="v52"', content)
             for folder in [ROOT / 'www', ROOT / 'anki-html', CANON, CANON / 'www']:
                 self.assertEqual((folder / name).read_bytes(), content)
 

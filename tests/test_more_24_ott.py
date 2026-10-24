@@ -21,11 +21,11 @@ class More24Tests(unittest.TestCase):
         requested = json.loads((ROOT / 'tests/lesson-24-ott-more.json').read_text())
         originals = [18, 19, 16]
         self.assertEqual(len(decks), 23, 'extend existing decks, do not create another')
-        self.assertEqual(len(cards), 1852)
+        self.assertEqual(len(cards), 1973)
         self.assertEqual(hashlib.sha256(json.dumps(cards[:1726], ensure_ascii=False, sort_keys=True).encode()).hexdigest(), '089a14eb363c497d3debe8ad1c639cc8b082c224200e4b9706c1b03a5c33f25b')
         for spec, count in zip(requested, originals):
             deck, = [d for d in decks if d['id'] == spec['id']]
-            self.assertEqual(deck['pairs'][count:], spec['pairs'])
+            self.assertEqual(deck['pairs'][count:count + len(spec['pairs'])], spec['pairs'])
             lesson = [c for c in cards if c['group'] == spec['label']]
             self.assertEqual([[c['it'], c['other']] for c in lesson], deck['pairs'])
             for card in lesson[count:]:
@@ -42,13 +42,13 @@ class More24Tests(unittest.TestCase):
             source = (ROOT / name).read_text()
             embedded = re.search(r'<script type="application/json" id="app-' + key + r'">([\s\S]*?)</script>', hub)[1]
             self.assertEqual(json.loads(embedded), source)
-            self.assertTrue('content="v51"' in source)
-            self.assertIn(name + '?v=51', hub)
+            self.assertTrue('content="v52"' in source)
+            self.assertIn(name + '?v=52', hub)
         for name in ['index.html', 'italiano-flashcards.html', 'coppie.html']:
             for folder in [ROOT / 'www', ROOT / 'anki-html', CANON, CANON / 'www']:
                 self.assertEqual((folder / name).read_bytes(), (ROOT / name).read_bytes())
         source = (ROOT / 'coppie.html').read_text()
-        self.assertIn('index.html?v=51#carte', source)
+        self.assertIn('index.html?v=52#carte', source)
         self.assertIn('.tile.selected{background:#1e4a44;border-color:#8fd0c4;color:#e7fff8}', source)
         self.assertIn('uniquePairs(DECKS).length', source)
         self.assertNotIn('1622', source)
