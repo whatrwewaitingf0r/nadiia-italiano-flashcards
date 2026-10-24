@@ -9,6 +9,8 @@ const script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
 vm.runInContext(script,context);
 const run=s=>vm.runInContext(s,context), el=id=>document.getElementById(id);
 const expected=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../tests/lesson-24-ott-decks.json'),'utf8'));
+ const articleWords=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../tests/lesson-24-ott-articles.json'),'utf8'));
+ for(const deck of expected)deck.pairs=deck.pairs.map(([it,en],i)=>[articleWords[deck.id][i],en]);
 assert.equal(el('filter').value,'18-ott','default must not change');
 for(const deck of expected){
  assert.equal(el('filter').children.filter(o=>o.value===deck.id&&o.textContent===deck.label).length,1,'selectable '+deck.id);

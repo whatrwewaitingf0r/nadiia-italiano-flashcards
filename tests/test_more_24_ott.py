@@ -4,6 +4,7 @@ import json
 import re
 import subprocess
 import unittest
+from test_hundred_24_ott import original_words
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,8 +17,8 @@ def payload(source, marker):
 
 class More24Tests(unittest.TestCase):
     def test_requested_pairs_are_appended_in_both_apps(self):
-        decks = payload((ROOT / 'coppie.html').read_text(), 'const DECKS=')
-        cards = payload((ROOT / 'italiano-flashcards.html').read_text(), 'const ALL=')
+        decks = original_words(payload((ROOT / 'coppie.html').read_text(), 'const DECKS='))
+        cards = original_words(payload((ROOT / 'italiano-flashcards.html').read_text(), 'const ALL='))
         requested = json.loads((ROOT / 'tests/lesson-24-ott-more.json').read_text())
         originals = [18, 19, 16]
         self.assertEqual(len(decks), 23, 'extend existing decks, do not create another')
@@ -42,14 +43,14 @@ class More24Tests(unittest.TestCase):
             source = (ROOT / name).read_text()
             embedded = re.search(r'<script type="application/json" id="app-' + key + r'">([\s\S]*?)</script>', hub)[1]
             self.assertEqual(json.loads(embedded), source)
-            self.assertTrue('content="v52"' in source)
-            self.assertIn(name + '?v=52', hub)
+            self.assertTrue('content="v54"' in source)
+            self.assertIn(name + '?v=54', hub)
         for name in ['index.html', 'italiano-flashcards.html', 'coppie.html']:
             for folder in [ROOT / 'www', ROOT / 'anki-html', CANON, CANON / 'www']:
                 self.assertEqual((folder / name).read_bytes(), (ROOT / name).read_bytes())
         source = (ROOT / 'coppie.html').read_text()
-        self.assertIn('index.html?v=52#carte', source)
-        self.assertIn('.tile.selected{background:#1e4a44;border-color:#8fd0c4;color:#e7fff8}', source)
+        self.assertIn('index.html?v=54#carte', source)
+        self.assertIn('.tile.selected{background:#3d4f68;border-color:#d7c4a3;color:#f4efe4}', source)
         self.assertIn('uniquePairs(DECKS).length', source)
         self.assertNotIn('1622', source)
         # Execute actual production code with a minimal DOM; exercise the Tutto handler.

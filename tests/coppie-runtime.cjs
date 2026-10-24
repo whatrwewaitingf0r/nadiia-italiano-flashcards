@@ -76,6 +76,8 @@ console.log('PASS: both language columns, disjoint shuffled rows, selection, mis
 // New vocabulary must be reachable through the real checkbox handlers.
 {
  const expected=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../tests/lesson-24-ott-decks.json'),'utf8'));
+ const articleWords=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../tests/lesson-24-ott-articles.json'),'utf8'));
+ for(const deck of expected)deck.pairs=deck.pairs.map(([it,en],i)=>[articleWords[deck.id][i],en]);
  const {run,el,click,solve}=setup(()=>0);
  const inputs=run('deckInputs');
  for(const deck of expected){
@@ -110,7 +112,7 @@ console.log('PASS: new Coppie decks selectable separately and together, full wor
  assert.equal(el('selection-count').textContent,'Tutto · '+expected+' carte');
  assert.equal(run("deckInputs.filter(input=>input.checked).length"),1);
  for(const spec of JSON.parse(fs.readFileSync(path.resolve(__dirname,'lesson-24-ott-more.json'),'utf8'))){
-  for(const pair of spec.pairs)assert.equal(run('PAIRS.some(p=>p[0]==='+JSON.stringify(pair[0])+')'),true);
+  for(const pair of spec.pairs)assert.equal(run("PAIRS.some(p=>p[0].replace(/^(?:(?:il|lo|la|i|gli|le) |l')/, '')==="+JSON.stringify(pair[0])+')'),true);
  }
  const first=run("deckInputs.find(input=>input.value==='18-ott')");
  first.checked=true;first.onchange();assert.equal(all.checked,false);assert.equal(run('PAIRS.length'),81);

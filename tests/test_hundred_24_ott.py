@@ -1,6 +1,7 @@
 """24 October top-up: exactly 100 pairs, append-only and globally unique additions."""
 import hashlib
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -12,10 +13,18 @@ def data(name, token):
 def digest(value):
     return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
+def original_words(items):
+    for item in items:
+        if item.get('id', '').startswith('24-ott-'):
+            item['pairs'] = [[re.sub(r"^(?:(?:il|lo|la|i|gli|le) |l')", '', it), en] for it, en in item['pairs']]
+        elif item.get('group', '').startswith('24 ott · '):
+            item['it'] = re.sub(r"^(?:(?:il|lo|la|i|gli|le) |l')", '', item['it'])
+    return items
+
 class Hundred24Tests(unittest.TestCase):
     def test_each_deck_has_one_hundred_pairs_in_both_apps(self):
-        decks = data('coppie.html', 'const DECKS=')
-        cards = data('italiano-flashcards.html', 'const ALL=')
+        decks = original_words(data('coppie.html', 'const DECKS='))
+        cards = original_words(data('italiano-flashcards.html', 'const ALL='))
         for suffix in ['corpo', 'terra', 'casa']:
             deck, = [d for d in decks if d['id'] == '24-ott-' + suffix]
             self.assertEqual(len(deck['pairs']), 100)
