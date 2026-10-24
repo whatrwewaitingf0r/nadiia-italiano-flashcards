@@ -48,7 +48,7 @@ class Lesson24Tests(unittest.TestCase):
             for it, _ in deck['pairs']:
                 self.assertNotIn(it.casefold(), seen)
                 seen.add(it.casefold())
-        self.assertIn('.tile.selected{background:#1e4a44;border-color:#8fd0c4;color:#e7fff8}', html)
+        self.assertIn('.tile.selected{background:#3d4f68;border-color:#d7c4a3;color:#f4efe4}', html)
 
     def test_release_embeds_and_all_five_copies(self):
         apps = {'carte':'italiano-flashcards.html', 'coppie':'coppie.html'}
