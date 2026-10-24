@@ -72,3 +72,47 @@ for(const random of [Math.random,()=>0,()=>.99999]){
  for(let n=0;n<400;n++){run('newRound()');const pairs=run('round.map(id=>PAIRS[id])');assert.equal(pairs.length,5);assert.equal(new Set(pairs.map(p=>p[0].toLowerCase())).size,5);assert.equal(new Set(pairs.map(p=>p[1].toLowerCase())).size,5);}
 }
 console.log('PASS: both language columns, disjoint shuffled rows, selection, mismatch recovery, locked matches, preserved slots, 2 full 81-card cycles, timers off/10/15/45 and calm expiry.');
+
+// New vocabulary must be reachable through the real checkbox handlers.
+{
+ const expected=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../tests/lesson-24-ott-decks.json'),'utf8'));
+ const {run,el,click,solve}=setup(()=>0);
+ const inputs=run('deckInputs');
+ for(const deck of expected){
+  assert.equal(Array.from(inputs).filter(i=>i.value===deck.id).length,1,'selectable '+deck.id);
+  for(const input of inputs)input.checked=input.value===deck.id;
+  inputs.find(input=>input.value===deck.id).onchange();
+  assert.equal(run('JSON.stringify(PAIRS)'),JSON.stringify(deck.pairs));
+  const seen=new Set();
+  for(let n=0;n<deck.pairs.length;n++){
+   for(const tile of el('italian').children){seen.add(tile.textContent);assert(deck.pairs.some(pair=>pair[0]===tile.textContent));}
+   solve();assert.equal(el('next').disabled,false);click(el('next'));
+  }
+  assert.equal(seen.size,deck.pairs.length,'every word is reachable in '+deck.id);
+ }
+ for(const input of inputs)input.checked=expected.some(d=>d.id===input.value);
+ inputs[0].onchange();assert.equal(run('PAIRS.length'),expected.reduce((count,deck)=>count+deck.pairs.length,0));
+ for(let n=0;n<100;n++){
+  const pairs=run('round.map(id=>PAIRS[id])');assert.equal(pairs.length,5);
+  assert.equal(new Set(pairs.map(p=>p[0].toLowerCase())).size,5);assert.equal(new Set(pairs.map(p=>p[1].toLowerCase())).size,5);
+  solve();click(el('next'));
+ }
+}
+console.log('PASS: new Coppie decks selectable separately and together, full word coverage and unambiguous matches.');
+
+// Tutto derives its union from every deck, including appended October pairs.
+{
+ const {run,el}=setup(()=>0);
+ const all=run("deckInputs.find(input=>input.value==='tutto')");
+ all.checked=true;all.onchange();
+ const expected=run('uniquePairs(DECKS).length');
+ assert.equal(run('PAIRS.length'),expected);
+ assert.equal(el('selection-count').textContent,'Tutto · '+expected+' carte');
+ assert.equal(run("deckInputs.filter(input=>input.checked).length"),1);
+ for(const spec of JSON.parse(fs.readFileSync(path.resolve(__dirname,'lesson-24-ott-more.json'),'utf8'))){
+  for(const pair of spec.pairs)assert.equal(run('PAIRS.some(p=>p[0]==='+JSON.stringify(pair[0])+')'),true);
+ }
+ const first=run("deckInputs.find(input=>input.value==='18-ott')");
+ first.checked=true;first.onchange();assert.equal(all.checked,false);assert.equal(run('PAIRS.length'),81);
+}
+console.log('PASS: Tutto dynamically unions all decks and remains mutually exclusive.');
