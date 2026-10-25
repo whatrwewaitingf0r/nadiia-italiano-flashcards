@@ -53,18 +53,19 @@ class Lesson25Tests(unittest.TestCase):
         self.assertEqual(len(cards), 2112)
         self.assertEqual(len(decks), 25)
 
-    def test_release_copies_embeds_and_v55(self):
+    def test_release_copies_embeds_and_current_versions(self):
         hub = (ROOT / 'index.html').read_text()
         for key, name in [('carte', 'italiano-flashcards.html'), ('coppie', 'coppie.html')]:
             embedded = re.search(r'<script type="application/json" id="app-' + key + r'">([\s\S]*?)</script>', hub)[1]
             self.assertEqual(json.loads(embedded), (ROOT / name).read_text())
-            self.assertIn(name + '?v=55', hub)
+            self.assertIn(name + '?v=56', hub)
         for name in ['index.html', 'italiano-flashcards.html', 'coppie.html']:
             content = (ROOT / name).read_bytes()
-            self.assertIn(b'content="v55"', content)
+            version = b'v55' if name == 'italiano-flashcards.html' else b'v56'
+            self.assertIn(b'content="' + version + b'"', content)
             for folder in [ROOT / 'www', ROOT / 'anki-html', CANON, CANON / 'www']:
                 self.assertEqual((folder / name).read_bytes(), content)
-        self.assertIn("(['carte','coppie'].includes(key)?55:", hub)
+        self.assertIn("(['carte','coppie'].includes(key)?56:", hub)
         self.assertIn('.tile.selected{background:#3d4f68;border-color:#d7c4a3;color:#f4efe4}', (ROOT / 'coppie.html').read_text())
 
     def test_production_picker_handlers_order_directions_and_tutto(self):

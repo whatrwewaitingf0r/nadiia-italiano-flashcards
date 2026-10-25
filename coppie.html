@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="build-version" content="v55">
+<meta name="build-version" content="v56">
 <meta name="theme-color" content="#122824">
 <title>Coppie · Italiano in tasca</title>
 <style>
@@ -17,6 +17,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
 .languages,.board{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.languages{color:var(--muted);font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px}.languages span{padding-left:3px}.column{display:flex;flex-direction:column;gap:11px;min-width:0}
 .tile{min-height:72px;width:100%;border:1px solid var(--line);border-bottom-width:3px;border-radius:15px;background:var(--panel);color:var(--text);padding:12px 8px;font-size:clamp(.92rem,3.7vw,1.08rem);font-weight:650;line-height:1.25;overflow-wrap:anywhere;transition:background .16s,border-color .16s,opacity .22s,color .22s}
 .tile.selected{background:#3d4f68;border-color:#d7c4a3;color:#f4efe4}.tile.wrong{background:#57302f;border-color:#ef9a94;color:#ffe1de}.tile.matched{background:#234b36;border-color:var(--green);color:transparent;opacity:.42;cursor:default}
+#streak-line{font-size:.84rem;color:var(--green);margin:0 0 13px}#streak-line:empty{display:none}
 #feedback{min-height:2.8em;font-size:.84rem;line-height:1.4;color:var(--muted);margin:19px 0 13px}#next{width:100%;min-height:54px;border:0;border-bottom:3px solid #bb8168;border-radius:15px;background:var(--accent);color:#1a2b24;font-size:1rem;font-weight:800}#next:disabled{background:#263e37;border-color:#314b42;color:#799389;cursor:default}footer{margin-top:18px;text-align:center;color:var(--muted);font-size:.7rem}button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 @media(max-height:740px){header{margin-bottom:17px}.intro{margin-bottom:15px}.tile{min-height:60px}.column{gap:9px}#feedback{margin-top:14px}}
 @media(prefers-reduced-motion:reduce){.tile{transition:none}}
@@ -24,7 +25,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
 </head>
 <body>
 <main>
-<header><a href="index.html?v=55#carte">← Carte</a><span class="deck" id="deck-count">18 ott · 81 carte</span></header>
+<header><a href="index.html?v=56#coppie">← Carte</a><span class="deck" id="deck-count">18 ott · 81 carte</span></header>
 <div class="eyebrow">Italiano in tasca · Coppie</div>
 <h1>Tocca le coppie.</h1>
 <p class="intro">Una parola inglese, la sua traduzione italiana. Cinque coppie, con calma.</p>
@@ -46,8 +47,9 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
 <div class="column" id="italian" role="group" aria-label="Italiano"></div>
 </div>
 <p id="feedback" role="status" aria-live="polite">Tocca una parola e la sua traduzione.</p>
+<p id="streak-line" role="status" aria-live="polite"></p>
 <button type="button" id="next" disabled>Ancora · 5 nuove coppie →</button>
-<footer>I tuoi mazzi · offline · v55</footer>
+<footer>I tuoi mazzi · offline · v56</footer>
 </main>
 <script>
 'use strict';
@@ -58,6 +60,12 @@ const deckInputs=[];
 const chips=[...document.querySelectorAll('[data-seconds]')];
 let queue=[],round=[],selected={en:null,it:null},matched=new Set(),busy=false;
 let timerChoice=0,timer=null,deadline=0,expired=false,mismatch=null;
+let streak=0;
+try{streak=Number(sessionStorage.getItem('coppie-streak'))||0;}catch{}
+function updateStreak(){
+ try{sessionStorage.setItem('coppie-streak',String(streak));}catch{}
+ $('streak-line').textContent=streak===5?'Cinque di fila.':streak===10?'Dieci di fila.':streak===20?'Venti di fila.':streak>20&&streak%10===0?streak+' di fila.':'';
+}
 function shuffle(items){
  const result=items.slice();
  for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}
@@ -138,7 +146,7 @@ function choose(tile,side,id){
  selected[side]=tile;tile.classList.add('selected');tile.setAttribute('aria-pressed','true');
  if(!selected.en||!selected.it)return;
  if(selected.en.dataset.pair===selected.it.dataset.pair){
-  matched.add(id);
+  matched.add(id);streak++;updateStreak();
   for(const tile of [selected.en,selected.it]){
    tile.classList.add('matched');tile.disabled=true;
    tile.setAttribute('aria-label','Coppia trovata: '+tile.textContent);
@@ -147,6 +155,7 @@ function choose(tile,side,id){
   $('feedback').textContent='Coppia trovata. Avanti così.';
   if(matched.size===round.length){stopTimer();$('next').disabled=false;$('feedback').textContent='Tutte e cinque! Pronta per altre coppie?';}
  }else{
+  streak=0;updateStreak();
   busy=true;selected.en.classList.add('wrong');selected.it.classList.add('wrong');
   $('feedback').textContent='Non è questa coppia. Riprova, senza fretta.';
   mismatch=setTimeout(()=>{clearSelection();busy=false;mismatch=null;},420);
@@ -168,7 +177,7 @@ function newRound(){
  if(left.some((id,i)=>id===right[i]))right=left.slice(1).concat(left[0]);
  $('english').replaceChildren(...left.map(id=>makeTile(id,'en')));
  $('italian').replaceChildren(...right.map(id=>makeTile(id,'it')));
- $('count').textContent='0 / '+round.length;
+ $('count').textContent='0 / '+round.length;updateStreak();
  $('feedback').textContent=round.length?'Tocca una parola e la sua traduzione.':'Scegli almeno un mazzo per iniziare.';
  startTimer();
 }

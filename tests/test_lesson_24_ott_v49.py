@@ -59,7 +59,8 @@ class Lesson24Tests(unittest.TestCase):
             self.assertEqual(json.loads(embedded), (ROOT / name).read_text())
         for name in ['index.html', *apps.values()]:
             content = (ROOT / name).read_bytes()
-            self.assertIn(b'content="v55"', content)
+            version = b'v55' if name == 'italiano-flashcards.html' else b'v56'
+            self.assertIn(b'content="' + version + b'"', content)
             for folder in [ROOT / 'www', ROOT / 'anki-html', CANON, CANON / 'www']:
                 self.assertEqual((folder / name).read_bytes(), content)
 

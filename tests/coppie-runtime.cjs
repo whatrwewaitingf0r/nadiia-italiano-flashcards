@@ -1,12 +1,12 @@
 // Exercise the complete production script, including real handlers and scheduled callbacks.
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 const html=fs.readFileSync(process.env.COPPIE_HTML_PATH||path.resolve(__dirname,'../coppie.html'),'utf8');
-function setup(random=Math.random){
+function setup(random=Math.random,storage=new Map()){
  const elements=new Map(), jobs=new Map();let now=0, sequence=0;
  function element(){const classes=new Set();return {textContent:'',disabled:false,children:[],dataset:{},attributes:{},className:'',classList:{add(...names){names.forEach(n=>classes.add(n))},remove(...names){names.forEach(n=>classes.delete(n))},contains(n){return classes.has(n)}},setAttribute(k,v){this.attributes[k]=v},appendChild(c){this.children.push(c)},replaceChildren(...c){this.children=c},addEventListener(k,fn){this['on'+k]=fn}}}
  const chips=[...html.matchAll(/data-seconds="(\d+)" aria-pressed="(true|false)"/g)].map(m=>{const e=element();e.dataset.seconds=m[1];e.setAttribute('aria-pressed',m[2]);return e});
  const document={getElementById(id){if(!elements.has(id))elements.set(id,element());return elements.get(id)},createElement:element,querySelectorAll(){return chips}};
- const context=vm.createContext({document,Math:Object.assign(Object.create(Math),{random}),Date:{now:()=>now},setTimeout(fn,delay){jobs.set(++sequence,{fn,at:now+delay});return sequence},clearTimeout(id){jobs.delete(id)},setInterval(fn,delay){jobs.set(++sequence,{fn,at:now+delay,delay});return sequence},clearInterval(id){jobs.delete(id)}});
+ const context=vm.createContext({document,sessionStorage:{getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,String(value))},Math:Object.assign(Object.create(Math),{random}),Date:{now:()=>now},setTimeout(fn,delay){jobs.set(++sequence,{fn,at:now+delay});return sequence},clearTimeout(id){jobs.delete(id)},setInterval(fn,delay){jobs.set(++sequence,{fn,at:now+delay,delay});return sequence},clearInterval(id){jobs.delete(id)}});
  vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1],context);
  function advance(ms){const target=now+ms;for(;;){const item=[...jobs].filter(([,v])=>v.at<=target).sort((a,b)=>a[1].at-b[1].at)[0];if(!item)break;const [id,j]=item;now=j.at;if(j.delay)j.at+=j.delay;else jobs.delete(id);j.fn()}now=target}
  const el=id=>document.getElementById(id), run=s=>vm.runInContext(s,context);
@@ -118,3 +118,44 @@ console.log('PASS: new Coppie decks selectable separately and together, full wor
  first.checked=true;first.onchange();assert.equal(all.checked,false);assert.equal(run('PAIRS.length'),81);
 }
 console.log('PASS: Tutto dynamically unions all decks and remains mutually exclusive.');
+
+// Streak rewards count correct pairs across rounds and reloads, never attempts.
+{
+ const storage=new Map(),s=setup(()=>0,storage);
+ assert.equal(s.run('typeof streak'),'number','correct matches need a session streak counter');
+ assert(html.includes('id="streak-line"'));
+ assert.equal(s.el('streak-line').textContent,'');
+ for(const [count,message] of [[5,'Cinque di fila.'],[10,'Dieci di fila.'],[15,''],[20,'Venti di fila.'],[30,'30 di fila.'],[40,'40 di fila.']]){
+  while(Number(storage.get('coppie-streak')||0)<count){
+   if(s.el('next').disabled===false)s.click(s.el('next'));
+   s.solve();
+  }
+  assert.equal(s.run('streak'),count);
+  assert.equal(s.el('feedback').textContent,'Tutte e cinque! Pronta per altre coppie?');
+  assert.equal(s.el('streak-line').textContent,message);
+ }
+ // Reselecting tiles and touching an already matched pair never add to streak.
+ s.click(s.el('next'));
+ const first=s.el('english').children[0];
+ s.click(first);s.click(first);assert.equal(storage.get('coppie-streak'),'40');
+ s.click(first);s.click(s.el('italian').children.find(t=>t.dataset.pair===first.dataset.pair));
+ s.click(first);assert.equal(storage.get('coppie-streak'),'41');
+ const restored=setup(()=>0,storage);
+ assert.equal(restored.run('streak'),41,'reload keeps partial progress toward next reward');
+ assert.equal(restored.el('streak-line').textContent,'');
+ const left=restored.el('english').children[0];restored.click(left);
+ restored.click(restored.el('italian').children.find(t=>t.dataset.pair!==left.dataset.pair));
+ assert.equal(restored.run('streak'),0);assert.equal(storage.get('coppie-streak'),'0');
+ assert.equal(restored.el('streak-line').textContent,'');
+ restored.advance(420);restored.solve();
+ assert.equal(restored.el('streak-line').textContent,'Cinque di fila.');
+ const rewardReload=setup(()=>0,storage);
+ assert.equal(rewardReload.el('streak-line').textContent,'Cinque di fila.');
+ rewardReload.run('newRound()');
+ assert.equal(rewardReload.run('streak'),5,'new round does not reset streak');
+ const wrongLeft=rewardReload.el('english').children[0];rewardReload.click(wrongLeft);
+ rewardReload.click(rewardReload.el('italian').children.find(t=>t.dataset.pair!==wrongLeft.dataset.pair));
+ assert.equal(rewardReload.el('streak-line').textContent,'','a wrong pair clears a visible reward immediately');
+ assert.equal(storage.get('coppie-streak'),'0');
+}
+console.log('PASS: streak milestones, round feedback, no double counting, same-tab reload and mismatch reset.');
