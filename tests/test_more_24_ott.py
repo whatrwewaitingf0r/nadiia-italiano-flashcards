@@ -43,14 +43,14 @@ class More24Tests(unittest.TestCase):
             source = (ROOT / name).read_text()
             embedded = re.search(r'<script type="application/json" id="app-' + key + r'">([\s\S]*?)</script>', hub)[1]
             self.assertEqual(json.loads(embedded), source)
-            version = 'v55' if name == 'italiano-flashcards.html' else 'v56'
+            version = 'v55' if name == 'italiano-flashcards.html' else 'v57'
             self.assertIn('content="' + version + '"', source)
-            self.assertIn(name + '?v=56', hub)
+            self.assertIn(name + '?v=57', hub)
         for name in ['index.html', 'italiano-flashcards.html', 'coppie.html']:
             for folder in [ROOT / 'www', ROOT / 'anki-html', CANON, CANON / 'www']:
                 self.assertEqual((folder / name).read_bytes(), (ROOT / name).read_bytes())
         source = (ROOT / 'coppie.html').read_text()
-        self.assertIn('index.html?v=56#coppie', source)
+        self.assertIn('index.html?v=57#coppie', source)
         self.assertIn('.tile.selected{background:#3d4f68;border-color:#d7c4a3;color:#f4efe4}', source)
         self.assertIn('uniquePairs(DECKS).length', source)
         self.assertNotIn('1622', source)

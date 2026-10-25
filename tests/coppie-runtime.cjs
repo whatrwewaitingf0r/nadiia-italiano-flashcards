@@ -3,7 +3,7 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const html=fs.readFileSync(process.env.COPPIE_HTML_PATH||path.resolve(__dirname,'../coppie.html'),'utf8');
 function setup(random=Math.random,storage=new Map()){
  const elements=new Map(), jobs=new Map();let now=0, sequence=0;
- function element(){const classes=new Set();return {textContent:'',disabled:false,children:[],dataset:{},attributes:{},className:'',classList:{add(...names){names.forEach(n=>classes.add(n))},remove(...names){names.forEach(n=>classes.delete(n))},contains(n){return classes.has(n)}},setAttribute(k,v){this.attributes[k]=v},appendChild(c){this.children.push(c)},replaceChildren(...c){this.children=c},addEventListener(k,fn){this['on'+k]=fn}}}
+ function element(){const classes=new Set();return {textContent:'',disabled:false,children:[],dataset:{},attributes:{},className:'',style:{setProperty(){}},classList:{add(...names){names.forEach(n=>classes.add(n))},remove(...names){names.forEach(n=>classes.delete(n))},contains(n){return classes.has(n)}},setAttribute(k,v){this.attributes[k]=v},appendChild(c){this.children.push(c)},replaceChildren(...c){this.children=c},addEventListener(k,fn){this['on'+k]=fn}}}
  const chips=[...html.matchAll(/data-seconds="(\d+)" aria-pressed="(true|false)"/g)].map(m=>{const e=element();e.dataset.seconds=m[1];e.setAttribute('aria-pressed',m[2]);return e});
  const document={getElementById(id){if(!elements.has(id))elements.set(id,element());return elements.get(id)},createElement:element,querySelectorAll(){return chips}};
  const context=vm.createContext({document,sessionStorage:{getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,String(value))},Math:Object.assign(Object.create(Math),{random}),Date:{now:()=>now},setTimeout(fn,delay){jobs.set(++sequence,{fn,at:now+delay});return sequence},clearTimeout(id){jobs.delete(id)},setInterval(fn,delay){jobs.set(++sequence,{fn,at:now+delay,delay});return sequence},clearInterval(id){jobs.delete(id)}});
@@ -36,14 +36,14 @@ for(const random of [Math.random,()=>0,()=>.99999]){
  for(let n=0;n<32;n++){click(el('next'));const ids=el('english').children.map(t=>t.dataset.pair);assert.equal(new Set(ids).size,5);ids.forEach((id,i)=>assert.notEqual(id,el('italian').children[i].dataset.pair));drawn.push(...JSON.parse(run('JSON.stringify(round)')));s.solve()}
  assert.equal(new Set(drawn.slice(0,81)).size,81,'all deck cards once before repeating');
  assert.equal(new Set(drawn.slice(81,162)).size,81,'second full cycle has no repeats either');
- click(el('next'));click(chips[1]);assert.equal(chips[1].attributes['aria-pressed'],'true');assert.equal(el('clock').textContent,'10 s');
+ advance(3000);click(el('next'));click(chips[1]);assert.equal(chips[1].attributes['aria-pressed'],'true');assert.equal(el('clock').textContent,'10 s');
  advance(3000);assert.equal(el('clock').textContent,'7 s');
  click(chips[1]);assert.equal(chips[0].attributes['aria-pressed'],'true');assert.equal(s.jobs.size,0,'same timer chip switches off');
  click(chips[2]);assert.equal(el('clock').textContent,'15 s');advance(15000);
  assert.equal(el('next').disabled,false);assert.match(el('feedback').textContent,/calma/);assert.equal(s.jobs.size,0);
  const expiredLeft=el('english').children[0];click(expiredLeft);click(el('italian').children.find(t=>t.dataset.pair===expiredLeft.dataset.pair));assert(expiredLeft.disabled,'can continue matching after time ends');
  click(el('next'));assert.equal(el('clock').textContent,'15 s');assert.equal(el('next').disabled,true,'timer restarts for each round');
- advance(2000);click(chips[3]);assert.equal(el('clock').textContent,'45 s');s.solve();assert.equal(s.jobs.size,0,'round completion stops timer');
+ advance(2000);click(chips[3]);assert.equal(el('clock').textContent,'45 s');s.solve();advance(3000);assert.equal(s.jobs.size,0,'round completion stops timer and festa expires');
  click(el('next'));click(chips[0]);advance(60000);assert.equal(el('next').disabled,true);assert.equal(s.jobs.size,0);
 }
 // Picker handlers must reset all round state and isolate the pool to checked decks.
@@ -125,14 +125,14 @@ console.log('PASS: Tutto dynamically unions all decks and remains mutually exclu
  assert.equal(s.run('typeof streak'),'number','correct matches need a session streak counter');
  assert(html.includes('id="streak-line"'));
  assert.equal(s.el('streak-line').textContent,'');
- for(const [count,message] of [[5,'Cinque di fila.'],[10,'Dieci di fila.'],[15,''],[20,'Venti di fila.'],[30,'30 di fila.'],[40,'40 di fila.']]){
+ for(const count of [5,10,15,20,30,40]){
   while(Number(storage.get('coppie-streak')||0)<count){
    if(s.el('next').disabled===false)s.click(s.el('next'));
    s.solve();
   }
   assert.equal(s.run('streak'),count);
   assert.equal(s.el('feedback').textContent,'Tutte e cinque! Pronta per altre coppie?');
-  assert.equal(s.el('streak-line').textContent,message);
+  assert.equal(s.el('streak-line').textContent,count+' di fila.');
  }
  // Reselecting tiles and touching an already matched pair never add to streak.
  s.click(s.el('next'));
@@ -142,15 +142,15 @@ console.log('PASS: Tutto dynamically unions all decks and remains mutually exclu
  s.click(first);assert.equal(storage.get('coppie-streak'),'41');
  const restored=setup(()=>0,storage);
  assert.equal(restored.run('streak'),41,'reload keeps partial progress toward next reward');
- assert.equal(restored.el('streak-line').textContent,'');
+ assert.equal(restored.el('streak-line').textContent,'41 di fila.');
  const left=restored.el('english').children[0];restored.click(left);
  restored.click(restored.el('italian').children.find(t=>t.dataset.pair!==left.dataset.pair));
  assert.equal(restored.run('streak'),0);assert.equal(storage.get('coppie-streak'),'0');
  assert.equal(restored.el('streak-line').textContent,'');
  restored.advance(420);restored.solve();
- assert.equal(restored.el('streak-line').textContent,'Cinque di fila.');
+ assert.equal(restored.el('streak-line').textContent,'5 di fila.');
  const rewardReload=setup(()=>0,storage);
- assert.equal(rewardReload.el('streak-line').textContent,'Cinque di fila.');
+ assert.equal(rewardReload.el('streak-line').textContent,'5 di fila.');
  rewardReload.run('newRound()');
  assert.equal(rewardReload.run('streak'),5,'new round does not reset streak');
  const wrongLeft=rewardReload.el('english').children[0];rewardReload.click(wrongLeft);

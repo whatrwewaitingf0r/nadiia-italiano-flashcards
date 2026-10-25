@@ -46,13 +46,13 @@ class Articles24Tests(unittest.TestCase):
             source = (ROOT / name).read_text()
             payload = re.search(r'<script type="application/json" id="app-' + key + r'">([\s\S]*?)</script>', hub)[1]
             self.assertEqual(json.loads(payload), source)
-            self.assertIn(name + '?v=56', hub)
+            self.assertIn(name + '?v=57', hub)
         for name in ['index.html', 'coppie.html', 'italiano-flashcards.html']:
             content = (ROOT / name).read_bytes()
-            version = b'v55' if name == 'italiano-flashcards.html' else b'v56'
+            version = b'v55' if name == 'italiano-flashcards.html' else b'v57'
             self.assertIn(b'content="' + version + b'"', content)
             for folder in [ROOT / 'www', ROOT / 'anki-html']:
                 self.assertEqual((folder / name).read_bytes(), content)
-        self.assertIn("(['carte','coppie'].includes(key)?56:", hub)
-        self.assertIn('index.html?v=56#coppie', (ROOT / 'coppie.html').read_text())
+        self.assertIn("(['carte','coppie'].includes(key)?57:", hub)
+        self.assertIn('index.html?v=57#coppie', (ROOT / 'coppie.html').read_text())
         self.assertIn('.tile.selected{background:#3d4f68;border-color:#d7c4a3;color:#f4efe4}', (ROOT / 'coppie.html').read_text())
