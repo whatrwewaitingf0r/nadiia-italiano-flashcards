@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta name="build-version" content="v59">
+<meta name="build-version" content="v60">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,9 +59,9 @@ select,.mode{border:1px solid rgba(35,66,62,.16);background:rgba(255,255,255,.75
 </head>
 <body>
 <main class="app">
- <header><div><div class="eyebrow">Italiano in tasca · v59</div><h1>Una carta alla volta.</h1></div><div class="counter" id="counter">1 / 1</div></header>
+ <header><div><div class="eyebrow">Italiano in tasca · v60</div><h1>Una carta alla volta.</h1></div><div class="counter" id="counter">1 / 1</div></header>
  <div class="toolbar">
-  <div class="deck-picker"><div class="deck-heading"><label for="filter">Mazzo / deck</label><a class="coppie-link" href="coppie.html?v=59" target="_top">Coppie ↗</a></div><select id="filter" aria-label="Mazzo / deck"></select></div>
+  <div class="deck-picker"><div class="deck-heading"><label for="filter">Mazzo / deck</label><a class="coppie-link" href="coppie.html?v=60" target="_top">Coppie ↗</a></div><select id="filter" aria-label="Mazzo / deck"></select></div>
   <button type="button" class="mode" id="direction" aria-label="Cambia direzione"><b id="dirText">EN→IT</b><span>⇄</span></button>
  </div>
  <div class="track"><i id="progress"></i></div>
@@ -75,7 +75,7 @@ select,.mode{border:1px solid rgba(35,66,62,.16);background:rgba(255,255,255,.75
  <nav class="controls" aria-label="Navigazione">
   <button id="prev" aria-label="Carta precedente">←</button><button class="flip" id="flip">Gira</button><button id="next" aria-label="Carta successiva">→</button>
  </nav>
- <div class="footer"><button class="shuffle" id="shuffle">Mescola ⤨</button><div class="status" id="status">Funziona offline · v59</div></div>
+ <div class="footer"><button class="shuffle" id="shuffle">Mescola ⤨</button><div class="status" id="status">Funziona offline · v60</div></div>
 <p style="text-align:center;font-size:.8rem"><a style="color:var(--laguna)" href="articoli-esercizi.html?v=49">Articoli · esercizi offline →</a></p>
 <p style="text-align:center;font-size:.8rem"><a style="color:var(--laguna)" href="articoli-aggettivi.html?v=49">Articoli + aggettivi · frasi intere →</a></p>
  <p style="margin:4px 0 0;text-align:center"><a href="verbi-tempi.html?v=49" style="color:var(--laguna);font-size:.85rem;font-weight:750">Verbi e tempi · completa e correggi →</a></p>
@@ -88,13 +88,6 @@ const groups=[
  ['18-ott','18 ott'],
  ['14-ott','14 ott'],
  ['7-ott','7 ott'],
- ['24-ott-corpo','24 ott · corpo'],
- ['24-ott-terra','24 ott · terra'],
- ['24-ott-casa','24 ott · casa'],
- ['25-ott-foto','25 ott · foto'],
- ['25-ott-dante','25 ott · Dante'],
- ['21-ott-mangiare','21 ott · mangiare','27 ott · frasi'],
- ['27-ott-frasi','27 ott · frasi'],
 
  ['chiara-16-dove','16 sett · Chiara · Dove'],
  ['chiara-16-paesi','16 sett · Chiara · Paesi'],
@@ -114,7 +107,14 @@ const groups=[
  ['ref-100-parole','100 parole'],
  ['100parole-2','100 parole 2 · Altre 100'],
  ['100parole-3','100 parole 3 · Prossime 100'],
- ['vocabolario','Vocabolario']
+ ['vocabolario','Vocabolario'],
+ ['21-ott-mangiare','21 ott · mangiare'],
+ ['24-ott-corpo','24 ott · corpo'],
+ ['24-ott-terra','24 ott · terra'],
+ ['24-ott-casa','24 ott · casa'],
+ ['25-ott-foto','25 ott · foto'],
+ ['25-ott-dante','25 ott · Dante'],
+ ['27-ott-frasi','27 ott · frasi']
 ];
 const filter=$('filter');
 groups.forEach(([value,label])=>{const o=document.createElement('option');o.value=value;o.textContent=label;filter.appendChild(o)});
@@ -223,10 +223,10 @@ function toggleDirection(event){
 $('direction').addEventListener('touchstart',event=>event.stopPropagation(),{passive:true});
 $('direction').addEventListener('touchend',toggleDirection,{passive:false});
 $('direction').addEventListener('click',toggleDirection);
-filter.onchange=()=>{pool=ALL.filter(c=>matches(c,filter.value));shufflePool();index=0;reverse=false;$('status').textContent=pool.length+(['18-ott','14-ott','7-ott','24-ott-corpo','24-ott-terra','24-ott-casa','25-ott-foto','25-ott-dante','21-ott-mangiare','27-ott-frasi'].includes(filter.value)?' carte · ordine della lezione':' carte · mescolate')+' · offline · v59';render()};
-$('shuffle').onclick=()=>{shufflePool();index=0;$('status').textContent='Mazzo mescolato · v59';render()};
+filter.onchange=()=>{pool=ALL.filter(c=>matches(c,filter.value));shufflePool();index=0;reverse=false;$('status').textContent=pool.length+(['18-ott','14-ott','7-ott','24-ott-corpo','24-ott-terra','24-ott-casa','25-ott-foto','25-ott-dante','21-ott-mangiare','27-ott-frasi'].includes(filter.value)?' carte · ordine della lezione':' carte · mescolate')+' · offline · v60';render()};
+$('shuffle').onclick=()=>{shufflePool();index=0;$('status').textContent='Mazzo mescolato · v60';render()};
 document.addEventListener('keydown',e=>{if(e.target.closest('button, select, a, input, textarea'))return;if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1);if(e.key===' '||e.key==='Enter'){e.preventDefault();setFlip(!flipped)}});
-pool=ALL.filter(c=>matches(c,filter.value));shufflePool();$('status').textContent=pool.length+(['18-ott','14-ott','7-ott','24-ott-corpo','24-ott-terra','24-ott-casa','25-ott-foto','25-ott-dante','21-ott-mangiare','27-ott-frasi'].includes(filter.value)?' carte · ordine della lezione':' carte · mescolate')+' · offline · v59';render();
+pool=ALL.filter(c=>matches(c,filter.value));shufflePool();$('status').textContent=pool.length+(['18-ott','14-ott','7-ott','24-ott-corpo','24-ott-terra','24-ott-casa','25-ott-foto','25-ott-dante','21-ott-mangiare','27-ott-frasi'].includes(filter.value)?' carte · ordine della lezione':' carte · mescolate')+' · offline · v60';render();
 </script>
 </body>
 </html>

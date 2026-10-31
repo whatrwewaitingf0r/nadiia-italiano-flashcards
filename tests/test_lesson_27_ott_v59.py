@@ -49,14 +49,14 @@ class Lesson27Tests(unittest.TestCase):
         for key, name in [('carte', 'italiano-flashcards.html'), ('coppie', 'coppie.html')]:
             payload = re.search(r'<script type="application/json" id="app-' + key + r'">([\s\S]*?)</script>', hub)[1]
             self.assertEqual(json.loads(payload), (ROOT / name).read_text())
-            self.assertIn(name + '?v=59', hub)
+            self.assertIn(name + '?v=60', hub)
         for name in ['index.html', 'italiano-flashcards.html', 'coppie.html']:
             source = (ROOT / name).read_bytes()
-            self.assertIn(b'content="v59"', source)
+            self.assertIn(b'content="v60"', source)
             for folder in [ROOT / 'www', ROOT / 'anki-html', CANON, CANON / 'www']:
                 self.assertEqual((folder / name).read_bytes(), source)
-        self.assertIn("(['carte','coppie'].includes(key)?59:", hub)
-        self.assertIn('index.html?v=59#coppie', (ROOT / 'coppie.html').read_text())
+        self.assertIn("(['carte','coppie'].includes(key)?60:", hub)
+        self.assertIn('index.html?v=60#coppie', (ROOT / 'coppie.html').read_text())
 
     def test_real_picker_handlers_order_and_defaults(self):
         result = subprocess.run(['node', str(ROOT / 'tests/lesson-27-ott-runtime.cjs')], capture_output=True, text=True, timeout=15)
